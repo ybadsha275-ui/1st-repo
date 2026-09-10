@@ -1,0 +1,18 @@
+[
+    {
+        "task": "practice java",
+        "priority": "MEDIUM"
+    },
+    {
+        "task": "study maths",
+        "priority": "HIGH"
+    },
+    {
+        "task": "read newspaper",
+        "priority": "MEDIUM"
+    },
+    {
+        "task": "enjoy",
+        "priority": "HIGH"
+    }
+]
