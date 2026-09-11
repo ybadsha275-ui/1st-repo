@@ -39,7 +39,8 @@ def add_task(tasks):
 
     new_task = {
         "task": task,
-        "priority": priority
+        "priority": priority,
+        "completed": false
     }
 
     tasks.append(new_task)
@@ -72,10 +73,13 @@ def complete_task(tasks):
         number = int(input("\nEnter the task number you completed: "))
 
         if 1 <= number <= len(tasks):
-            completed_task = tasks.pop(number - 1)
+
+            tasks[number - 1]["completed"] = True
+
             save_tasks(tasks)
 
-            print(f"Completed: {completed_task['task']}")
+            print(f"Completed: {tasks[number - 1]['task']}")
+
         else:
             print("Invalid task number.")
 
@@ -89,21 +93,24 @@ def delete_task(tasks):
         print("No tasks to delete.")
         return
 
-    view_tasks(tasks)
+def view_tasks(tasks):
+    if len(tasks) == 0:
+        print("No tasks added yet.")
+        return
 
-    try:
-        number = int(input("\nEnter the task number you want to delete: "))
+    print("\nYour Tasks:")
 
-        if 1 <= number <= len(tasks):
-            deleted_task = tasks.pop(number - 1)
-            save_tasks(tasks)
+    for i, task in enumerate(tasks, start=1):
 
-            print(f"Deleted: {deleted_task['task']}")
+        if task.get("completed", False):
+            status = "COMPLETED"
         else:
-            print("Invalid task number.")
+            status = "PENDING"
 
-    except ValueError:
-        print("Please enter a valid number.")
+        print(
+            f"{i}. {task['task']} - "
+            f"{task['priority']} - {status}"
+        )
 
 
 # Main program

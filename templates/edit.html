@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Edit Task - Student Study Planner</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #0f172a;
+            color: white;
+            min-height: 100vh;
+            padding: 40px;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: auto;
+        }
+
+        .card {
+            background: #1e293b;
+            padding: 30px;
+            border-radius: 16px;
+            border: 1px solid #334155;
+        }
+
+        h1 {
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #94a3b8;
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 7px;
+            font-weight: bold;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 13px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            border: 1px solid #475569;
+            background: #0f172a;
+            color: white;
+            outline: none;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        button,
+        a {
+            padding: 12px 18px;
+            border-radius: 10px;
+            border: none;
+            text-decoration: none;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        button {
+            background: #6366f1;
+            color: white;
+        }
+
+        a {
+            background: #334155;
+            color: white;
+        }
+
+        button:hover {
+            background: #4f46e5;
+        }
+
+        a:hover {
+            background: #475569;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="card">
+
+        <h1>✏️ Edit Task</h1>
+
+        <p class="subtitle">
+            Update your study task details.
+        </p>
+
+        <form
+            action="/update/{{ task_id }}"
+            method="POST"
+        >
+
+            <label>Task</label>
+
+            <input
+                type="text"
+                name="task"
+                value="{{ task['task'] }}"
+                required
+            >
+
+            <label>Subject</label>
+
+            <input
+                type="text"
+                name="subject"
+                value="{{ task.get('subject', 'General') }}"
+                placeholder="Example: Java, Maths, DBMS"
+            >
+
+            <label>Priority</label>
+
+            <select name="priority" required>
+
+                <option
+                    value="HIGH"
+                    {% if task['priority'] == 'HIGH' %}
+                    selected
+                    {% endif %}
+                >
+                    🔴 High
+                </option>
+
+                <option
+                    value="MEDIUM"
+                    {% if task['priority'] == 'MEDIUM' %}
+                    selected
+                    {% endif %}
+                >
+                    🟡 Medium
+                </option>
+
+                <option
+                    value="LOW"
+                    {% if task['priority'] == 'LOW' %}
+                    selected
+                    {% endif %}
+                >
+                    🟢 Low
+                </option>
+
+            </select>
+
+            <label>Due Date</label>
+
+            <input
+                type="date"
+                name="due_date"
+                value="{{ task.get('due_date', '') }}"
+            >
+
+            <div class="buttons">
+
+                <button type="submit">
+                    💾 Save Changes
+                </button>
+
+                <a href="/">
+                    Cancel
+                </a>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+</body>
+</html>

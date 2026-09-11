@@ -1,0 +1,1133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Student Study Planner</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background:
+                radial-gradient(circle at top left, #243b55, transparent 35%),
+                radial-gradient(circle at bottom right, #111827, transparent 40%),
+                #080d17;
+
+            color: #ffffff;
+            min-height: 100vh;
+            padding: 30px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            gap: 20px;
+        }
+
+        .header-title h1 {
+            font-size: 32px;
+            margin-bottom: 7px;
+        }
+
+        .header-title p {
+            color: #8f9bb3;
+            font-size: 14px;
+        }
+
+        /* =========================
+           STAT CARDS
+        ========================= */
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+            margin-bottom: 25px;
+        }
+
+        .stat-card {
+            background: rgba(22, 31, 48, 0.85);
+            border: 1px solid #29364d;
+            border-radius: 16px;
+            padding: 22px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+        }
+
+        .stat-card h3 {
+            color: #8f9bb3;
+            font-size: 13px;
+            margin-bottom: 10px;
+        }
+
+        .stat-number {
+            font-size: 30px;
+            font-weight: bold;
+        }
+
+        /* =========================
+           PROGRESS
+        ========================= */
+
+        .progress-card {
+            background: rgba(22, 31, 48, 0.85);
+            border: 1px solid #29364d;
+            border-radius: 16px;
+            padding: 22px;
+            margin-bottom: 25px;
+        }
+
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 12px;
+        }
+
+        .progress-header span {
+            color: #aeb9cc;
+            font-size: 14px;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 10px;
+            background: #29364d;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            width: {{ progress }}%;
+            background: linear-gradient(90deg, #6366f1, #8b5cf6);
+            border-radius: 20px;
+            transition: width 0.4s ease;
+        }
+
+        /* =========================
+           ADD TASK
+        ========================= */
+
+        .section-card {
+            background: rgba(22, 31, 48, 0.85);
+            border: 1px solid #29364d;
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 25px;
+        }
+
+        .section-title {
+            font-size: 20px;
+            margin-bottom: 18px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px 13px;
+            border-radius: 10px;
+            border: 1px solid #33415c;
+            background: #111a2a;
+            color: #ffffff;
+            outline: none;
+            font-size: 14px;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            border-color: #6366f1;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 80px;
+            margin-bottom: 12px;
+        }
+
+        input::placeholder,
+        textarea::placeholder {
+            color: #718096;
+        }
+
+        .add-button {
+            border: none;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            color: white;
+            padding: 12px 22px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.2s ease;
+        }
+
+        .add-button:hover {
+            transform: translateY(-2px);
+        }
+
+        /* =========================
+           SEARCH & FILTER
+        ========================= */
+
+        .filter-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr auto auto;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .filter-button {
+            padding: 12px 18px;
+            border: none;
+            border-radius: 10px;
+            background: #6366f1;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .clear-button {
+            padding: 12px 18px;
+            border-radius: 10px;
+            background: #29364d;
+            color: white;
+            text-decoration: none;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .filter-button:hover,
+        .clear-button:hover {
+            opacity: 0.85;
+        }
+
+        /* =========================
+           TASK HEADER
+        ========================= */
+
+        .tasks-heading {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 18px;
+        }
+
+        .tasks-heading h2 {
+            font-size: 22px;
+        }
+
+        .task-count {
+            color: #8f9bb3;
+            font-size: 14px;
+        }
+
+        /* =========================
+           TASK CARD
+        ========================= */
+
+        .task-list {
+            display: grid;
+            gap: 15px;
+        }
+
+        .task-card {
+            background: rgba(22, 31, 48, 0.9);
+            border: 1px solid #29364d;
+            border-radius: 16px;
+            padding: 20px;
+            transition: 0.2s ease;
+        }
+
+        .task-card:hover {
+            transform: translateY(-2px);
+            border-color: #3d4d69;
+        }
+
+        .task-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 15px;
+        }
+
+        .task-name {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 7px;
+        }
+
+        .task-description {
+            color: #9ba8bd;
+            font-size: 14px;
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+
+        .task-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .meta-badge {
+            background: #29364d;
+            color: #cbd5e1;
+            padding: 6px 9px;
+            border-radius: 7px;
+            font-size: 11px;
+        }
+
+        /* =========================
+           PRIORITY
+        ========================= */
+
+        .priority-high {
+            background: rgba(239, 68, 68, 0.15);
+            color: #ff6b6b;
+        }
+
+        .priority-medium {
+            background: rgba(234, 179, 8, 0.15);
+            color: #facc15;
+        }
+
+        .priority-low {
+            background: rgba(34, 197, 94, 0.15);
+            color: #4ade80;
+        }
+
+        /* =========================
+           DUE DATE BADGES
+        ========================= */
+
+        .due-badge {
+            display: inline-block;
+            padding: 6px 10px;
+            border-radius: 8px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.4px;
+        }
+
+        .due-badge.overdue {
+            background: rgba(239, 68, 68, 0.15);
+            color: #ff6b6b;
+            border: 1px solid rgba(239, 68, 68, 0.3);
+        }
+
+        .due-badge.today {
+            background: rgba(234, 179, 8, 0.15);
+            color: #facc15;
+            border: 1px solid rgba(234, 179, 8, 0.3);
+        }
+
+        .due-badge.upcoming {
+            background: rgba(34, 197, 94, 0.15);
+            color: #4ade80;
+            border: 1px solid rgba(34, 197, 94, 0.3);
+        }
+
+        /* =========================
+           STATUS
+        ========================= */
+
+        .status-completed {
+            background: rgba(34, 197, 94, 0.15);
+            color: #4ade80;
+        }
+
+        .status-pending {
+            background: rgba(234, 179, 8, 0.15);
+            color: #facc15;
+        }
+
+        /* =========================
+           BUTTONS
+        ========================= */
+
+        .task-actions {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 9px 13px;
+            border-radius: 9px;
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            transition: 0.2s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-1px);
+        }
+
+        .complete {
+            background: rgba(34, 197, 94, 0.15);
+            color: #4ade80;
+        }
+
+        .edit {
+            background: rgba(99, 102, 241, 0.15);
+            color: #a5b4fc;
+        }
+
+        .delete {
+            background: rgba(239, 68, 68, 0.15);
+            color: #ff6b6b;
+        }
+
+        /* =========================
+           EMPTY STATE
+        ========================= */
+
+        .empty-state {
+            text-align: center;
+            padding: 50px 20px;
+            color: #7f8ba3;
+        }
+
+        .empty-state h3 {
+            color: #cbd5e1;
+            margin-bottom: 8px;
+        }
+
+        /* =========================
+           DELETE MODAL
+        ========================= */
+
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.70);
+            backdrop-filter: blur(6px);
+
+            display: none;
+            align-items: center;
+            justify-content: center;
+
+            z-index: 9999;
+        }
+
+        .modal-overlay.show {
+            display: flex;
+        }
+
+        .delete-modal {
+            width: 420px;
+            max-width: 90%;
+
+            background: #182235;
+            border: 1px solid #33415c;
+            border-radius: 20px;
+
+            padding: 30px;
+            text-align: center;
+
+            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.55);
+
+            animation: modalAppear 0.2s ease;
+        }
+
+        @keyframes modalAppear {
+            from {
+                opacity: 0;
+                transform: scale(0.92) translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        .modal-icon {
+            width: 65px;
+            height: 65px;
+
+            margin: 0 auto 18px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: rgba(239, 68, 68, 0.12);
+            border-radius: 50%;
+
+            font-size: 28px;
+        }
+
+        .delete-modal h2 {
+            margin-bottom: 10px;
+            font-size: 24px;
+        }
+
+        .delete-modal p {
+            color: #aeb9cc;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        .delete-modal p span {
+            font-size: 13px;
+            color: #7f8ba3;
+        }
+
+        .modal-buttons {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+        }
+
+        .cancel-modal-btn,
+        .confirm-delete-btn {
+            border: none;
+            border-radius: 10px;
+
+            padding: 11px 24px;
+
+            font-size: 14px;
+            font-weight: 600;
+
+            cursor: pointer;
+            text-decoration: none;
+
+            transition: 0.2s ease;
+        }
+
+        .cancel-modal-btn {
+            background: #29364d;
+            color: #ffffff;
+        }
+
+        .cancel-modal-btn:hover {
+            background: #35445d;
+        }
+
+        .confirm-delete-btn {
+            background: #ef4444;
+            color: white;
+        }
+
+        .confirm-delete-btn:hover {
+            background: #dc2626;
+            transform: translateY(-1px);
+        }
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 900px) {
+
+            body {
+                padding: 18px;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .filter-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .filter-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .task-top {
+                flex-direction: column;
+            }
+
+            .task-actions {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- =========================
+         HEADER
+    ========================= -->
+
+    <header>
+
+        <div class="header-title">
+            <h1>📚 Student Study Planner</h1>
+            <p>Organize your studies, track your progress and stay productive.</p>
+        </div>
+
+    </header>
+
+
+    <!-- =========================
+         STATISTICS
+    ========================= -->
+
+    <div class="stats">
+
+        <div class="stat-card">
+            <h3>TOTAL TASKS</h3>
+            <div class="stat-number">
+                {{ total_tasks }}
+            </div>
+        </div>
+
+        <div class="stat-card">
+            <h3>PENDING TASKS</h3>
+            <div class="stat-number">
+                {{ pending_tasks }}
+            </div>
+        </div>
+
+        <div class="stat-card">
+            <h3>COMPLETED TASKS</h3>
+            <div class="stat-number">
+                {{ completed_tasks }}
+            </div>
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         PROGRESS
+    ========================= -->
+
+    <div class="progress-card">
+
+        <div class="progress-header">
+            <span>Overall Progress</span>
+            <span>{{ progress }}%</span>
+        </div>
+
+        <div class="progress-bar">
+            <div class="progress-fill"></div>
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         ADD TASK
+    ========================= -->
+
+    <div class="section-card">
+
+        <div class="section-title">
+            ➕ Add New Task
+        </div>
+
+        <form action="{{ url_for('add_task') }}" method="POST">
+
+            <div class="form-grid">
+
+                <input
+                    type="text"
+                    name="task"
+                    placeholder="Task name"
+                    required
+                >
+
+                <input
+                    type="text"
+                    name="subject"
+                    placeholder="Subject"
+                >
+
+                <select name="priority">
+
+                    <option value="HIGH">High</option>
+                    <option value="MEDIUM" selected>Medium</option>
+                    <option value="LOW">Low</option>
+
+                </select>
+
+                <input
+                    type="date"
+                    name="due_date"
+                >
+
+            </div>
+
+            <textarea
+                name="description"
+                placeholder="Description / notes (optional)"
+            ></textarea>
+
+            <button type="submit" class="add-button">
+                + Add Task
+            </button>
+
+        </form>
+
+    </div>
+
+
+    <!-- =========================
+         SEARCH & FILTER
+    ========================= -->
+
+    <div class="section-card">
+
+        <div class="section-title">
+            🔎 Search & Filter
+        </div>
+
+        <form action="{{ url_for('index') }}" method="GET">
+
+            <div class="filter-grid">
+
+                <input
+                    type="text"
+                    name="search"
+                    placeholder="Search tasks..."
+                    value="{{ search }}"
+                >
+
+                <select name="priority">
+
+                    <option value="">All Priorities</option>
+
+                    <option
+                        value="HIGH"
+                        {% if priority_filter == "HIGH" %}selected{% endif %}
+                    >
+                        High
+                    </option>
+
+                    <option
+                        value="MEDIUM"
+                        {% if priority_filter == "MEDIUM" %}selected{% endif %}
+                    >
+                        Medium
+                    </option>
+
+                    <option
+                        value="LOW"
+                        {% if priority_filter == "LOW" %}selected{% endif %}
+                    >
+                        Low
+                    </option>
+
+                </select>
+
+
+                <select name="subject">
+
+                    <option value="">All Subjects</option>
+
+                    {% for subject in subjects %}
+
+                        <option
+                            value="{{ subject }}"
+                            {% if subject_filter == subject %}selected{% endif %}
+                        >
+                            {{ subject }}
+                        </option>
+
+                    {% endfor %}
+
+                </select>
+
+
+                <select name="status">
+
+                    <option value="">All Status</option>
+
+                    <option
+                        value="pending"
+                        {% if status_filter == "pending" %}selected{% endif %}
+                    >
+                        Pending
+                    </option>
+
+                    <option
+                        value="completed"
+                        {% if status_filter == "completed" %}selected{% endif %}
+                    >
+                        Completed
+                    </option>
+
+                </select>
+
+
+                <button type="submit" class="filter-button">
+                    Apply
+                </button>
+
+                <a href="{{ url_for('index') }}" class="clear-button">
+                    Clear
+                </a>
+
+            </div>
+
+        </form>
+
+    </div>
+
+
+    <!-- =========================
+         TASKS
+    ========================= -->
+
+    <div class="tasks-heading">
+
+        <h2>📋 Your Tasks</h2>
+
+        <span class="task-count">
+            Showing {{ task_items|length }} task{% if task_items|length != 1 %}s{% endif %}
+        </span>
+
+    </div>
+
+
+    {% if task_items %}
+
+        <div class="task-list">
+
+            {% for task_id, task in task_items %}
+
+                <div class="task-card">
+
+                    <div class="task-top">
+
+                        <div>
+
+                            <div class="task-name">
+                                {{ task.get("task", "Untitled Task") }}
+                            </div>
+
+                            {% if task.get("description") %}
+
+                                <div class="task-description">
+                                    {{ task.get("description") }}
+                                </div>
+
+                            {% endif %}
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- TASK INFORMATION -->
+
+                    <div class="task-meta">
+
+                        <!-- Priority -->
+
+                        {% if task.get("priority") == "HIGH" %}
+
+                            <span class="meta-badge priority-high">
+                                🔥 HIGH
+                            </span>
+
+                        {% elif task.get("priority") == "MEDIUM" %}
+
+                            <span class="meta-badge priority-medium">
+                                ⚡ MEDIUM
+                            </span>
+
+                        {% else %}
+
+                            <span class="meta-badge priority-low">
+                                🌱 LOW
+                            </span>
+
+                        {% endif %}
+
+
+                        <!-- Subject -->
+
+                        <span class="meta-badge">
+                            📚 {{ task.get("subject", "General") }}
+                        </span>
+
+
+                        <!-- Due Date -->
+
+                        {% if task.get("due_status") == "overdue" %}
+
+                            <span class="due-badge overdue">
+                                🔴 OVERDUE
+                            </span>
+
+                        {% elif task.get("due_status") == "today" %}
+
+                            <span class="due-badge today">
+                                🟡 DUE TODAY
+                            </span>
+
+                        {% elif task.get("due_status") == "upcoming" %}
+
+                            <span class="due-badge upcoming">
+                                🟢 UPCOMING
+                            </span>
+
+                        {% endif %}
+
+
+                        {% if task.get("due_date") %}
+
+                            <span class="meta-badge">
+                                📅 {{ task.get("due_date") }}
+                            </span>
+
+                        {% endif %}
+
+
+                        <!-- Completion Status -->
+
+                        {% if task.get("completed", False) %}
+
+                            <span class="meta-badge status-completed">
+                                ✓ COMPLETED
+                            </span>
+
+                        {% else %}
+
+                            <span class="meta-badge status-pending">
+                                ⏳ PENDING
+                            </span>
+
+                        {% endif %}
+
+                    </div>
+
+
+                    <!-- ACTION BUTTONS -->
+
+                    <div class="task-actions">
+
+                        <a
+                            href="{{ url_for('complete_task', task_id=task_id) }}"
+                            class="btn complete"
+                        >
+
+                            {% if task.get("completed", False) %}
+                                ↩ Undo
+                            {% else %}
+                                ✓ Complete
+                            {% endif %}
+
+                        </a>
+
+
+                        <a
+                            href="{{ url_for('edit_task', task_id=task_id) }}"
+                            class="btn edit"
+                        >
+                            ✏ Edit
+                        </a>
+
+
+                        <a
+                            href="{{ url_for('delete_task', task_id=task_id) }}"
+                            class="btn delete delete-btn"
+                        >
+                            🗑 Delete
+                        </a>
+
+                    </div>
+
+                </div>
+
+            {% endfor %}
+
+        </div>
+
+    {% else %}
+
+        <div class="section-card empty-state">
+
+            <h3>No tasks found</h3>
+
+            <p>
+                Try changing your search or filters,
+                or add a new task above.
+            </p>
+
+        </div>
+
+    {% endif %}
+
+</div>
+
+
+<!-- =========================
+     DELETE CONFIRMATION MODAL
+========================= -->
+
+<div id="deleteModal" class="modal-overlay">
+
+    <div class="delete-modal">
+
+        <div class="modal-icon">
+            🗑️
+        </div>
+
+        <h2>
+            Delete Task?
+        </h2>
+
+        <p>
+            Are you sure you want to delete this task?
+            <br>
+            <span>
+                This action cannot be undone.
+            </span>
+        </p>
+
+        <div class="modal-buttons">
+
+            <button
+                id="cancelDelete"
+                class="cancel-modal-btn"
+                type="button"
+            >
+                Cancel
+            </button>
+
+            <a
+                id="confirmDelete"
+                href="#"
+                class="confirm-delete-btn"
+            >
+                Delete
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     JAVASCRIPT
+========================= -->
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const deleteModal = document.getElementById("deleteModal");
+
+    const confirmDelete =
+        document.getElementById("confirmDelete");
+
+    const cancelDelete =
+        document.getElementById("cancelDelete");
+
+
+    document.querySelectorAll(".delete-btn").forEach(function (button) {
+
+        button.addEventListener("click", function (event) {
+
+            event.preventDefault();
+
+            const deleteUrl =
+                button.getAttribute("href");
+
+            confirmDelete.setAttribute(
+                "href",
+                deleteUrl
+            );
+
+            deleteModal.classList.add("show");
+
+        });
+
+    });
+
+
+    cancelDelete.addEventListener("click", function () {
+
+        deleteModal.classList.remove("show");
+
+    });
+
+
+    deleteModal.addEventListener("click", function (event) {
+
+        if (event.target === deleteModal) {
+
+            deleteModal.classList.remove("show");
+
+        }
+
+    });
+
+
+    document.addEventListener("keydown", function (event) {
+
+        if (event.key === "Escape") {
+
+            deleteModal.classList.remove("show");
+
+        }
+
+    });
+
+});
+
+</script>
+
+</body>
+
+</html>
