@@ -62,7 +62,7 @@ def save_tasks(tasks):
 
 def get_due_status(due_date, completed):
 
-    # Completed tasks don't need an overdue/upcoming label
+    # Completed tasks
     if completed:
         return "completed"
 
@@ -75,7 +75,7 @@ def get_due_status(due_date, completed):
         today = date.today()
         due = date.fromisoformat(due_date)
 
-        # Date has already passed
+        # Due date has passed
         if due < today:
             return "overdue"
 
@@ -83,7 +83,7 @@ def get_due_status(due_date, completed):
         elif due == today:
             return "today"
 
-        # Future date
+        # Future due date
         else:
             return "upcoming"
 
@@ -256,7 +256,7 @@ def index():
 
 
     # ==========================================
-    # Progress percentage
+    # Overall progress
     # ==========================================
 
     if total_tasks > 0:
@@ -273,7 +273,7 @@ def index():
 
 
     # ==========================================
-    # Subjects
+    # Get subjects
     # ==========================================
 
     subjects = sorted(
@@ -290,6 +290,72 @@ def index():
         )
 
     )
+
+
+    # ==========================================
+    # Subject-wise progress
+    # ==========================================
+
+    subject_progress = []
+
+
+    for subject in subjects:
+
+        subject_tasks = [
+
+            task
+
+            for task in all_tasks
+
+            if task.get(
+                "subject",
+                "General"
+            ) == subject
+
+        ]
+
+
+        subject_total = len(subject_tasks)
+
+
+        subject_completed = sum(
+
+            1
+
+            for task in subject_tasks
+
+            if task.get(
+                "completed",
+                False
+            )
+
+        )
+
+
+        if subject_total > 0:
+
+            subject_percentage = round(
+
+                (subject_completed / subject_total) * 100
+
+            )
+
+        else:
+
+            subject_percentage = 0
+
+
+        subject_progress.append({
+
+            "subject": subject,
+
+            "total": subject_total,
+
+            "completed": subject_completed,
+
+            "percentage": subject_percentage
+
+        })
 
 
     # ==========================================
@@ -312,6 +378,8 @@ def index():
 
         subjects=subjects,
 
+        subject_progress=subject_progress,
+
         search=search,
 
         priority_filter=priority_filter,
@@ -327,7 +395,10 @@ def index():
 # Add task
 # ==========================================
 
-@app.route("/add", methods=["POST"])
+@app.route(
+    "/add",
+    methods=["POST"]
+)
 def add_task():
 
     tasks = load_tasks()
@@ -369,7 +440,7 @@ def add_task():
         subject = "General"
 
 
-    # Only add if task name exists
+    # Add task only if task name exists
     if task_name:
 
         new_task = {
@@ -403,7 +474,9 @@ def add_task():
 # Complete / Undo task
 # ==========================================
 
-@app.route("/complete/<int:task_id>")
+@app.route(
+    "/complete/<int:task_id>"
+)
 def complete_task(task_id):
 
     tasks = load_tasks()
@@ -432,7 +505,9 @@ def complete_task(task_id):
 # Delete task
 # ==========================================
 
-@app.route("/delete/<int:task_id>")
+@app.route(
+    "/delete/<int:task_id>"
+)
 def delete_task(task_id):
 
     tasks = load_tasks()
@@ -454,7 +529,9 @@ def delete_task(task_id):
 # Edit task - Show edit page
 # ==========================================
 
-@app.route("/edit/<int:task_id>")
+@app.route(
+    "/edit/<int:task_id>"
+)
 def edit_task(task_id):
 
     tasks = load_tasks()
@@ -528,7 +605,7 @@ def update_task(task_id):
             subject = "General"
 
 
-        # Update task information
+        # Update task
         tasks[task_id]["task"] = task_name
 
         tasks[task_id]["subject"] = subject

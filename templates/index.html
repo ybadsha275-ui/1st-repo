@@ -2,766 +2,1545 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
     <title>Student Study Planner</title>
 
+
     <style>
+
+        /* ==========================================
+           GLOBAL
+        ========================================== */
+
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
         }
 
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            background:
-                radial-gradient(circle at top left, #243b55, transparent 35%),
-                radial-gradient(circle at bottom right, #111827, transparent 40%),
-                #080d17;
 
-            color: #ffffff;
+        body {
+
+            font-family:
+                "Segoe UI",
+                Arial,
+                sans-serif;
+
+            background:
+                radial-gradient(
+                    circle at top left,
+                    #20275f 0%,
+                    #10172d 35%,
+                    #080d1b 75%
+                );
+
+            color: #f5f7ff;
+
             min-height: 100vh;
-            padding: 30px;
+
+            padding: 30px 15px;
+
         }
+
 
         .container {
-            max-width: 1200px;
+
+            width: 100%;
+
+            max-width: 1050px;
+
             margin: auto;
+
         }
 
-        /* =========================
+
+        /* ==========================================
            HEADER
-        ========================= */
+        ========================================== */
 
-        header {
+        .header {
+
             display: flex;
+
             justify-content: space-between;
+
             align-items: center;
-            margin-bottom: 30px;
-            gap: 20px;
+
+            margin-bottom: 25px;
+
         }
 
-        .header-title h1 {
-            font-size: 32px;
-            margin-bottom: 7px;
+
+        .brand {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+
         }
 
-        .header-title p {
-            color: #8f9bb3;
+
+        .brand-icon {
+
+            font-size: 38px;
+
+        }
+
+
+        .brand h1 {
+
+            font-size: 30px;
+
+            font-weight: 800;
+
+            letter-spacing: -0.5px;
+
+        }
+
+
+        .brand p {
+
+            color: #9ca8c9;
+
+            margin-top: 5px;
+
             font-size: 14px;
+
         }
 
-        /* =========================
+
+        .header-icon {
+
+            width: 55px;
+
+            height: 55px;
+
+            border-radius: 15px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 25px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #6366f1,
+                    #8b5cf6
+                );
+
+            box-shadow:
+                0 8px 25px
+                rgba(99, 102, 241, 0.35);
+
+        }
+
+
+        /* ==========================================
            STAT CARDS
-        ========================= */
+        ========================================== */
 
         .stats {
+
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 18px;
-            margin-bottom: 25px;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 14px;
+
+            margin-bottom: 16px;
+
         }
+
 
         .stat-card {
-            background: rgba(22, 31, 48, 0.85);
-            border: 1px solid #29364d;
-            border-radius: 16px;
-            padding: 22px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+
+            background: rgba(30, 42, 66, 0.88);
+
+            border: 1px solid #34435f;
+
+            border-radius: 14px;
+
+            padding: 20px;
+
+            min-height: 95px;
+
+            box-shadow:
+                0 8px 25px
+                rgba(0, 0, 0, 0.12);
+
         }
 
-        .stat-card h3 {
-            color: #8f9bb3;
-            font-size: 13px;
-            margin-bottom: 10px;
+
+        .stat-top {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
         }
+
+
+        .stat-title {
+
+            color: #91a0c3;
+
+            font-size: 12px;
+
+            text-transform: uppercase;
+
+            letter-spacing: 0.5px;
+
+        }
+
+
+        .stat-icon {
+
+            font-size: 20px;
+
+        }
+
 
         .stat-number {
-            font-size: 30px;
-            font-weight: bold;
+
+            font-size: 28px;
+
+            font-weight: 800;
+
+            margin-top: 5px;
+
         }
 
-        /* =========================
-           PROGRESS
-        ========================= */
 
-        .progress-card {
-            background: rgba(22, 31, 48, 0.85);
-            border: 1px solid #29364d;
-            border-radius: 16px;
-            padding: 22px;
-            margin-bottom: 25px;
+        /* ==========================================
+           GENERAL SECTION
+        ========================================== */
+
+        .section {
+
+            background: rgba(25, 37, 59, 0.90);
+
+            border: 1px solid #34435f;
+
+            border-radius: 14px;
+
+            padding: 18px;
+
+            margin-bottom: 16px;
+
+            box-shadow:
+                0 8px 25px
+                rgba(0, 0, 0, 0.12);
+
         }
 
-        .progress-header {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 12px;
-        }
-
-        .progress-header span {
-            color: #aeb9cc;
-            font-size: 14px;
-        }
-
-        .progress-bar {
-            width: 100%;
-            height: 10px;
-            background: #29364d;
-            border-radius: 20px;
-            overflow: hidden;
-        }
-
-        .progress-fill {
-            height: 100%;
-            width: {{ progress }}%;
-            background: linear-gradient(90deg, #6366f1, #8b5cf6);
-            border-radius: 20px;
-            transition: width 0.4s ease;
-        }
-
-        /* =========================
-           ADD TASK
-        ========================= */
-
-        .section-card {
-            background: rgba(22, 31, 48, 0.85);
-            border: 1px solid #29364d;
-            border-radius: 16px;
-            padding: 24px;
-            margin-bottom: 25px;
-        }
 
         .section-title {
-            font-size: 20px;
-            margin-bottom: 18px;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+            font-size: 16px;
+
+            font-weight: 700;
+
+            margin-bottom: 15px;
+
         }
 
-        .form-grid {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr;
-            gap: 12px;
-            margin-bottom: 12px;
+
+        /* ==========================================
+           OVERALL PROGRESS
+        ========================================== */
+
+        .progress-header {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            margin-bottom: 8px;
+
         }
+
+
+        .progress-label {
+
+            font-size: 13px;
+
+            color: #c8d0e7;
+
+        }
+
+
+        .progress-percent {
+
+            color: #a78bfa;
+
+            font-size: 13px;
+
+            font-weight: 700;
+
+        }
+
+
+        .progress-bar {
+
+            width: 100%;
+
+            height: 9px;
+
+            background: #0d1629;
+
+            border-radius: 20px;
+
+            overflow: hidden;
+
+        }
+
+
+        .progress-fill {
+
+            height: 100%;
+
+            width: {{ progress }}%;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #6366f1,
+                    #8b5cf6
+                );
+
+            border-radius: 20px;
+
+            transition: width 0.5s ease;
+
+        }
+
+
+        /* ==========================================
+           ADD TASK
+        ========================================== */
+
+        .form-row {
+
+            display: grid;
+
+            grid-template-columns:
+                1.5fr
+                0.8fr
+                0.8fr
+                0.8fr
+                auto;
+
+            gap: 8px;
+
+            margin-bottom: 8px;
+
+        }
+
 
         input,
         select,
         textarea {
+
             width: 100%;
-            padding: 12px 13px;
-            border-radius: 10px;
-            border: 1px solid #33415c;
-            background: #111a2a;
-            color: #ffffff;
+
+            background: #0e172a;
+
+            color: #f5f7ff;
+
+            border: 1px solid #40506d;
+
+            border-radius: 8px;
+
             outline: none;
-            font-size: 14px;
+
+            font-family: inherit;
+
+            font-size: 13px;
+
         }
+
+
+        input,
+        select {
+
+            height: 40px;
+
+            padding: 0 11px;
+
+        }
+
+
+        textarea {
+
+            min-height: 75px;
+
+            padding: 11px;
+
+            resize: vertical;
+
+        }
+
 
         input:focus,
         select:focus,
         textarea:focus {
-            border-color: #6366f1;
+
+            border-color: #7c6cf5;
+
+            box-shadow:
+                0 0 0 2px
+                rgba(124, 108, 245, 0.15);
+
         }
 
-        textarea {
-            resize: vertical;
-            min-height: 80px;
-            margin-bottom: 12px;
-        }
 
-        input::placeholder,
-        textarea::placeholder {
-            color: #718096;
-        }
+        button {
 
-        .add-button {
             border: none;
-            background: linear-gradient(135deg, #6366f1, #8b5cf6);
-            color: white;
-            padding: 12px 22px;
-            border-radius: 10px;
+
+            font-family: inherit;
+
             cursor: pointer;
-            font-weight: bold;
-            transition: 0.2s ease;
+
         }
 
-        .add-button:hover {
-            transform: translateY(-2px);
+
+        .add-btn {
+
+            height: 40px;
+
+            padding: 0 18px;
+
+            border-radius: 8px;
+
+            color: white;
+
+            font-weight: 700;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #6366f1,
+                    #8b5cf6
+                );
+
+            transition: 0.2s;
+
         }
 
-        /* =========================
+
+        .add-btn:hover {
+
+            transform: translateY(-1px);
+
+            box-shadow:
+                0 6px 18px
+                rgba(99, 102, 241, 0.3);
+
+        }
+
+
+        /* ==========================================
            SEARCH & FILTER
-        ========================= */
+        ========================================== */
 
-        .filter-grid {
+        .filter-row {
+
             display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr auto auto;
-            gap: 10px;
-            align-items: center;
+
+            grid-template-columns:
+                1.5fr
+                0.8fr
+                0.8fr
+                0.8fr
+                auto
+                auto;
+
+            gap: 8px;
+
         }
 
-        .filter-button {
-            padding: 12px 18px;
-            border: none;
-            border-radius: 10px;
-            background: #6366f1;
+
+        .filter-btn {
+
+            height: 40px;
+
+            padding: 0 15px;
+
+            border-radius: 8px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #6366f1,
+                    #8b5cf6
+                );
+
             color: white;
-            font-weight: bold;
-            cursor: pointer;
+
+            font-weight: 700;
+
         }
 
-        .clear-button {
-            padding: 12px 18px;
-            border-radius: 10px;
-            background: #29364d;
-            color: white;
-            text-decoration: none;
-            text-align: center;
-            font-weight: bold;
+
+        .clear-btn {
+
+            height: 40px;
+
+            padding: 0 15px;
+
+            border-radius: 8px;
+
+            background: #33415c;
+
+            color: #e5e9f5;
+
+            font-weight: 600;
+
         }
 
-        .filter-button:hover,
-        .clear-button:hover {
-            opacity: 0.85;
+
+        /* ==========================================
+           SUBJECT PROGRESS
+        ========================================== */
+
+        .subject-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 12px;
+
         }
 
-        /* =========================
-           TASK HEADER
-        ========================= */
 
-        .tasks-heading {
+        .subject-card {
+
+            background: #111c30;
+
+            border: 1px solid #34435f;
+
+            border-radius: 11px;
+
+            padding: 14px;
+
+        }
+
+
+        .subject-header {
+
             display: flex;
+
             justify-content: space-between;
+
             align-items: center;
-            margin-bottom: 18px;
+
+            margin-bottom: 8px;
+
         }
 
-        .tasks-heading h2 {
-            font-size: 22px;
+
+        .subject-name {
+
+            font-weight: 700;
+
+            font-size: 14px;
+
+            color: #f2f4ff;
+
         }
+
+
+        .subject-percent {
+
+            color: #a78bfa;
+
+            font-size: 13px;
+
+            font-weight: 700;
+
+        }
+
+
+        .subject-info {
+
+            color: #8e9bb8;
+
+            font-size: 11px;
+
+            margin-bottom: 8px;
+
+        }
+
+
+        .subject-bar {
+
+            height: 7px;
+
+            background: #0a1222;
+
+            border-radius: 20px;
+
+            overflow: hidden;
+
+        }
+
+
+        .subject-fill {
+
+            height: 100%;
+
+            width: {{ subject_percentage }}%;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #6366f1,
+                    #a855f7
+                );
+
+            border-radius: 20px;
+
+            transition: width 0.5s ease;
+
+        }
+
+
+        /* ==========================================
+           TASK HEADER
+        ========================================== */
+
+        .tasks-header {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            margin-bottom: 12px;
+
+        }
+
 
         .task-count {
-            color: #8f9bb3;
-            font-size: 14px;
+
+            color: #8f9dbc;
+
+            font-size: 11px;
+
         }
 
-        /* =========================
+
+        /* ==========================================
            TASK CARD
-        ========================= */
-
-        .task-list {
-            display: grid;
-            gap: 15px;
-        }
+        ========================================== */
 
         .task-card {
-            background: rgba(22, 31, 48, 0.9);
-            border: 1px solid #29364d;
-            border-radius: 16px;
-            padding: 20px;
-            transition: 0.2s ease;
+
+            background: #111b2e;
+
+            border: 1px solid #35435e;
+
+            border-radius: 12px;
+
+            padding: 14px;
+
+            margin-bottom: 10px;
+
+            transition: 0.2s;
+
         }
+
 
         .task-card:hover {
-            transform: translateY(-2px);
-            border-color: #3d4d69;
+
+            border-color: #59698b;
+
+            transform: translateY(-1px);
+
         }
 
-        .task-top {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            gap: 15px;
+
+        .task-card.completed {
+
+            opacity: 0.72;
+
         }
+
 
         .task-name {
-            font-size: 18px;
-            font-weight: bold;
-            margin-bottom: 7px;
+
+            font-size: 15px;
+
+            font-weight: 750;
+
+            color: #f7f8ff;
+
+            margin-bottom: 6px;
+
         }
 
-        .task-description {
-            color: #9ba8bd;
-            font-size: 14px;
+
+        .task-card.completed .task-name {
+
+            text-decoration: line-through;
+
+            color: #8d98ad;
+
+        }
+
+
+        .description {
+
+            color: #9ba8c2;
+
+            font-size: 12px;
+
+            margin-bottom: 9px;
+
             line-height: 1.5;
-            margin-bottom: 15px;
+
         }
 
-        .task-meta {
+
+        .labels {
+
             display: flex;
+
             flex-wrap: wrap;
-            gap: 8px;
+
+            gap: 6px;
+
             align-items: center;
-            margin-bottom: 15px;
+
+            margin-bottom: 10px;
+
         }
 
-        .meta-badge {
-            background: #29364d;
-            color: #cbd5e1;
-            padding: 6px 9px;
-            border-radius: 7px;
-            font-size: 11px;
+
+        .label {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 4px;
+
+            padding: 4px 8px;
+
+            border-radius: 6px;
+
+            font-size: 10px;
+
+            font-weight: 700;
+
         }
 
-        /* =========================
-           PRIORITY
-        ========================= */
+
+        /* ==========================================
+           PRIORITY LABELS
+        ========================================== */
 
         .priority-high {
-            background: rgba(239, 68, 68, 0.15);
-            color: #ff6b6b;
+
+            color: #ff7777;
+
+            background: rgba(239, 68, 68, 0.16);
+
+            border: 1px solid rgba(239, 68, 68, 0.25);
+
         }
+
 
         .priority-medium {
-            background: rgba(234, 179, 8, 0.15);
-            color: #facc15;
+
+            color: #f5c85b;
+
+            background: rgba(245, 200, 91, 0.14);
+
+            border: 1px solid rgba(245, 200, 91, 0.25);
+
         }
+
 
         .priority-low {
-            background: rgba(34, 197, 94, 0.15);
-            color: #4ade80;
+
+            color: #59d89c;
+
+            background: rgba(34, 197, 94, 0.14);
+
+            border: 1px solid rgba(34, 197, 94, 0.25);
+
         }
 
-        /* =========================
-           DUE DATE BADGES
-        ========================= */
 
-        .due-badge {
-            display: inline-block;
-            padding: 6px 10px;
-            border-radius: 8px;
-            font-size: 11px;
-            font-weight: 700;
-            letter-spacing: 0.4px;
+        /* ==========================================
+           SUBJECT LABEL
+        ========================================== */
+
+        .subject-label {
+
+            color: #b5a7ff;
+
+            background: rgba(139, 92, 246, 0.15);
+
+            border: 1px solid rgba(139, 92, 246, 0.25);
+
         }
 
-        .due-badge.overdue {
+
+        /* ==========================================
+           DATE LABELS
+        ========================================== */
+
+        .date-label {
+
+            color: #8ec5ff;
+
+            background: rgba(59, 130, 246, 0.13);
+
+            border: 1px solid rgba(59, 130, 246, 0.23);
+
+        }
+
+
+        .overdue-label {
+
+            color: #ff7373;
+
             background: rgba(239, 68, 68, 0.15);
-            color: #ff6b6b;
-            border: 1px solid rgba(239, 68, 68, 0.3);
+
+            border: 1px solid rgba(239, 68, 68, 0.25);
+
         }
 
-        .due-badge.today {
-            background: rgba(234, 179, 8, 0.15);
-            color: #facc15;
-            border: 1px solid rgba(234, 179, 8, 0.3);
+
+        .today-label {
+
+            color: #ffd66b;
+
+            background: rgba(245, 158, 11, 0.15);
+
+            border: 1px solid rgba(245, 158, 11, 0.25);
+
         }
 
-        .due-badge.upcoming {
-            background: rgba(34, 197, 94, 0.15);
-            color: #4ade80;
-            border: 1px solid rgba(34, 197, 94, 0.3);
-        }
 
-        /* =========================
-           STATUS
-        ========================= */
-
-        .status-completed {
-            background: rgba(34, 197, 94, 0.15);
-            color: #4ade80;
-        }
+        /* ==========================================
+           STATUS LABEL
+        ========================================== */
 
         .status-pending {
-            background: rgba(234, 179, 8, 0.15);
-            color: #facc15;
+
+            color: #ffd75e;
+
+            background: rgba(234, 179, 8, 0.14);
+
+            border: 1px solid rgba(234, 179, 8, 0.23);
+
         }
 
-        /* =========================
-           BUTTONS
-        ========================= */
 
-        .task-actions {
+        .status-completed {
+
+            color: #5ee59d;
+
+            background: rgba(34, 197, 94, 0.14);
+
+            border: 1px solid rgba(34, 197, 94, 0.23);
+
+        }
+
+
+        /* ==========================================
+           ACTION BUTTONS
+        ========================================== */
+
+        .actions {
+
             display: flex;
-            gap: 8px;
+
             flex-wrap: wrap;
+
+            gap: 7px;
+
         }
 
-        .btn {
-            display: inline-block;
-            padding: 9px 13px;
-            border-radius: 9px;
+
+        .action-btn {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding: 6px 10px;
+
+            border-radius: 7px;
+
             text-decoration: none;
-            font-size: 12px;
-            font-weight: bold;
-            border: none;
-            cursor: pointer;
-            transition: 0.2s ease;
+
+            font-size: 10px;
+
+            font-weight: 700;
+
+            transition: 0.2s;
+
         }
 
-        .btn:hover {
-            transform: translateY(-1px);
+
+        .complete-btn {
+
+            background: rgba(34, 197, 94, 0.17);
+
+            color: #5ee59d;
+
+            border: 1px solid rgba(34, 197, 94, 0.25);
+
         }
 
-        .complete {
-            background: rgba(34, 197, 94, 0.15);
-            color: #4ade80;
+
+        .complete-btn:hover {
+
+            background: rgba(34, 197, 94, 0.28);
+
         }
 
-        .edit {
-            background: rgba(99, 102, 241, 0.15);
-            color: #a5b4fc;
+
+        .edit-btn {
+
+            background: rgba(99, 102, 241, 0.17);
+
+            color: #aaa5ff;
+
+            border: 1px solid rgba(99, 102, 241, 0.25);
+
         }
 
-        .delete {
-            background: rgba(239, 68, 68, 0.15);
-            color: #ff6b6b;
+
+        .edit-btn:hover {
+
+            background: rgba(99, 102, 241, 0.28);
+
         }
 
-        /* =========================
-           EMPTY STATE
-        ========================= */
 
-        .empty-state {
+        .delete-btn {
+
+            background: rgba(239, 68, 68, 0.17);
+
+            color: #ff7777;
+
+            border: 1px solid rgba(239, 68, 68, 0.25);
+
+        }
+
+
+        .delete-btn:hover {
+
+            background: rgba(239, 68, 68, 0.28);
+
+        }
+
+
+        /* ==========================================
+           NO TASKS
+        ========================================== */
+
+        .empty {
+
             text-align: center;
-            padding: 50px 20px;
-            color: #7f8ba3;
+
+            padding: 30px;
+
+            color: #7f8ba6;
+
+            font-size: 13px;
+
         }
 
-        .empty-state h3 {
-            color: #cbd5e1;
-            margin-bottom: 8px;
-        }
 
-        /* =========================
+        /* ==========================================
            DELETE MODAL
-        ========================= */
+        ========================================== */
 
         .modal-overlay {
+
             position: fixed;
+
             inset: 0;
-            background: rgba(0, 0, 0, 0.70);
-            backdrop-filter: blur(6px);
+
+            background:
+                rgba(2, 6, 23, 0.78);
+
+            backdrop-filter: blur(5px);
 
             display: none;
+
             align-items: center;
+
             justify-content: center;
 
             z-index: 9999;
+
+            padding: 20px;
+
         }
+
 
         .modal-overlay.show {
+
             display: flex;
+
         }
 
-        .delete-modal {
-            width: 420px;
-            max-width: 90%;
 
-            background: #182235;
-            border: 1px solid #33415c;
-            border-radius: 20px;
+        .modal {
 
-            padding: 30px;
-            text-align: center;
+            width: 100%;
 
-            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.55);
+            max-width: 400px;
 
-            animation: modalAppear 0.2s ease;
+            background: #172238;
+
+            border: 1px solid #465675;
+
+            border-radius: 16px;
+
+            padding: 24px;
+
+            box-shadow:
+                0 25px 70px
+                rgba(0, 0, 0, 0.55);
+
+            animation:
+                modalIn 0.18s ease;
+
         }
 
-        @keyframes modalAppear {
+
+        @keyframes modalIn {
+
             from {
+
+                transform: scale(0.92);
+
                 opacity: 0;
-                transform: scale(0.92) translateY(10px);
+
             }
 
             to {
+
+                transform: scale(1);
+
                 opacity: 1;
-                transform: scale(1) translateY(0);
+
             }
+
         }
+
 
         .modal-icon {
-            width: 65px;
-            height: 65px;
 
-            margin: 0 auto 18px;
+            width: 45px;
+
+            height: 45px;
+
+            border-radius: 12px;
 
             display: flex;
+
             align-items: center;
+
             justify-content: center;
 
-            background: rgba(239, 68, 68, 0.12);
-            border-radius: 50%;
+            background: rgba(239, 68, 68, 0.15);
 
-            font-size: 28px;
+            color: #ff6f6f;
+
+            font-size: 22px;
+
+            margin-bottom: 14px;
+
         }
 
-        .delete-modal h2 {
-            margin-bottom: 10px;
-            font-size: 24px;
+
+        .modal h2 {
+
+            font-size: 19px;
+
+            margin-bottom: 7px;
+
         }
 
-        .delete-modal p {
-            color: #aeb9cc;
-            line-height: 1.6;
-            margin-bottom: 25px;
-        }
 
-        .delete-modal p span {
+        .modal p {
+
+            color: #9ca8c0;
+
             font-size: 13px;
-            color: #7f8ba3;
+
+            line-height: 1.5;
+
+            margin-bottom: 20px;
+
         }
 
-        .modal-buttons {
+
+        .modal-actions {
+
             display: flex;
-            gap: 12px;
-            justify-content: center;
+
+            justify-content: flex-end;
+
+            gap: 8px;
+
         }
 
-        .cancel-modal-btn,
-        .confirm-delete-btn {
-            border: none;
-            border-radius: 10px;
 
-            padding: 11px 24px;
+        .modal-cancel {
 
-            font-size: 14px;
+            padding: 9px 16px;
+
+            border-radius: 8px;
+
+            background: #33415b;
+
+            color: #e4e8f2;
+
             font-weight: 600;
 
-            cursor: pointer;
-            text-decoration: none;
-
-            transition: 0.2s ease;
         }
 
-        .cancel-modal-btn {
-            background: #29364d;
-            color: #ffffff;
-        }
 
-        .cancel-modal-btn:hover {
-            background: #35445d;
-        }
+        .modal-delete {
 
-        .confirm-delete-btn {
-            background: #ef4444;
+            padding: 9px 16px;
+
+            border-radius: 8px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #dc2626,
+                    #ef4444
+                );
+
             color: white;
+
+            font-weight: 700;
+
         }
 
-        .confirm-delete-btn:hover {
-            background: #dc2626;
-            transform: translateY(-1px);
-        }
 
-        /* =========================
-           MOBILE
-        ========================= */
+        /* ==========================================
+           RESPONSIVE
+        ========================================== */
 
-        @media (max-width: 900px) {
+        @media (max-width: 800px) {
 
-            body {
-                padding: 18px;
+            .form-row {
+
+                grid-template-columns: 1fr 1fr;
+
             }
 
-            .stats {
+
+            .filter-row {
+
+                grid-template-columns: 1fr 1fr;
+
+            }
+
+
+            .subject-grid {
+
                 grid-template-columns: 1fr;
+
             }
 
-            .form-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-
-            .filter-grid {
-                grid-template-columns: 1fr 1fr;
-            }
         }
+
 
         @media (max-width: 600px) {
 
-            header {
-                flex-direction: column;
+            body {
+
+                padding: 18px 10px;
+
+            }
+
+
+            .header {
+
                 align-items: flex-start;
+
             }
 
-            .form-grid {
+
+            .brand h1 {
+
+                font-size: 23px;
+
+            }
+
+
+            .brand p {
+
+                font-size: 11px;
+
+            }
+
+
+            .header-icon {
+
+                width: 45px;
+
+                height: 45px;
+
+                font-size: 20px;
+
+            }
+
+
+            .stats {
+
                 grid-template-columns: 1fr;
+
             }
 
-            .filter-grid {
+
+            .form-row {
+
                 grid-template-columns: 1fr;
+
             }
 
-            .task-top {
-                flex-direction: column;
+
+            .filter-row {
+
+                grid-template-columns: 1fr;
+
             }
 
-            .task-actions {
-                width: 100%;
+
+            .section {
+
+                padding: 14px;
+
             }
+
         }
+
     </style>
+
 </head>
+
 
 <body>
 
+
 <div class="container">
 
-    <!-- =========================
+
+    <!-- ==========================================
          HEADER
-    ========================= -->
+    ========================================== -->
 
-    <header>
+    <div class="header">
 
-        <div class="header-title">
-            <h1>📚 Student Study Planner</h1>
-            <p>Organize your studies, track your progress and stay productive.</p>
+        <div class="brand">
+
+            <div class="brand-icon">
+                🎓
+            </div>
+
+            <div>
+
+                <h1>
+                    Student Study Planner
+                </h1>
+
+                <p>
+                    Plan smarter. Study better. Stay consistent.
+                </p>
+
+            </div>
+
         </div>
 
-    </header>
+
+        <div class="header-icon">
+            📚
+        </div>
+
+    </div>
 
 
-    <!-- =========================
+    <!-- ==========================================
          STATISTICS
-    ========================= -->
+    ========================================== -->
 
     <div class="stats">
 
+
         <div class="stat-card">
-            <h3>TOTAL TASKS</h3>
+
+            <div class="stat-top">
+
+                <span class="stat-title">
+                    Total Tasks
+                </span>
+
+                <span class="stat-icon">
+                    📋
+                </span>
+
+            </div>
+
             <div class="stat-number">
                 {{ total_tasks }}
             </div>
+
         </div>
 
+
         <div class="stat-card">
-            <h3>PENDING TASKS</h3>
+
+            <div class="stat-top">
+
+                <span class="stat-title">
+                    Pending Tasks
+                </span>
+
+                <span class="stat-icon">
+                    ⏳
+                </span>
+
+            </div>
+
             <div class="stat-number">
                 {{ pending_tasks }}
             </div>
+
         </div>
 
+
         <div class="stat-card">
-            <h3>COMPLETED TASKS</h3>
+
+            <div class="stat-top">
+
+                <span class="stat-title">
+                    Completed Tasks
+                </span>
+
+                <span class="stat-icon">
+                    ✅
+                </span>
+
+            </div>
+
             <div class="stat-number">
                 {{ completed_tasks }}
             </div>
+
         </div>
+
 
     </div>
 
 
-    <!-- =========================
-         PROGRESS
-    ========================= -->
+    <!-- ==========================================
+         OVERALL PROGRESS
+    ========================================== -->
 
-    <div class="progress-card">
+    <div class="section">
 
         <div class="progress-header">
-            <span>Overall Progress</span>
-            <span>{{ progress }}%</span>
+
+            <span class="progress-label">
+                📈 Overall Progress
+            </span>
+
+            <span class="progress-percent">
+                {{ progress }}%
+            </span>
+
         </div>
 
+
         <div class="progress-bar">
-            <div class="progress-fill"></div>
+
+            <div
+                class="progress-fill"
+                style="width: {{ progress }}%;">
+            </div>
+
         </div>
 
     </div>
 
 
-    <!-- =========================
+    <!-- ==========================================
          ADD TASK
-    ========================= -->
+    ========================================== -->
 
-    <div class="section-card">
+    <div class="section">
 
         <div class="section-title">
-            ➕ Add New Task
+            <span>＋</span>
+            <span>Add New Task</span>
         </div>
 
-        <form action="{{ url_for('add_task') }}" method="POST">
 
-            <div class="form-grid">
+        <form
+            action="{{ url_for('add_task') }}"
+            method="POST">
+
+
+            <div class="form-row">
+
 
                 <input
                     type="text"
                     name="task"
-                    placeholder="Task name"
-                    required
-                >
+                    placeholder="What do you need to study?"
+                    required>
+
 
                 <input
                     type="text"
                     name="subject"
-                    placeholder="Subject"
-                >
+                    placeholder="Subject">
+
 
                 <select name="priority">
 
-                    <option value="HIGH">High</option>
-                    <option value="MEDIUM" selected>Medium</option>
-                    <option value="LOW">Low</option>
+                    <option value="HIGH">
+                        🔴 High
+                    </option>
+
+                    <option
+                        value="MEDIUM"
+                        selected>
+                        🟡 Medium
+                    </option>
+
+                    <option value="LOW">
+                        🟢 Low
+                    </option>
 
                 </select>
 
+
                 <input
                     type="date"
-                    name="due_date"
-                >
+                    name="due_date">
+
+
+                <button
+                    type="submit"
+                    class="add-btn">
+
+                    + Add
+
+                </button>
+
 
             </div>
 
+
             <textarea
                 name="description"
-                placeholder="Description / notes (optional)"
-            ></textarea>
+                placeholder="Add notes or description (optional)..."></textarea>
 
-            <button type="submit" class="add-button">
-                + Add Task
-            </button>
 
         </form>
 
     </div>
 
 
-    <!-- =========================
+    <!-- ==========================================
          SEARCH & FILTER
-    ========================= -->
+    ========================================== -->
 
-    <div class="section-card">
+    <div class="section">
 
         <div class="section-title">
-            🔎 Search & Filter
+            <span>🔎</span>
+            <span>Search & Filter</span>
         </div>
 
-        <form action="{{ url_for('index') }}" method="GET">
 
-            <div class="filter-grid">
+        <form
+            action="{{ url_for('index') }}"
+            method="GET">
+
+
+            <div class="filter-row">
+
 
                 <input
                     type="text"
                     name="search"
-                    placeholder="Search tasks..."
                     value="{{ search }}"
-                >
+                    placeholder="Search tasks or subjects...">
+
 
                 <select name="priority">
 
-                    <option value="">All Priorities</option>
+                    <option value="">
+                        All Priorities
+                    </option>
 
                     <option
                         value="HIGH"
-                        {% if priority_filter == "HIGH" %}selected{% endif %}
-                    >
-                        High
+                        {% if priority_filter == "HIGH" %}
+                        selected
+                        {% endif %}>
+                        🔴 High
                     </option>
 
                     <option
                         value="MEDIUM"
-                        {% if priority_filter == "MEDIUM" %}selected{% endif %}
-                    >
-                        Medium
+                        {% if priority_filter == "MEDIUM" %}
+                        selected
+                        {% endif %}>
+                        🟡 Medium
                     </option>
 
                     <option
                         value="LOW"
-                        {% if priority_filter == "LOW" %}selected{% endif %}
-                    >
-                        Low
+                        {% if priority_filter == "LOW" %}
+                        selected
+                        {% endif %}>
+                        🟢 Low
                     </option>
 
                 </select>
@@ -769,15 +1548,20 @@
 
                 <select name="subject">
 
-                    <option value="">All Subjects</option>
+                    <option value="">
+                        All Subjects
+                    </option>
 
                     {% for subject in subjects %}
 
                         <option
                             value="{{ subject }}"
-                            {% if subject_filter == subject %}selected{% endif %}
-                        >
+                            {% if subject_filter == subject %}
+                            selected
+                            {% endif %}>
+
                             {{ subject }}
+
                         </option>
 
                     {% endfor %}
@@ -787,32 +1571,50 @@
 
                 <select name="status">
 
-                    <option value="">All Status</option>
+                    <option value="">
+                        All Status
+                    </option>
 
                     <option
                         value="pending"
-                        {% if status_filter == "pending" %}selected{% endif %}
-                    >
-                        Pending
+                        {% if status_filter == "pending" %}
+                        selected
+                        {% endif %}>
+
+                        ⏳ Pending
+
                     </option>
 
                     <option
                         value="completed"
-                        {% if status_filter == "completed" %}selected{% endif %}
-                    >
-                        Completed
+                        {% if status_filter == "completed" %}
+                        selected
+                        {% endif %}>
+
+                        ✅ Completed
+
                     </option>
 
                 </select>
 
 
-                <button type="submit" class="filter-button">
-                    Apply
+                <button
+                    type="submit"
+                    class="filter-btn">
+
+                    🔎 Apply
+
                 </button>
 
-                <a href="{{ url_for('index') }}" class="clear-button">
+
+                <a
+                    href="{{ url_for('index') }}"
+                    class="clear-btn action-btn">
+
                     Clear
+
                 </a>
+
 
             </div>
 
@@ -821,312 +1623,484 @@
     </div>
 
 
-    <!-- =========================
-         TASKS
-    ========================= -->
+    <!-- ==========================================
+         SUBJECT-WISE PROGRESS
+    ========================================== -->
 
-    <div class="tasks-heading">
+    {% if subject_progress %}
 
-        <h2>📋 Your Tasks</h2>
+    <div class="section">
 
-        <span class="task-count">
-            Showing {{ task_items|length }} task{% if task_items|length != 1 %}s{% endif %}
-        </span>
+        <div class="section-title">
 
-    </div>
+            <span>📚</span>
 
+            <span>
+                Subject-wise Progress
+            </span>
 
-    {% if task_items %}
-
-        <div class="task-list">
-
-            {% for task_id, task in task_items %}
-
-                <div class="task-card">
-
-                    <div class="task-top">
-
-                        <div>
-
-                            <div class="task-name">
-                                {{ task.get("task", "Untitled Task") }}
-                            </div>
-
-                            {% if task.get("description") %}
-
-                                <div class="task-description">
-                                    {{ task.get("description") }}
-                                </div>
-
-                            {% endif %}
-
-                        </div>
-
-                    </div>
+        </div>
 
 
-                    <!-- TASK INFORMATION -->
-
-                    <div class="task-meta">
-
-                        <!-- Priority -->
-
-                        {% if task.get("priority") == "HIGH" %}
-
-                            <span class="meta-badge priority-high">
-                                🔥 HIGH
-                            </span>
-
-                        {% elif task.get("priority") == "MEDIUM" %}
-
-                            <span class="meta-badge priority-medium">
-                                ⚡ MEDIUM
-                            </span>
-
-                        {% else %}
-
-                            <span class="meta-badge priority-low">
-                                🌱 LOW
-                            </span>
-
-                        {% endif %}
+        <div class="subject-grid">
 
 
-                        <!-- Subject -->
-
-                        <span class="meta-badge">
-                            📚 {{ task.get("subject", "General") }}
-                        </span>
+            {% for item in subject_progress %}
 
 
-                        <!-- Due Date -->
-
-                        {% if task.get("due_status") == "overdue" %}
-
-                            <span class="due-badge overdue">
-                                🔴 OVERDUE
-                            </span>
-
-                        {% elif task.get("due_status") == "today" %}
-
-                            <span class="due-badge today">
-                                🟡 DUE TODAY
-                            </span>
-
-                        {% elif task.get("due_status") == "upcoming" %}
-
-                            <span class="due-badge upcoming">
-                                🟢 UPCOMING
-                            </span>
-
-                        {% endif %}
+            <div class="subject-card">
 
 
-                        {% if task.get("due_date") %}
+                <div class="subject-header">
 
-                            <span class="meta-badge">
-                                📅 {{ task.get("due_date") }}
-                            </span>
+                    <span class="subject-name">
 
-                        {% endif %}
+                        {{ item.subject }}
 
-
-                        <!-- Completion Status -->
-
-                        {% if task.get("completed", False) %}
-
-                            <span class="meta-badge status-completed">
-                                ✓ COMPLETED
-                            </span>
-
-                        {% else %}
-
-                            <span class="meta-badge status-pending">
-                                ⏳ PENDING
-                            </span>
-
-                        {% endif %}
-
-                    </div>
+                    </span>
 
 
-                    <!-- ACTION BUTTONS -->
+                    <span class="subject-percent">
 
-                    <div class="task-actions">
+                        {{ item.percentage }}%
 
-                        <a
-                            href="{{ url_for('complete_task', task_id=task_id) }}"
-                            class="btn complete"
-                        >
+                    </span>
 
-                            {% if task.get("completed", False) %}
-                                ↩ Undo
-                            {% else %}
-                                ✓ Complete
-                            {% endif %}
-
-                        </a>
+                </div>
 
 
-                        <a
-                            href="{{ url_for('edit_task', task_id=task_id) }}"
-                            class="btn edit"
-                        >
-                            ✏ Edit
-                        </a>
+                <div class="subject-info">
+
+                    {{ item.completed }}
+                    of
+                    {{ item.total }}
+                    tasks completed
+
+                </div>
 
 
-                        <a
-                            href="{{ url_for('delete_task', task_id=task_id) }}"
-                            class="btn delete delete-btn"
-                        >
-                            🗑 Delete
-                        </a>
+                <div class="subject-bar">
+
+                    <div
+                        class="subject-fill"
+                        style="width: {{ item.percentage }}%;">
 
                     </div>
 
                 </div>
 
+
+            </div>
+
+
             {% endfor %}
 
-        </div>
-
-    {% else %}
-
-        <div class="section-card empty-state">
-
-            <h3>No tasks found</h3>
-
-            <p>
-                Try changing your search or filters,
-                or add a new task above.
-            </p>
 
         </div>
+
+    </div>
 
     {% endif %}
+
+
+    <!-- ==========================================
+         TASK LIST
+    ========================================== -->
+
+    <div class="section">
+
+
+        <div class="tasks-header">
+
+            <div class="section-title"
+                 style="margin-bottom:0;">
+
+                <span>📋</span>
+
+                <span>
+                    Your Tasks
+                </span>
+
+            </div>
+
+
+            <span class="task-count">
+
+                Showing {{ task_items|length }} tasks
+
+            </span>
+
+        </div>
+
+
+        {% if task_items %}
+
+
+            {% for task_id, task in task_items %}
+
+
+            <div class="task-card
+                {% if task.get('completed', False) %}
+                    completed
+                {% endif %}">
+
+
+                <!-- Task name -->
+
+                <div class="task-name">
+
+                    {{ task.get("task", "Untitled Task") }}
+
+                </div>
+
+
+                <!-- Description -->
+
+                {% if task.get("description") %}
+
+                <div class="description">
+
+                    {{ task.get("description") }}
+
+                </div>
+
+                {% endif %}
+
+
+                <!-- Labels -->
+
+                <div class="labels">
+
+
+                    <!-- Priority -->
+
+                    {% if task.get("priority") == "HIGH" %}
+
+                        <span class="label priority-high">
+                            🔴 HIGH
+                        </span>
+
+                    {% elif task.get("priority") == "LOW" %}
+
+                        <span class="label priority-low">
+                            🟢 LOW
+                        </span>
+
+                    {% else %}
+
+                        <span class="label priority-medium">
+                            🟡 MEDIUM
+                        </span>
+
+                    {% endif %}
+
+
+                    <!-- Subject -->
+
+                    <span class="label subject-label">
+
+                        📚
+                        {{ task.get("subject", "General") }}
+
+                    </span>
+
+
+                    <!-- Due date -->
+
+                    {% if task.get("due_date") %}
+
+
+                        {% if task.get("due_status") == "overdue" %}
+
+                            <span class="label overdue-label">
+
+                                ⚠️ Overdue:
+                                {{ task.get("due_date") }}
+
+                            </span>
+
+
+                        {% elif task.get("due_status") == "today" %}
+
+                            <span class="label today-label">
+
+                                🔥 Due Today
+
+                            </span>
+
+
+                        {% else %}
+
+                            <span class="label date-label">
+
+                                📅
+                                {{ task.get("due_date") }}
+
+                            </span>
+
+                        {% endif %}
+
+
+                    {% endif %}
+
+
+                    <!-- Status -->
+
+                    {% if task.get("completed", False) %}
+
+                        <span class="label status-completed">
+
+                            ✓ COMPLETED
+
+                        </span>
+
+                    {% else %}
+
+                        <span class="label status-pending">
+
+                            ⏳ PENDING
+
+                        </span>
+
+                    {% endif %}
+
+
+                </div>
+
+
+                <!-- Actions -->
+
+                <div class="actions">
+
+
+                    {% if task.get("completed", False) %}
+
+                        <a
+                            href="{{ url_for('complete_task', task_id=task_id) }}"
+                            class="action-btn complete-btn">
+
+                            ↩ Undo
+
+                        </a>
+
+                    {% else %}
+
+                        <a
+                            href="{{ url_for('complete_task', task_id=task_id) }}"
+                            class="action-btn complete-btn">
+
+                            ✓ Complete
+
+                        </a>
+
+                    {% endif %}
+
+
+                    <a
+                        href="{{ url_for('edit_task', task_id=task_id) }}"
+                        class="action-btn edit-btn">
+
+                        ✎ Edit
+
+                    </a>
+
+
+                    <button
+                        type="button"
+                        class="action-btn delete-btn"
+                        onclick="openDeleteModal(
+                            '{{ url_for('delete_task', task_id=task_id) }}',
+                            '{{ task.get("task", "this task") | e }}'
+                        )">
+
+                        🗑 Delete
+
+                    </button>
+
+
+                </div>
+
+
+            </div>
+
+
+            {% endfor %}
+
+
+        {% else %}
+
+
+            <div class="empty">
+
+                📭
+
+                <br><br>
+
+                No tasks found.
+
+                <br>
+
+                Try changing your search or filters.
+
+            </div>
+
+
+        {% endif %}
+
+
+    </div>
+
 
 </div>
 
 
-<!-- =========================
+<!-- ==========================================
      DELETE CONFIRMATION MODAL
-========================= -->
+========================================== -->
 
-<div id="deleteModal" class="modal-overlay">
+<div
+    id="deleteModal"
+    class="modal-overlay">
 
-    <div class="delete-modal">
+
+    <div class="modal">
+
 
         <div class="modal-icon">
-            🗑️
+
+            🗑
+
         </div>
+
 
         <h2>
             Delete Task?
         </h2>
 
+
         <p>
-            Are you sure you want to delete this task?
+
+            Are you sure you want to delete
+            <strong id="deleteTaskName">
+                this task
+            </strong>?
+
             <br>
-            <span>
-                This action cannot be undone.
-            </span>
+
+            This action cannot be undone.
+
         </p>
 
-        <div class="modal-buttons">
+
+        <div class="modal-actions">
+
 
             <button
-                id="cancelDelete"
-                class="cancel-modal-btn"
                 type="button"
-            >
+                class="modal-cancel"
+                onclick="closeDeleteModal()">
+
                 Cancel
+
             </button>
 
+
             <a
-                id="confirmDelete"
+                id="confirmDeleteButton"
                 href="#"
-                class="confirm-delete-btn"
-            >
+                class="modal-delete"
+                style="text-decoration:none;">
+
                 Delete
+
             </a>
 
+
         </div>
+
 
     </div>
 
 </div>
 
 
-<!-- =========================
+<!-- ==========================================
      JAVASCRIPT
-========================= -->
+========================================== -->
 
 <script>
 
-document.addEventListener("DOMContentLoaded", function () {
 
-    const deleteModal = document.getElementById("deleteModal");
-
-    const confirmDelete =
-        document.getElementById("confirmDelete");
-
-    const cancelDelete =
-        document.getElementById("cancelDelete");
+    let deleteUrl = "";
 
 
-    document.querySelectorAll(".delete-btn").forEach(function (button) {
+    function openDeleteModal(url, taskName) {
 
-        button.addEventListener("click", function (event) {
-
-            event.preventDefault();
-
-            const deleteUrl =
-                button.getAttribute("href");
-
-            confirmDelete.setAttribute(
-                "href",
-                deleteUrl
-            );
-
-            deleteModal.classList.add("show");
-
-        });
-
-    });
+        deleteUrl = url;
 
 
-    cancelDelete.addEventListener("click", function () {
-
-        deleteModal.classList.remove("show");
-
-    });
+        document.getElementById(
+            "deleteTaskName"
+        ).textContent = taskName;
 
 
-    deleteModal.addEventListener("click", function (event) {
-
-        if (event.target === deleteModal) {
-
-            deleteModal.classList.remove("show");
-
-        }
-
-    });
+        document.getElementById(
+            "confirmDeleteButton"
+        ).href = deleteUrl;
 
 
-    document.addEventListener("keydown", function (event) {
+        document.getElementById(
+            "deleteModal"
+        ).classList.add("show");
 
-        if (event.key === "Escape") {
+    }
 
-            deleteModal.classList.remove("show");
+
+    function closeDeleteModal() {
+
+        document.getElementById(
+            "deleteModal"
+        ).classList.remove("show");
+
+    }
+
+
+    /* Close modal when clicking outside */
+
+    document.getElementById(
+        "deleteModal"
+    ).addEventListener(
+        "click",
+        function(event) {
+
+            if (event.target === this) {
+
+                closeDeleteModal();
+
+            }
 
         }
+    );
 
-    });
 
-});
+    /* Close modal using Escape */
+
+    document.addEventListener(
+        "keydown",
+        function(event) {
+
+            if (event.key === "Escape") {
+
+                closeDeleteModal();
+
+            }
+
+        }
+    );
+
 
 </script>
+
 
 </body>
 

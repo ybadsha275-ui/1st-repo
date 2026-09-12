@@ -2,23 +2,26 @@
     {
         "task": "practice java",
         "priority": "MEDIUM",
-        "completed": false,
+        "completed": true,
         "subject": "General",
-        "due_date": "2026-09-10"
+        "due_date": "2026-09-10",
+        "description": ""
     },
     {
         "task": "study SM",
         "priority": "HIGH",
         "completed": false,
         "subject": "mathematics",
-        "due_date": "2026-10-11"
+        "due_date": "2026-10-11",
+        "description": ""
     },
     {
         "task": "do assignments of AI",
         "subject": "Artificial Intelligence (AI)",
         "priority": "MEDIUM",
         "due_date": "2026-09-12",
-        "completed": false
+        "completed": false,
+        "description": ""
     },
     {
         "task": "learn python",
