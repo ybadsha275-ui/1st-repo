@@ -5,8 +5,7 @@
 
     <meta charset="UTF-8">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Student Study Planner</title>
 
@@ -15,7 +14,7 @@
 
         /* ==========================================
            GLOBAL
-        ========================================== */
+           ========================================== */
 
         * {
             box-sizing: border-box;
@@ -25,1235 +24,813 @@
 
 
         body {
-
-            font-family:
-                "Segoe UI",
-                Arial,
-                sans-serif;
-
-            background:
-                radial-gradient(
-                    circle at top left,
-                    #20275f 0%,
-                    #10172d 35%,
-                    #080d1b 75%
-                );
-
-            color: #f5f7ff;
-
+            font-family: Arial, Helvetica, sans-serif;
+            background: #0f1117;
+            color: #f5f5f5;
             min-height: 100vh;
+        }
 
-            padding: 30px 15px;
 
+        a {
+            text-decoration: none;
+        }
+
+
+        button,
+        input,
+        select,
+        textarea {
+            font-family: inherit;
         }
 
 
         .container {
-
-            width: 100%;
-
-            max-width: 1050px;
-
+            width: 92%;
+            max-width: 1250px;
             margin: auto;
-
         }
 
 
         /* ==========================================
            HEADER
-        ========================================== */
+           ========================================== */
 
-        .header {
+        header {
+            padding: 30px 0;
+            border-bottom: 1px solid #252936;
+        }
 
+
+        .header-content {
             display: flex;
-
             justify-content: space-between;
-
             align-items: center;
-
-            margin-bottom: 25px;
-
+            gap: 20px;
         }
 
 
-        .brand {
-
+        .logo-area {
             display: flex;
-
             align-items: center;
-
-            gap: 12px;
-
+            gap: 14px;
         }
 
 
-        .brand-icon {
-
-            font-size: 38px;
-
+        .logo-icon {
+            font-size: 42px;
         }
 
 
-        .brand h1 {
-
-            font-size: 30px;
-
-            font-weight: 800;
-
-            letter-spacing: -0.5px;
-
+        .logo-area h1 {
+            font-size: 28px;
+            margin-bottom: 5px;
         }
 
 
-        .brand p {
-
-            color: #9ca8c9;
-
-            margin-top: 5px;
-
+        .logo-area p {
+            color: #9ca3af;
             font-size: 14px;
-
         }
 
 
-        .header-icon {
+        /* ==========================================
+           MAIN
+           ========================================== */
 
-            width: 55px;
-
-            height: 55px;
-
-            border-radius: 15px;
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: center;
-
-            font-size: 25px;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    #6366f1,
-                    #8b5cf6
-                );
-
-            box-shadow:
-                0 8px 25px
-                rgba(99, 102, 241, 0.35);
-
+        main {
+            padding: 30px 0 60px;
         }
 
 
         /* ==========================================
            STAT CARDS
-        ========================================== */
+           ========================================== */
 
-        .stats {
-
+        .stats-grid {
             display: grid;
-
-            grid-template-columns:
-                repeat(3, 1fr);
-
-            gap: 14px;
-
-            margin-bottom: 16px;
-
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+            margin-bottom: 25px;
         }
 
 
         .stat-card {
-
-            background: rgba(30, 42, 66, 0.88);
-
-            border: 1px solid #34435f;
-
-            border-radius: 14px;
-
-            padding: 20px;
-
-            min-height: 95px;
-
-            box-shadow:
-                0 8px 25px
-                rgba(0, 0, 0, 0.12);
-
+            background: #171a23;
+            border: 1px solid #272b36;
+            border-radius: 18px;
+            padding: 22px;
+            transition: 0.25s ease;
         }
 
 
-        .stat-top {
-
-            display: flex;
-
-            justify-content: space-between;
-
-            align-items: center;
-
-        }
-
-
-        .stat-title {
-
-            color: #91a0c3;
-
-            font-size: 12px;
-
-            text-transform: uppercase;
-
-            letter-spacing: 0.5px;
-
+        .stat-card:hover {
+            transform: translateY(-3px);
+            border-color: #3b4050;
         }
 
 
         .stat-icon {
-
-            font-size: 20px;
-
+            font-size: 30px;
+            margin-bottom: 10px;
         }
 
 
         .stat-number {
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
 
-            font-size: 28px;
 
-            font-weight: 800;
-
-            margin-top: 5px;
-
+        .stat-label {
+            color: #9ca3af;
+            font-size: 14px;
         }
 
 
         /* ==========================================
-           GENERAL SECTION
-        ========================================== */
+           GENERAL CARD
+           ========================================== */
 
-        .section {
-
-            background: rgba(25, 37, 59, 0.90);
-
-            border: 1px solid #34435f;
-
-            border-radius: 14px;
-
-            padding: 18px;
-
-            margin-bottom: 16px;
-
-            box-shadow:
-                0 8px 25px
-                rgba(0, 0, 0, 0.12);
-
+        .section-card {
+            background: #171a23;
+            border: 1px solid #272b36;
+            border-radius: 18px;
+            padding: 24px;
+            margin-bottom: 25px;
         }
 
 
         .section-title {
-
-            display: flex;
-
-            align-items: center;
-
-            gap: 8px;
-
-            font-size: 16px;
-
-            font-weight: 700;
-
-            margin-bottom: 15px;
-
+            font-size: 21px;
+            margin-bottom: 18px;
         }
 
 
         /* ==========================================
-           OVERALL PROGRESS
-        ========================================== */
+           PROGRESS
+           ========================================== */
 
-        .progress-header {
-
+        .progress-info {
             display: flex;
-
             justify-content: space-between;
-
-            align-items: center;
-
-            margin-bottom: 8px;
-
+            margin-bottom: 10px;
+            font-size: 14px;
         }
 
 
-        .progress-label {
-
-            font-size: 13px;
-
-            color: #c8d0e7;
-
-        }
-
-
-        .progress-percent {
-
-            color: #a78bfa;
-
-            font-size: 13px;
-
-            font-weight: 700;
-
+        .progress-percentage {
+            font-weight: bold;
         }
 
 
         .progress-bar {
-
             width: 100%;
-
-            height: 9px;
-
-            background: #0d1629;
-
+            height: 12px;
+            background: #292d38;
             border-radius: 20px;
-
             overflow: hidden;
-
         }
 
 
         .progress-fill {
-
             height: 100%;
-
-            width: {{ progress }}%;
-
-            background:
-                linear-gradient(
-                    90deg,
-                    #6366f1,
-                    #8b5cf6
-                );
-
+            background: #4ade80;
             border-radius: 20px;
-
-            transition: width 0.5s ease;
-
+            transition: width 0.4s ease;
         }
 
 
         /* ==========================================
-           ADD TASK
-        ========================================== */
+           STUDY STREAK
+           ========================================== */
 
-        .form-row {
-
+        .streak-grid {
             display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 18px;
+        }
 
-            grid-template-columns:
-                1.5fr
-                0.8fr
-                0.8fr
-                0.8fr
-                auto;
 
-            gap: 8px;
+        .streak-card {
+            background: #1c202a;
+            border: 1px solid #2b303c;
+            border-radius: 16px;
+            padding: 25px;
+            text-align: center;
+            transition: 0.25s ease;
+        }
 
-            margin-bottom: 8px;
 
+        .streak-card:hover {
+            transform: translateY(-3px);
+            border-color: #414755;
+        }
+
+
+        .streak-icon {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+
+
+        .streak-number {
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+
+        .streak-label {
+            color: #9ca3af;
+            font-size: 14px;
+        }
+
+
+        /* ==========================================
+           ADD TASK FORM
+           ========================================== */
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 14px;
+            margin-bottom: 14px;
+        }
+
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+        }
+
+
+        .form-group.full {
+            grid-column: 1 / -1;
+        }
+
+
+        .form-group label {
+            color: #b7bcc7;
+            font-size: 13px;
         }
 
 
         input,
         select,
         textarea {
-
             width: 100%;
-
-            background: #0e172a;
-
-            color: #f5f7ff;
-
-            border: 1px solid #40506d;
-
-            border-radius: 8px;
-
+            background: #10131a;
+            color: #f5f5f5;
+            border: 1px solid #303542;
+            border-radius: 10px;
+            padding: 12px;
             outline: none;
-
-            font-family: inherit;
-
-            font-size: 13px;
-
-        }
-
-
-        input,
-        select {
-
-            height: 40px;
-
-            padding: 0 11px;
-
-        }
-
-
-        textarea {
-
-            min-height: 75px;
-
-            padding: 11px;
-
-            resize: vertical;
-
+            font-size: 14px;
         }
 
 
         input:focus,
         select:focus,
         textarea:focus {
-
-            border-color: #7c6cf5;
-
-            box-shadow:
-                0 0 0 2px
-                rgba(124, 108, 245, 0.15);
-
+            border-color: #636b7d;
         }
 
 
-        button {
+        textarea {
+            resize: vertical;
+            min-height: 85px;
+        }
 
+
+        input[type="date"] {
+            color-scheme: dark;
+        }
+
+
+        .add-button {
+            margin-top: 5px;
+            background: #4ade80;
+            color: #07110b;
             border: none;
-
-            font-family: inherit;
-
+            border-radius: 10px;
+            padding: 12px 22px;
+            font-weight: bold;
             cursor: pointer;
-
+            transition: 0.2s ease;
         }
 
 
-        .add-btn {
-
-            height: 40px;
-
-            padding: 0 18px;
-
-            border-radius: 8px;
-
-            color: white;
-
-            font-weight: 700;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    #6366f1,
-                    #8b5cf6
-                );
-
-            transition: 0.2s;
-
-        }
-
-
-        .add-btn:hover {
-
-            transform: translateY(-1px);
-
-            box-shadow:
-                0 6px 18px
-                rgba(99, 102, 241, 0.3);
-
+        .add-button:hover {
+            transform: translateY(-2px);
+            opacity: 0.9;
         }
 
 
         /* ==========================================
-           SEARCH & FILTER
-        ========================================== */
+           SEARCH AND FILTERS
+           ========================================== */
 
-        .filter-row {
-
+        .filter-form {
             display: grid;
-
-            grid-template-columns:
-                1.5fr
-                0.8fr
-                0.8fr
-                0.8fr
-                auto
-                auto;
-
-            gap: 8px;
-
+            grid-template-columns: 2fr 1fr 1fr 1fr auto;
+            gap: 12px;
         }
 
 
-        .filter-btn {
-
-            height: 40px;
-
-            padding: 0 15px;
-
-            border-radius: 8px;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    #6366f1,
-                    #8b5cf6
-                );
-
+        .filter-button {
+            background: #292e3a;
             color: white;
-
-            font-weight: 700;
-
+            border: 1px solid #383e4b;
+            border-radius: 10px;
+            padding: 12px 18px;
+            cursor: pointer;
+            font-weight: bold;
         }
 
 
-        .clear-btn {
+        .filter-button:hover {
+            background: #343a48;
+        }
 
-            height: 40px;
 
-            padding: 0 15px;
+        .clear-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #20242d;
+            color: #d1d5db;
+            border: 1px solid #303542;
+            border-radius: 10px;
+            padding: 0 18px;
+        }
 
-            border-radius: 8px;
 
-            background: #33415c;
-
-            color: #e5e9f5;
-
-            font-weight: 600;
-
+        .clear-button:hover {
+            background: #2a2f3a;
         }
 
 
         /* ==========================================
            SUBJECT PROGRESS
-        ========================================== */
+           ========================================== */
 
-        .subject-grid {
-
-            display: grid;
-
-            grid-template-columns:
-                repeat(2, 1fr);
-
-            gap: 12px;
-
+        .subject-list {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
         }
 
 
-        .subject-card {
+        .subject-row {
+            padding-bottom: 15px;
+            border-bottom: 1px solid #282c36;
+        }
 
-            background: #111c30;
 
-            border: 1px solid #34435f;
-
-            border-radius: 11px;
-
-            padding: 14px;
-
+        .subject-row:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
         }
 
 
         .subject-header {
-
             display: flex;
-
             justify-content: space-between;
-
             align-items: center;
-
-            margin-bottom: 8px;
-
+            margin-bottom: 9px;
+            gap: 15px;
         }
 
 
         .subject-name {
-
-            font-weight: 700;
-
-            font-size: 14px;
-
-            color: #f2f4ff;
-
+            font-weight: bold;
         }
 
 
-        .subject-percent {
-
-            color: #a78bfa;
-
+        .subject-count {
+            color: #9ca3af;
             font-size: 13px;
-
-            font-weight: 700;
-
         }
 
 
-        .subject-info {
-
-            color: #8e9bb8;
-
-            font-size: 11px;
-
-            margin-bottom: 8px;
-
-        }
-
-
-        .subject-bar {
-
-            height: 7px;
-
-            background: #0a1222;
-
+        .subject-progress-bar {
+            height: 9px;
+            background: #292d38;
             border-radius: 20px;
-
             overflow: hidden;
-
         }
 
 
-        .subject-fill {
-
+        .subject-progress-fill {
             height: 100%;
-
-            width: {{ subject_percentage }}%;
-
-            background:
-                linear-gradient(
-                    90deg,
-                    #6366f1,
-                    #a855f7
-                );
-
+            background: #60a5fa;
             border-radius: 20px;
+        }
 
-            transition: width 0.5s ease;
 
+        .empty-message {
+            color: #9ca3af;
+            text-align: center;
+            padding: 20px;
         }
 
 
         /* ==========================================
-           TASK HEADER
-        ========================================== */
+           TASKS
+           ========================================== */
 
-        .tasks-header {
-
+        .task-list {
             display: flex;
-
-            justify-content: space-between;
-
-            align-items: center;
-
-            margin-bottom: 12px;
-
+            flex-direction: column;
+            gap: 15px;
         }
 
-
-        .task-count {
-
-            color: #8f9dbc;
-
-            font-size: 11px;
-
-        }
-
-
-        /* ==========================================
-           TASK CARD
-        ========================================== */
 
         .task-card {
-
-            background: #111b2e;
-
-            border: 1px solid #35435e;
-
-            border-radius: 12px;
-
-            padding: 14px;
-
-            margin-bottom: 10px;
-
-            transition: 0.2s;
-
+            background: #1c202a;
+            border: 1px solid #2b303c;
+            border-radius: 16px;
+            padding: 20px;
+            transition: 0.25s ease;
         }
 
 
         .task-card:hover {
-
-            border-color: #59698b;
-
-            transform: translateY(-1px);
-
+            border-color: #414755;
         }
 
 
         .task-card.completed {
+            opacity: 0.7;
+        }
 
-            opacity: 0.72;
 
+        .task-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 20px;
+        }
+
+
+        .task-main {
+            flex: 1;
         }
 
 
         .task-name {
-
-            font-size: 15px;
-
-            font-weight: 750;
-
-            color: #f7f8ff;
-
-            margin-bottom: 6px;
-
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 9px;
+            word-break: break-word;
         }
 
 
         .task-card.completed .task-name {
-
             text-decoration: line-through;
-
-            color: #8d98ad;
-
         }
 
 
-        .description {
-
-            color: #9ba8c2;
-
-            font-size: 12px;
-
-            margin-bottom: 9px;
-
+        .task-description {
+            color: #9ca3af;
+            font-size: 14px;
             line-height: 1.5;
-
+            margin-bottom: 13px;
         }
 
 
-        .labels {
-
+        .task-meta {
             display: flex;
-
             flex-wrap: wrap;
-
-            gap: 6px;
-
-            align-items: center;
-
-            margin-bottom: 10px;
-
+            gap: 8px;
         }
 
 
-        .label {
-
-            display: inline-flex;
-
-            align-items: center;
-
-            gap: 4px;
-
-            padding: 4px 8px;
-
-            border-radius: 6px;
-
-            font-size: 10px;
-
-            font-weight: 700;
-
+        .badge {
+            display: inline-block;
+            padding: 6px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
         }
 
 
-        /* ==========================================
-           PRIORITY LABELS
-        ========================================== */
+        /* Priority */
 
         .priority-high {
-
-            color: #ff7777;
-
-            background: rgba(239, 68, 68, 0.16);
-
-            border: 1px solid rgba(239, 68, 68, 0.25);
-
+            background: #3b171b;
+            color: #f87171;
         }
 
 
         .priority-medium {
-
-            color: #f5c85b;
-
-            background: rgba(245, 200, 91, 0.14);
-
-            border: 1px solid rgba(245, 200, 91, 0.25);
-
+            background: #3b3215;
+            color: #facc15;
         }
 
 
         .priority-low {
-
-            color: #59d89c;
-
-            background: rgba(34, 197, 94, 0.14);
-
-            border: 1px solid rgba(34, 197, 94, 0.25);
-
+            background: #15351f;
+            color: #4ade80;
         }
 
 
-        /* ==========================================
-           SUBJECT LABEL
-        ========================================== */
+        /* Subject */
 
-        .subject-label {
-
-            color: #b5a7ff;
-
-            background: rgba(139, 92, 246, 0.15);
-
-            border: 1px solid rgba(139, 92, 246, 0.25);
-
+        .subject-badge {
+            background: #172b43;
+            color: #60a5fa;
         }
 
 
-        /* ==========================================
-           DATE LABELS
-        ========================================== */
+        /* Due dates */
 
-        .date-label {
-
-            color: #8ec5ff;
-
-            background: rgba(59, 130, 246, 0.13);
-
-            border: 1px solid rgba(59, 130, 246, 0.23);
-
+        .due-overdue {
+            background: #3b171b;
+            color: #f87171;
         }
 
 
-        .overdue-label {
-
-            color: #ff7373;
-
-            background: rgba(239, 68, 68, 0.15);
-
-            border: 1px solid rgba(239, 68, 68, 0.25);
-
+        .due-today {
+            background: #3b3215;
+            color: #facc15;
         }
 
 
-        .today-label {
-
-            color: #ffd66b;
-
-            background: rgba(245, 158, 11, 0.15);
-
-            border: 1px solid rgba(245, 158, 11, 0.25);
-
+        .due-upcoming {
+            background: #172b43;
+            color: #60a5fa;
         }
 
 
-        /* ==========================================
-           STATUS LABEL
-        ========================================== */
-
-        .status-pending {
-
-            color: #ffd75e;
-
-            background: rgba(234, 179, 8, 0.14);
-
-            border: 1px solid rgba(234, 179, 8, 0.23);
-
+        .due-completed {
+            background: #15351f;
+            color: #4ade80;
         }
 
+
+        /* Status */
 
         .status-completed {
+            background: #15351f;
+            color: #4ade80;
+        }
 
-            color: #5ee59d;
 
-            background: rgba(34, 197, 94, 0.14);
-
-            border: 1px solid rgba(34, 197, 94, 0.23);
-
+        .status-pending {
+            background: #3b3215;
+            color: #facc15;
         }
 
 
         /* ==========================================
-           ACTION BUTTONS
-        ========================================== */
+           TASK BUTTONS
+           ========================================== */
 
-        .actions {
-
+        .task-actions {
             display: flex;
-
             flex-wrap: wrap;
-
-            gap: 7px;
-
+            gap: 8px;
+            margin-top: 16px;
         }
 
 
-        .action-btn {
-
+        .action-button {
             display: inline-flex;
-
             align-items: center;
-
             justify-content: center;
-
-            padding: 6px 10px;
-
-            border-radius: 7px;
-
-            text-decoration: none;
-
-            font-size: 10px;
-
-            font-weight: 700;
-
-            transition: 0.2s;
-
-        }
-
-
-        .complete-btn {
-
-            background: rgba(34, 197, 94, 0.17);
-
-            color: #5ee59d;
-
-            border: 1px solid rgba(34, 197, 94, 0.25);
-
-        }
-
-
-        .complete-btn:hover {
-
-            background: rgba(34, 197, 94, 0.28);
-
-        }
-
-
-        .edit-btn {
-
-            background: rgba(99, 102, 241, 0.17);
-
-            color: #aaa5ff;
-
-            border: 1px solid rgba(99, 102, 241, 0.25);
-
-        }
-
-
-        .edit-btn:hover {
-
-            background: rgba(99, 102, 241, 0.28);
-
-        }
-
-
-        .delete-btn {
-
-            background: rgba(239, 68, 68, 0.17);
-
-            color: #ff7777;
-
-            border: 1px solid rgba(239, 68, 68, 0.25);
-
-        }
-
-
-        .delete-btn:hover {
-
-            background: rgba(239, 68, 68, 0.28);
-
-        }
-
-
-        /* ==========================================
-           NO TASKS
-        ========================================== */
-
-        .empty {
-
-            text-align: center;
-
-            padding: 30px;
-
-            color: #7f8ba6;
-
+            border-radius: 9px;
+            padding: 9px 13px;
             font-size: 13px;
+            font-weight: bold;
+            cursor: pointer;
+            border: 1px solid transparent;
+            transition: 0.2s ease;
+        }
 
+
+        .complete-button {
+            background: #15351f;
+            color: #4ade80;
+            border-color: #245c35;
+        }
+
+
+        .complete-button:hover {
+            background: #1b4528;
+        }
+
+
+        .edit-button {
+            background: #172b43;
+            color: #60a5fa;
+            border-color: #284c75;
+        }
+
+
+        .edit-button:hover {
+            background: #1d3858;
+        }
+
+
+        .delete-button {
+            background: #3b171b;
+            color: #f87171;
+            border-color: #68262c;
+        }
+
+
+        .delete-button:hover {
+            background: #4b1d22;
         }
 
 
         /* ==========================================
            DELETE MODAL
-        ========================================== */
+           ========================================== */
 
         .modal-overlay {
-
             position: fixed;
-
             inset: 0;
-
-            background:
-                rgba(2, 6, 23, 0.78);
-
-            backdrop-filter: blur(5px);
-
+            background: rgba(0, 0, 0, 0.75);
             display: none;
-
             align-items: center;
-
             justify-content: center;
-
-            z-index: 9999;
-
             padding: 20px;
-
+            z-index: 1000;
         }
 
 
-        .modal-overlay.show {
-
+        .modal-overlay.active {
             display: flex;
-
         }
 
 
-        .modal {
-
+        .modal-box {
             width: 100%;
-
-            max-width: 400px;
-
-            background: #172238;
-
-            border: 1px solid #465675;
-
-            border-radius: 16px;
-
-            padding: 24px;
-
-            box-shadow:
-                0 25px 70px
-                rgba(0, 0, 0, 0.55);
-
-            animation:
-                modalIn 0.18s ease;
-
-        }
-
-
-        @keyframes modalIn {
-
-            from {
-
-                transform: scale(0.92);
-
-                opacity: 0;
-
-            }
-
-            to {
-
-                transform: scale(1);
-
-                opacity: 1;
-
-            }
-
+            max-width: 430px;
+            background: #181b24;
+            border: 1px solid #343946;
+            border-radius: 18px;
+            padding: 25px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
         }
 
 
         .modal-icon {
-
-            width: 45px;
-
-            height: 45px;
-
-            border-radius: 12px;
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: center;
-
-            background: rgba(239, 68, 68, 0.15);
-
-            color: #ff6f6f;
-
-            font-size: 22px;
-
-            margin-bottom: 14px;
-
+            font-size: 40px;
+            margin-bottom: 12px;
         }
 
 
-        .modal h2 {
-
-            font-size: 19px;
-
-            margin-bottom: 7px;
-
+        .modal-box h3 {
+            font-size: 21px;
+            margin-bottom: 10px;
         }
 
 
-        .modal p {
-
-            color: #9ca8c0;
-
-            font-size: 13px;
-
+        .modal-box p {
+            color: #9ca3af;
             line-height: 1.5;
+            margin-bottom: 22px;
+        }
 
-            margin-bottom: 20px;
 
+        .modal-task-name {
+            color: #f5f5f5;
+            font-weight: bold;
         }
 
 
         .modal-actions {
-
             display: flex;
-
             justify-content: flex-end;
-
-            gap: 8px;
-
+            gap: 10px;
         }
 
 
         .modal-cancel {
-
-            padding: 9px 16px;
-
-            border-radius: 8px;
-
-            background: #33415b;
-
-            color: #e4e8f2;
-
-            font-weight: 600;
-
+            background: #292e3a;
+            color: white;
+            border: 1px solid #383e4b;
+            border-radius: 9px;
+            padding: 10px 17px;
+            cursor: pointer;
         }
 
 
         .modal-delete {
-
-            padding: 9px 16px;
-
-            border-radius: 8px;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    #dc2626,
-                    #ef4444
-                );
-
+            background: #ef4444;
             color: white;
+            border: none;
+            border-radius: 9px;
+            padding: 10px 17px;
+            cursor: pointer;
+            font-weight: bold;
+        }
 
-            font-weight: 700;
 
+        /* ==========================================
+           FOOTER
+           ========================================== */
+
+        footer {
+            text-align: center;
+            color: #6b7280;
+            font-size: 13px;
+            padding: 20px 0 40px;
         }
 
 
         /* ==========================================
            RESPONSIVE
-        ========================================== */
+           ========================================== */
 
-        @media (max-width: 800px) {
+        @media (max-width: 900px) {
 
-            .form-row {
-
+            .form-grid {
                 grid-template-columns: 1fr 1fr;
-
             }
 
 
-            .filter-row {
-
+            .filter-form {
                 grid-template-columns: 1fr 1fr;
-
             }
 
 
-            .subject-grid {
+            .filter-form input {
+                grid-column: 1 / -1;
+            }
 
-                grid-template-columns: 1fr;
 
+            .filter-button,
+            .clear-button {
+                min-height: 44px;
             }
 
         }
 
 
-        @media (max-width: 600px) {
+        @media (max-width: 700px) {
 
-            body {
-
-                padding: 18px 10px;
-
+            .stats-grid {
+                grid-template-columns: 1fr;
             }
 
 
-            .header {
+            .streak-grid {
+                grid-template-columns: 1fr;
+            }
 
+
+            .header-content {
                 align-items: flex-start;
-
             }
 
 
-            .brand h1 {
+            .task-top {
+                flex-direction: column;
+            }
 
+        }
+
+
+        @media (max-width: 550px) {
+
+            .container {
+                width: 94%;
+            }
+
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+
+            .filter-form {
+                grid-template-columns: 1fr;
+            }
+
+
+            .filter-form input {
+                grid-column: auto;
+            }
+
+
+            .section-card {
+                padding: 18px;
+            }
+
+
+            .logo-area h1 {
                 font-size: 23px;
-
             }
 
 
-            .brand p {
-
-                font-size: 11px;
-
-            }
-
-
-            .header-icon {
-
-                width: 45px;
-
-                height: 45px;
-
-                font-size: 20px;
-
-            }
-
-
-            .stats {
-
-                grid-template-columns: 1fr;
-
-            }
-
-
-            .form-row {
-
-                grid-template-columns: 1fr;
-
-            }
-
-
-            .filter-row {
-
-                grid-template-columns: 1fr;
-
-            }
-
-
-            .section {
-
-                padding: 14px;
-
+            .logo-icon {
+                font-size: 34px;
             }
 
         }
@@ -1266,425 +843,103 @@
 <body>
 
 
-<div class="container">
-
-
     <!-- ==========================================
          HEADER
-    ========================================== -->
+         ========================================== -->
 
-    <div class="header">
+    <header>
 
-        <div class="brand">
+        <div class="container">
 
-            <div class="brand-icon">
-                🎓
-            </div>
+            <div class="header-content">
 
-            <div>
+                <div class="logo-area">
 
-                <h1>
-                    Student Study Planner
-                </h1>
+                    <div class="logo-icon">
+                        🎓
+                    </div>
 
-                <p>
-                    Plan smarter. Study better. Stay consistent.
-                </p>
+                    <div>
+
+                        <h1>Student Study Planner</h1>
+
+                        <p>
+                            Organize your studies. Track your progress. Stay consistent.
+                        </p>
+
+                    </div>
+
+                </div>
 
             </div>
 
         </div>
 
-
-        <div class="header-icon">
-            📚
-        </div>
-
-    </div>
+    </header>
 
 
     <!-- ==========================================
-         STATISTICS
-    ========================================== -->
+         MAIN
+         ========================================== -->
 
-    <div class="stats">
+    <main>
 
+        <div class="container">
 
-        <div class="stat-card">
 
-            <div class="stat-top">
+            <!-- ==========================================
+                 STATISTICS
+                 ========================================== -->
 
-                <span class="stat-title">
-                    Total Tasks
-                </span>
+            <div class="stats-grid">
 
-                <span class="stat-icon">
-                    📋
-                </span>
 
-            </div>
+                <div class="stat-card">
 
-            <div class="stat-number">
-                {{ total_tasks }}
-            </div>
+                    <div class="stat-icon">
+                        📚
+                    </div>
 
-        </div>
+                    <div class="stat-number">
+                        {{ total_tasks }}
+                    </div>
 
-
-        <div class="stat-card">
-
-            <div class="stat-top">
-
-                <span class="stat-title">
-                    Pending Tasks
-                </span>
-
-                <span class="stat-icon">
-                    ⏳
-                </span>
-
-            </div>
-
-            <div class="stat-number">
-                {{ pending_tasks }}
-            </div>
-
-        </div>
-
-
-        <div class="stat-card">
-
-            <div class="stat-top">
-
-                <span class="stat-title">
-                    Completed Tasks
-                </span>
-
-                <span class="stat-icon">
-                    ✅
-                </span>
-
-            </div>
-
-            <div class="stat-number">
-                {{ completed_tasks }}
-            </div>
-
-        </div>
-
-
-    </div>
-
-
-    <!-- ==========================================
-         OVERALL PROGRESS
-    ========================================== -->
-
-    <div class="section">
-
-        <div class="progress-header">
-
-            <span class="progress-label">
-                📈 Overall Progress
-            </span>
-
-            <span class="progress-percent">
-                {{ progress }}%
-            </span>
-
-        </div>
-
-
-        <div class="progress-bar">
-
-            <div
-                class="progress-fill"
-                style="width: {{ progress }}%;">
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <!-- ==========================================
-         ADD TASK
-    ========================================== -->
-
-    <div class="section">
-
-        <div class="section-title">
-            <span>＋</span>
-            <span>Add New Task</span>
-        </div>
-
-
-        <form
-            action="{{ url_for('add_task') }}"
-            method="POST">
-
-
-            <div class="form-row">
-
-
-                <input
-                    type="text"
-                    name="task"
-                    placeholder="What do you need to study?"
-                    required>
-
-
-                <input
-                    type="text"
-                    name="subject"
-                    placeholder="Subject">
-
-
-                <select name="priority">
-
-                    <option value="HIGH">
-                        🔴 High
-                    </option>
-
-                    <option
-                        value="MEDIUM"
-                        selected>
-                        🟡 Medium
-                    </option>
-
-                    <option value="LOW">
-                        🟢 Low
-                    </option>
-
-                </select>
-
-
-                <input
-                    type="date"
-                    name="due_date">
-
-
-                <button
-                    type="submit"
-                    class="add-btn">
-
-                    + Add
-
-                </button>
-
-
-            </div>
-
-
-            <textarea
-                name="description"
-                placeholder="Add notes or description (optional)..."></textarea>
-
-
-        </form>
-
-    </div>
-
-
-    <!-- ==========================================
-         SEARCH & FILTER
-    ========================================== -->
-
-    <div class="section">
-
-        <div class="section-title">
-            <span>🔎</span>
-            <span>Search & Filter</span>
-        </div>
-
-
-        <form
-            action="{{ url_for('index') }}"
-            method="GET">
-
-
-            <div class="filter-row">
-
-
-                <input
-                    type="text"
-                    name="search"
-                    value="{{ search }}"
-                    placeholder="Search tasks or subjects...">
-
-
-                <select name="priority">
-
-                    <option value="">
-                        All Priorities
-                    </option>
-
-                    <option
-                        value="HIGH"
-                        {% if priority_filter == "HIGH" %}
-                        selected
-                        {% endif %}>
-                        🔴 High
-                    </option>
-
-                    <option
-                        value="MEDIUM"
-                        {% if priority_filter == "MEDIUM" %}
-                        selected
-                        {% endif %}>
-                        🟡 Medium
-                    </option>
-
-                    <option
-                        value="LOW"
-                        {% if priority_filter == "LOW" %}
-                        selected
-                        {% endif %}>
-                        🟢 Low
-                    </option>
-
-                </select>
-
-
-                <select name="subject">
-
-                    <option value="">
-                        All Subjects
-                    </option>
-
-                    {% for subject in subjects %}
-
-                        <option
-                            value="{{ subject }}"
-                            {% if subject_filter == subject %}
-                            selected
-                            {% endif %}>
-
-                            {{ subject }}
-
-                        </option>
-
-                    {% endfor %}
-
-                </select>
-
-
-                <select name="status">
-
-                    <option value="">
-                        All Status
-                    </option>
-
-                    <option
-                        value="pending"
-                        {% if status_filter == "pending" %}
-                        selected
-                        {% endif %}>
-
-                        ⏳ Pending
-
-                    </option>
-
-                    <option
-                        value="completed"
-                        {% if status_filter == "completed" %}
-                        selected
-                        {% endif %}>
-
-                        ✅ Completed
-
-                    </option>
-
-                </select>
-
-
-                <button
-                    type="submit"
-                    class="filter-btn">
-
-                    🔎 Apply
-
-                </button>
-
-
-                <a
-                    href="{{ url_for('index') }}"
-                    class="clear-btn action-btn">
-
-                    Clear
-
-                </a>
-
-
-            </div>
-
-        </form>
-
-    </div>
-
-
-    <!-- ==========================================
-         SUBJECT-WISE PROGRESS
-    ========================================== -->
-
-    {% if subject_progress %}
-
-    <div class="section">
-
-        <div class="section-title">
-
-            <span>📚</span>
-
-            <span>
-                Subject-wise Progress
-            </span>
-
-        </div>
-
-
-        <div class="subject-grid">
-
-
-            {% for item in subject_progress %}
-
-
-            <div class="subject-card">
-
-
-                <div class="subject-header">
-
-                    <span class="subject-name">
-
-                        {{ item.subject }}
-
-                    </span>
-
-
-                    <span class="subject-percent">
-
-                        {{ item.percentage }}%
-
-                    </span>
+                    <div class="stat-label">
+                        Total Tasks
+                    </div>
 
                 </div>
 
 
-                <div class="subject-info">
+                <div class="stat-card">
 
-                    {{ item.completed }}
-                    of
-                    {{ item.total }}
-                    tasks completed
+                    <div class="stat-icon">
+                        ✅
+                    </div>
+
+                    <div class="stat-number">
+                        {{ completed_tasks }}
+                    </div>
+
+                    <div class="stat-label">
+                        Completed
+                    </div>
 
                 </div>
 
 
-                <div class="subject-bar">
+                <div class="stat-card">
 
-                    <div
-                        class="subject-fill"
-                        style="width: {{ item.percentage }}%;">
+                    <div class="stat-icon">
+                        ⏳
+                    </div>
 
+                    <div class="stat-number">
+                        {{ pending_tasks }}
+                    </div>
+
+                    <div class="stat-label">
+                        Pending
                     </div>
 
                 </div>
@@ -1693,327 +948,705 @@
             </div>
 
 
-            {% endfor %}
+            <!-- ==========================================
+                 OVERALL PROGRESS
+                 ========================================== -->
+
+            <div class="section-card">
+
+                <h2 class="section-title">
+                    📊 Overall Progress
+                </h2>
 
 
-        </div>
+                <div class="progress-info">
 
-    </div>
+                    <span>
+                        Study Progress
+                    </span>
 
-    {% endif %}
+                    <span class="progress-percentage">
+                        {{ progress }}%
+                    </span>
+
+                </div>
 
 
-    <!-- ==========================================
-         TASK LIST
-    ========================================== -->
+                <div class="progress-bar">
 
-    <div class="section">
+                    <div
+                        class="progress-fill"
+                        style="width: 0%;"
+                        data-progress="{{ progress }}"
+                    ></div>
 
-
-        <div class="tasks-header">
-
-            <div class="section-title"
-                 style="margin-bottom:0;">
-
-                <span>📋</span>
-
-                <span>
-                    Your Tasks
-                </span>
+                </div>
 
             </div>
 
 
-            <span class="task-count">
+            <!-- ==========================================
+                 STUDY STREAK
+                 ========================================== -->
 
-                Showing {{ task_items|length }} tasks
+            <div class="section-card">
 
-            </span>
-
-        </div>
-
-
-        {% if task_items %}
-
-
-            {% for task_id, task in task_items %}
+                <h2 class="section-title">
+                    🔥 Study Streak
+                </h2>
 
 
-            <div class="task-card
-                {% if task.get('completed', False) %}
-                    completed
-                {% endif %}">
+                <div class="streak-grid">
 
 
-                <!-- Task name -->
+                    <!-- Current Streak -->
 
-                <div class="task-name">
+                    <div class="streak-card">
 
-                    {{ task.get("task", "Untitled Task") }}
+                        <div class="streak-icon">
+                            🔥
+                        </div>
+
+                        <div class="streak-number">
+                            {{ current_streak }}
+                        </div>
+
+                        <div class="streak-label">
+                            Current Streak
+                        </div>
+
+                    </div>
+
+
+                    <!-- Longest Streak -->
+
+                    <div class="streak-card">
+
+                        <div class="streak-icon">
+                            🏆
+                        </div>
+
+                        <div class="streak-number">
+                            {{ longest_streak }}
+                        </div>
+
+                        <div class="streak-label">
+                            Longest Streak
+                        </div>
+
+                    </div>
+
 
                 </div>
 
+            </div>
 
-                <!-- Description -->
 
-                {% if task.get("description") %}
+            <!-- ==========================================
+                 ADD TASK
+                 ========================================== -->
 
-                <div class="description">
+            <div class="section-card">
 
-                    {{ task.get("description") }}
+                <h2 class="section-title">
+                    ➕ Add New Task
+                </h2>
 
-                </div>
+
+                <form
+                    action="{{ url_for('add_task') }}"
+                    method="POST"
+                >
+
+
+                    <div class="form-grid">
+
+
+                        <!-- Task -->
+
+                        <div class="form-group">
+
+                            <label for="task">
+                                Task
+                            </label>
+
+                            <input
+                                type="text"
+                                id="task"
+                                name="task"
+                                placeholder="e.g. Practice Java DSA"
+                                required
+                            >
+
+                        </div>
+
+
+                        <!-- Subject -->
+
+                        <div class="form-group">
+
+                            <label for="subject">
+                                Subject
+                            </label>
+
+                            <input
+                                type="text"
+                                id="subject"
+                                name="subject"
+                                placeholder="e.g. Java"
+                            >
+
+                        </div>
+
+
+                        <!-- Priority -->
+
+                        <div class="form-group">
+
+                            <label for="priority">
+                                Priority
+                            </label>
+
+                            <select
+                                id="priority"
+                                name="priority"
+                            >
+
+                                <option value="HIGH">
+                                    HIGH
+                                </option>
+
+                                <option
+                                    value="MEDIUM"
+                                    selected
+                                >
+                                    MEDIUM
+                                </option>
+
+                                <option value="LOW">
+                                    LOW
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <!-- Due Date -->
+
+                        <div class="form-group">
+
+                            <label for="due_date">
+                                Due Date
+                            </label>
+
+                            <input
+                                type="date"
+                                id="due_date"
+                                name="due_date"
+                            >
+
+                        </div>
+
+
+                        <!-- Description -->
+
+                        <div class="form-group full">
+
+                            <label for="description">
+                                Description
+                            </label>
+
+                            <textarea
+                                id="description"
+                                name="description"
+                                placeholder="Add some details about this task..."
+                            ></textarea>
+
+                        </div>
+
+
+                    </div>
+
+
+                    <button
+                        type="submit"
+                        class="add-button"
+                    >
+                        ➕ Add Task
+                    </button>
+
+
+                </form>
+
+            </div>
+
+
+            <!-- ==========================================
+                 SEARCH & FILTER
+                 ========================================== -->
+
+            <div class="section-card">
+
+                <h2 class="section-title">
+                    🔎 Search & Filter
+                </h2>
+
+
+                <form
+                    action="{{ url_for('index') }}"
+                    method="GET"
+                    class="filter-form"
+                >
+
+
+                    <input
+                        type="text"
+                        name="search"
+                        value="{{ search }}"
+                        placeholder="Search tasks, subjects or descriptions..."
+                    >
+
+
+                    <select name="priority">
+
+                        <option value="">
+                            All Priorities
+                        </option>
+
+                        <option
+                            value="HIGH"
+                            {% if priority_filter == "HIGH" %}selected{% endif %}
+                        >
+                            High
+                        </option>
+
+                        <option
+                            value="MEDIUM"
+                            {% if priority_filter == "MEDIUM" %}selected{% endif %}
+                        >
+                            Medium
+                        </option>
+
+                        <option
+                            value="LOW"
+                            {% if priority_filter == "LOW" %}selected{% endif %}
+                        >
+                            Low
+                        </option>
+
+                    </select>
+
+
+                    <select name="subject">
+
+                        <option value="">
+                            All Subjects
+                        </option>
+
+                        {% for subject in subjects %}
+
+                            <option
+                                value="{{ subject }}"
+                                {% if subject_filter == subject %}selected{% endif %}
+                            >
+                                {{ subject }}
+                            </option>
+
+                        {% endfor %}
+
+                    </select>
+
+
+                    <select name="status">
+
+                        <option value="">
+                            All Status
+                        </option>
+
+                        <option
+                            value="pending"
+                            {% if status_filter == "pending" %}selected{% endif %}
+                        >
+                            Pending
+                        </option>
+
+                        <option
+                            value="completed"
+                            {% if status_filter == "completed" %}selected{% endif %}
+                        >
+                            Completed
+                        </option>
+
+                    </select>
+
+
+                    <button
+                        type="submit"
+                        class="filter-button"
+                    >
+                        Filter
+                    </button>
+
+
+                    <a
+                        href="{{ url_for('index') }}"
+                        class="clear-button"
+                    >
+                        Clear
+                    </a>
+
+
+                </form>
+
+            </div>
+
+
+            <!-- ==========================================
+                 SUBJECT-WISE PROGRESS
+                 ========================================== -->
+
+            <div class="section-card">
+
+                <h2 class="section-title">
+                    📘 Subject-wise Progress
+                </h2>
+
+
+                {% if subject_progress %}
+
+                    <div class="subject-list">
+
+
+                        {% for item in subject_progress %}
+
+                            <div class="subject-row">
+
+
+                                <div class="subject-header">
+
+                                    <span class="subject-name">
+                                        {{ item.subject }}
+                                    </span>
+
+                                    <span class="subject-count">
+                                        {{ item.completed }} / {{ item.total }}
+                                        ({{ item.percentage }}%)
+                                    </span>
+
+                                </div>
+
+
+                                <div class="subject-progress-bar">
+
+                                    <div
+                                        class="subject-progress-fill"
+                                        style="width: 0%;"
+                                        data-percentage="{{ item.percentage }}"
+                                    ></div>
+
+                                </div>
+
+
+                            </div>
+
+                        {% endfor %}
+
+
+                    </div>
+
+                {% else %}
+
+                    <div class="empty-message">
+                        No subjects yet. Add a task to start tracking your progress.
+                    </div>
 
                 {% endif %}
 
 
-                <!-- Labels -->
-
-                <div class="labels">
+            </div>
 
 
-                    <!-- Priority -->
+            <!-- ==========================================
+                 TASK LIST
+                 ========================================== -->
 
-                    {% if task.get("priority") == "HIGH" %}
+            <div class="section-card">
 
-                        <span class="label priority-high">
-                            🔴 HIGH
-                        </span>
-
-                    {% elif task.get("priority") == "LOW" %}
-
-                        <span class="label priority-low">
-                            🟢 LOW
-                        </span>
-
-                    {% else %}
-
-                        <span class="label priority-medium">
-                            🟡 MEDIUM
-                        </span>
-
-                    {% endif %}
+                <h2 class="section-title">
+                    📝 Your Tasks
+                </h2>
 
 
-                    <!-- Subject -->
-
-                    <span class="label subject-label">
-
-                        📚
-                        {{ task.get("subject", "General") }}
-
-                    </span>
+                {% if task_items %}
 
 
-                    <!-- Due date -->
-
-                    {% if task.get("due_date") %}
+                    <div class="task-list">
 
 
-                        {% if task.get("due_status") == "overdue" %}
-
-                            <span class="label overdue-label">
-
-                                ⚠️ Overdue:
-                                {{ task.get("due_date") }}
-
-                            </span>
+                        {% for task_id, task in task_items %}
 
 
-                        {% elif task.get("due_status") == "today" %}
+                            <div
+                                class="task-card {% if task.completed %}completed{% endif %}"
+                            >
 
-                            <span class="label today-label">
 
-                                🔥 Due Today
+                                <div class="task-top">
 
-                            </span>
 
+                                    <div class="task-main">
+
+
+                                        <div class="task-name">
+                                            {{ task.task }}
+                                        </div>
+
+
+                                        {% if task.description %}
+
+                                            <div class="task-description">
+                                                {{ task.description }}
+                                            </div>
+
+                                        {% endif %}
+
+
+                                        <div class="task-meta">
+
+
+                                            <!-- Priority -->
+
+                                            {% if task.priority == "HIGH" %}
+
+                                                <span class="badge priority-high">
+                                                    HIGH
+                                                </span>
+
+                                            {% elif task.priority == "MEDIUM" %}
+
+                                                <span class="badge priority-medium">
+                                                    MEDIUM
+                                                </span>
+
+                                            {% else %}
+
+                                                <span class="badge priority-low">
+                                                    LOW
+                                                </span>
+
+                                            {% endif %}
+
+
+                                            <!-- Subject -->
+
+                                            <span class="badge subject-badge">
+                                                📘 {{ task.subject }}
+                                            </span>
+
+
+                                            <!-- Due Date -->
+
+                                            {% if task.due_status == "overdue" %}
+
+                                                <span class="badge due-overdue">
+                                                    🔴 Overdue · {{ task.due_date }}
+                                                </span>
+
+                                            {% elif task.due_status == "today" %}
+
+                                                <span class="badge due-today">
+                                                    🟡 Due Today
+                                                </span>
+
+                                            {% elif task.due_status == "upcoming" %}
+
+                                                <span class="badge due-upcoming">
+                                                    🔵 Due · {{ task.due_date }}
+                                                </span>
+
+                                            {% elif task.due_status == "completed" %}
+
+                                                <span class="badge due-completed">
+                                                    🟢 Completed
+                                                </span>
+
+                                            {% endif %}
+
+
+                                            <!-- Status -->
+
+                                            {% if task.completed %}
+
+                                                <span class="badge status-completed">
+                                                    ✓ Completed
+                                                </span>
+
+                                            {% else %}
+
+                                                <span class="badge status-pending">
+                                                    ⏳ Pending
+                                                </span>
+
+                                            {% endif %}
+
+
+                                        </div>
+
+
+                                    </div>
+
+
+                                </div>
+
+
+                                <!-- Task Actions -->
+
+                                <div class="task-actions">
+
+
+                                    {% if task.completed %}
+
+                                        <a
+                                            href="{{ url_for('complete_task', task_id=task_id) }}"
+                                            class="action-button complete-button"
+                                        >
+                                            ↩ Undo
+                                        </a>
+
+                                    {% else %}
+
+                                        <a
+                                            href="{{ url_for('complete_task', task_id=task_id) }}"
+                                            class="action-button complete-button"
+                                        >
+                                            ✓ Complete
+                                        </a>
+
+                                    {% endif %}
+
+
+                                    <a
+                                        href="{{ url_for('edit_task', task_id=task_id) }}"
+                                        class="action-button edit-button"
+                                    >
+                                        ✏️ Edit
+                                    </a>
+
+
+                                    <button
+                                        type="button"
+                                        class="action-button delete-button"
+                                        data-delete-url="{{ url_for('delete_task', task_id=task_id) }}"
+                                        data-task-name="{{ task.task|e }}"
+                                        onclick="openDeleteModal(this.dataset.deleteUrl, this.dataset.taskName)"
+                                    >
+                                        🗑 Delete
+                                    </button>
+
+
+                                </div>
+
+
+                            </div>
+
+
+                        {% endfor %}
+
+
+                    </div>
+
+
+                {% else %}
+
+
+                    <div class="empty-message">
+
+                        {% if search or priority_filter or subject_filter or status_filter %}
+
+                            No tasks match your current search/filter.
 
                         {% else %}
 
-                            <span class="label date-label">
-
-                                📅
-                                {{ task.get("due_date") }}
-
-                            </span>
+                            No tasks yet. Add your first study task above.
 
                         {% endif %}
 
-
-                    {% endif %}
-
-
-                    <!-- Status -->
-
-                    {% if task.get("completed", False) %}
-
-                        <span class="label status-completed">
-
-                            ✓ COMPLETED
-
-                        </span>
-
-                    {% else %}
-
-                        <span class="label status-pending">
-
-                            ⏳ PENDING
-
-                        </span>
-
-                    {% endif %}
+                    </div>
 
 
-                </div>
-
-
-                <!-- Actions -->
-
-                <div class="actions">
-
-
-                    {% if task.get("completed", False) %}
-
-                        <a
-                            href="{{ url_for('complete_task', task_id=task_id) }}"
-                            class="action-btn complete-btn">
-
-                            ↩ Undo
-
-                        </a>
-
-                    {% else %}
-
-                        <a
-                            href="{{ url_for('complete_task', task_id=task_id) }}"
-                            class="action-btn complete-btn">
-
-                            ✓ Complete
-
-                        </a>
-
-                    {% endif %}
-
-
-                    <a
-                        href="{{ url_for('edit_task', task_id=task_id) }}"
-                        class="action-btn edit-btn">
-
-                        ✎ Edit
-
-                    </a>
-
-
-                    <button
-                        type="button"
-                        class="action-btn delete-btn"
-                        onclick="openDeleteModal(
-                            '{{ url_for('delete_task', task_id=task_id) }}',
-                            '{{ task.get("task", "this task") | e }}'
-                        )">
-
-                        🗑 Delete
-
-                    </button>
-
-
-                </div>
+                {% endif %}
 
 
             </div>
 
-
-            {% endfor %}
-
-
-        {% else %}
-
-
-            <div class="empty">
-
-                📭
-
-                <br><br>
-
-                No tasks found.
-
-                <br>
-
-                Try changing your search or filters.
-
-            </div>
-
-
-        {% endif %}
-
-
-    </div>
-
-
-</div>
-
-
-<!-- ==========================================
-     DELETE CONFIRMATION MODAL
-========================================== -->
-
-<div
-    id="deleteModal"
-    class="modal-overlay">
-
-
-    <div class="modal">
-
-
-        <div class="modal-icon">
-
-            🗑
 
         </div>
 
-
-        <h2>
-            Delete Task?
-        </h2>
+    </main>
 
 
-        <p>
+    <!-- ==========================================
+         DELETE CONFIRMATION MODAL
+         ========================================== -->
 
-            Are you sure you want to delete
-            <strong id="deleteTaskName">
-                this task
-            </strong>?
-
-            <br>
-
-            This action cannot be undone.
-
-        </p>
+    <div
+        id="deleteModal"
+        class="modal-overlay"
+    >
 
 
-        <div class="modal-actions">
+        <div class="modal-box">
 
 
-            <button
-                type="button"
-                class="modal-cancel"
-                onclick="closeDeleteModal()">
-
-                Cancel
-
-            </button>
+            <div class="modal-icon">
+                ⚠️
+            </div>
 
 
-            <a
-                id="confirmDeleteButton"
-                href="#"
-                class="modal-delete"
-                style="text-decoration:none;">
+            <h3>
+                Delete Task?
+            </h3>
 
-                Delete
 
-            </a>
+            <p>
+
+                Are you sure you want to delete
+
+                <span
+                    id="modalTaskName"
+                    class="modal-task-name"
+                ></span>
+
+                ?
+
+                This action cannot be undone.
+
+            </p>
+
+
+            <div class="modal-actions">
+
+
+                <button
+                    type="button"
+                    class="modal-cancel"
+                    onclick="closeDeleteModal()"
+                >
+                    Cancel
+                </button>
+
+
+                <a
+                    id="confirmDeleteButton"
+                    href="#"
+                    class="modal-delete"
+                >
+                    Delete
+                </a>
+
+
+            </div>
 
 
         </div>
@@ -2021,85 +1654,101 @@
 
     </div>
 
-</div>
+
+    <!-- ==========================================
+         FOOTER
+         ========================================== -->
+
+    <footer>
+
+        Student Study Planner • Stay consistent and keep learning 🚀
+
+    </footer>
 
 
-<!-- ==========================================
-     JAVASCRIPT
-========================================== -->
+    <!-- ==========================================
+         JAVASCRIPT
+         ========================================== -->
 
-<script>
+    <script>
 
-
-    let deleteUrl = "";
-
-
-    function openDeleteModal(url, taskName) {
-
-        deleteUrl = url;
+        const deleteModal =
+            document.getElementById("deleteModal");
 
 
-        document.getElementById(
-            "deleteTaskName"
-        ).textContent = taskName;
+        const modalTaskName =
+            document.getElementById("modalTaskName");
 
 
-        document.getElementById(
-            "confirmDeleteButton"
-        ).href = deleteUrl;
+        const confirmDeleteButton =
+            document.getElementById("confirmDeleteButton");
 
 
-        document.getElementById(
-            "deleteModal"
-        ).classList.add("show");
+        function openDeleteModal(
+            deleteUrl,
+            taskName
+        ) {
 
-    }
-
-
-    function closeDeleteModal() {
-
-        document.getElementById(
-            "deleteModal"
-        ).classList.remove("show");
-
-    }
+            modalTaskName.textContent =
+                taskName;
 
 
-    /* Close modal when clicking outside */
+            confirmDeleteButton.href =
+                deleteUrl;
 
-    document.getElementById(
-        "deleteModal"
-    ).addEventListener(
-        "click",
-        function(event) {
 
-            if (event.target === this) {
-
-                closeDeleteModal();
-
-            }
+            deleteModal.classList.add(
+                "active"
+            );
 
         }
-    );
 
 
-    /* Close modal using Escape */
+        function closeDeleteModal() {
 
-    document.addEventListener(
-        "keydown",
-        function(event) {
-
-            if (event.key === "Escape") {
-
-                closeDeleteModal();
-
-            }
+            deleteModal.classList.remove(
+                "active"
+            );
 
         }
-    );
 
 
-</script>
+        /* Close modal when clicking outside */
+
+        deleteModal.addEventListener(
+            "click",
+            function(event) {
+
+                if (
+                    event.target === deleteModal
+                ) {
+
+                    closeDeleteModal();
+
+                }
+
+            }
+        );
+
+
+        /* Close modal with Escape */
+
+        document.addEventListener(
+            "keydown",
+            function(event) {
+
+                if (
+                    event.key === "Escape"
+                ) {
+
+                    closeDeleteModal();
+
+                }
+
+            }
+        );
+
+    </script>
 
 
 </body>

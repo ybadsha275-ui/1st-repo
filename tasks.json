@@ -10,7 +10,7 @@
     {
         "task": "study SM",
         "priority": "HIGH",
-        "completed": false,
+        "completed": true,
         "subject": "mathematics",
         "due_date": "2026-10-11",
         "description": ""
