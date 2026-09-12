@@ -5,49 +5,38 @@
 
     <meta charset="UTF-8">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-    <title>Student Study Planner</title>
+    <title>
+        Student Study Planner
+    </title>
 
 
     <style>
 
-        /* ==========================================
-           GLOBAL
-           ========================================== */
-
         * {
             box-sizing: border-box;
-            margin: 0;
-            padding: 0;
         }
 
 
         body {
-            font-family: Arial, Helvetica, sans-serif;
-            background: #0f1117;
-            color: #f5f5f5;
-            min-height: 100vh;
-        }
 
+            margin: 0;
 
-        a {
-            text-decoration: none;
-        }
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
 
+            background:
+                #101216;
 
-        button,
-        input,
-        select,
-        textarea {
-            font-family: inherit;
-        }
+            color:
+                #f2f2f2;
 
-
-        .container {
-            width: 92%;
-            max-width: 1250px;
-            margin: auto;
         }
 
 
@@ -56,114 +45,288 @@
            ========================================== */
 
         header {
-            padding: 30px 0;
-            border-bottom: 1px solid #252936;
+
+            padding:
+                25px 30px;
+
+            text-align:
+                center;
+
+            background:
+                #17191f;
+
+            border-bottom:
+                1px solid #292c33;
+
         }
 
 
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 20px;
+        header h1 {
+
+            margin:
+                0 0 8px;
+
+            font-size:
+                32px;
+
         }
 
 
-        .logo-area {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-        }
+        header p {
 
+            margin:
+                0;
 
-        .logo-icon {
-            font-size: 42px;
-        }
+            color:
+                #a8adb7;
 
-
-        .logo-area h1 {
-            font-size: 28px;
-            margin-bottom: 5px;
-        }
-
-
-        .logo-area p {
-            color: #9ca3af;
-            font-size: 14px;
         }
 
 
         /* ==========================================
-           MAIN
+           MAIN CONTAINER
            ========================================== */
 
         main {
-            padding: 30px 0 60px;
+
+            width:
+                94%;
+
+            max-width:
+                1400px;
+
+            margin:
+                25px auto;
+
         }
 
 
         /* ==========================================
-           STAT CARDS
+           CARDS
+           ========================================== */
+
+        .card {
+
+            background:
+                #191c22;
+
+            border:
+                1px solid #292d35;
+
+            border-radius:
+                14px;
+
+            padding:
+                20px;
+
+            margin-bottom:
+                20px;
+
+        }
+
+
+        .card h2 {
+
+            margin-top:
+                0;
+
+        }
+
+
+        /* ==========================================
+           ADD TASK
+           ========================================== */
+
+        .form-grid {
+
+            display:
+                grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap:
+                14px;
+
+        }
+
+
+        .form-group {
+
+            display:
+                flex;
+
+            flex-direction:
+                column;
+
+        }
+
+
+        .form-group.full {
+
+            grid-column:
+                1 / -1;
+
+        }
+
+
+        label {
+
+            margin-bottom:
+                6px;
+
+            font-weight:
+                bold;
+
+            color:
+                #d7d9de;
+
+        }
+
+
+        input,
+        select,
+        textarea {
+
+            width:
+                100%;
+
+            padding:
+                11px 13px;
+
+            border-radius:
+                8px;
+
+            border:
+                1px solid #343944;
+
+            background:
+                #111318;
+
+            color:
+                #ffffff;
+
+            outline:
+                none;
+
+        }
+
+
+        textarea {
+
+            min-height:
+                90px;
+
+            resize:
+                vertical;
+
+        }
+
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+
+            border-color:
+                #777f8e;
+
+        }
+
+
+        .add-button {
+
+            margin-top:
+                15px;
+
+            padding:
+                12px 20px;
+
+            border:
+                none;
+
+            border-radius:
+                8px;
+
+            background:
+                #e7e7e7;
+
+            color:
+                #111;
+
+            font-weight:
+                bold;
+
+            cursor:
+                pointer;
+
+        }
+
+
+        .add-button:hover {
+
+            opacity:
+                0.85;
+
+        }
+
+
+        /* ==========================================
+           STATISTICS
            ========================================== */
 
         .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 18px;
-            margin-bottom: 25px;
+
+            display:
+                grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap:
+                14px;
+
         }
 
 
         .stat-card {
-            background: #171a23;
-            border: 1px solid #272b36;
-            border-radius: 18px;
-            padding: 22px;
-            transition: 0.25s ease;
-        }
 
+            background:
+                #111318;
 
-        .stat-card:hover {
-            transform: translateY(-3px);
-            border-color: #3b4050;
-        }
+            border:
+                1px solid #292d35;
 
+            border-radius:
+                12px;
 
-        .stat-icon {
-            font-size: 30px;
-            margin-bottom: 10px;
+            padding:
+                18px;
+
+            text-align:
+                center;
+
         }
 
 
         .stat-number {
-            font-size: 32px;
-            font-weight: bold;
-            margin-bottom: 5px;
+
+            font-size:
+                30px;
+
+            font-weight:
+                bold;
+
+            margin-bottom:
+                5px;
+
         }
 
 
         .stat-label {
-            color: #9ca3af;
-            font-size: 14px;
-        }
 
+            color:
+                #9da2ad;
 
-        /* ==========================================
-           GENERAL CARD
-           ========================================== */
-
-        .section-card {
-            background: #171a23;
-            border: 1px solid #272b36;
-            border-radius: 18px;
-            padding: 24px;
-            margin-bottom: 25px;
-        }
-
-
-        .section-title {
-            font-size: 21px;
-            margin-bottom: 18px;
         }
 
 
@@ -171,204 +334,53 @@
            PROGRESS
            ========================================== */
 
-        .progress-info {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 10px;
-            font-size: 14px;
-        }
+        .progress-container {
 
+            margin-top:
+                15px;
 
-        .progress-percentage {
-            font-weight: bold;
         }
 
 
         .progress-bar {
-            width: 100%;
-            height: 12px;
-            background: #292d38;
-            border-radius: 20px;
-            overflow: hidden;
+
+            height:
+                12px;
+
+            background:
+                #292d35;
+
+            border-radius:
+                20px;
+
+            overflow:
+                hidden;
+
         }
 
 
         .progress-fill {
-            height: 100%;
-            background: #4ade80;
-            border-radius: 20px;
-            transition: width 0.4s ease;
+
+            height:
+                100%;
+
+            background:
+                #e7e7e7;
+
+            border-radius:
+                20px;
+
         }
 
 
-        /* ==========================================
-           STUDY STREAK
-           ========================================== */
+        .progress-text {
 
-        .streak-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 18px;
-        }
+            margin-top:
+                8px;
 
+            color:
+                #b6bac3;
 
-        .streak-card {
-            background: #1c202a;
-            border: 1px solid #2b303c;
-            border-radius: 16px;
-            padding: 25px;
-            text-align: center;
-            transition: 0.25s ease;
-        }
-
-
-        .streak-card:hover {
-            transform: translateY(-3px);
-            border-color: #414755;
-        }
-
-
-        .streak-icon {
-            font-size: 40px;
-            margin-bottom: 10px;
-        }
-
-
-        .streak-number {
-            font-size: 36px;
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-
-
-        .streak-label {
-            color: #9ca3af;
-            font-size: 14px;
-        }
-
-
-        /* ==========================================
-           ADD TASK FORM
-           ========================================== */
-
-        .form-grid {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr;
-            gap: 14px;
-            margin-bottom: 14px;
-        }
-
-
-        .form-group {
-            display: flex;
-            flex-direction: column;
-            gap: 7px;
-        }
-
-
-        .form-group.full {
-            grid-column: 1 / -1;
-        }
-
-
-        .form-group label {
-            color: #b7bcc7;
-            font-size: 13px;
-        }
-
-
-        input,
-        select,
-        textarea {
-            width: 100%;
-            background: #10131a;
-            color: #f5f5f5;
-            border: 1px solid #303542;
-            border-radius: 10px;
-            padding: 12px;
-            outline: none;
-            font-size: 14px;
-        }
-
-
-        input:focus,
-        select:focus,
-        textarea:focus {
-            border-color: #636b7d;
-        }
-
-
-        textarea {
-            resize: vertical;
-            min-height: 85px;
-        }
-
-
-        input[type="date"] {
-            color-scheme: dark;
-        }
-
-
-        .add-button {
-            margin-top: 5px;
-            background: #4ade80;
-            color: #07110b;
-            border: none;
-            border-radius: 10px;
-            padding: 12px 22px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: 0.2s ease;
-        }
-
-
-        .add-button:hover {
-            transform: translateY(-2px);
-            opacity: 0.9;
-        }
-
-
-        /* ==========================================
-           SEARCH AND FILTERS
-           ========================================== */
-
-        .filter-form {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr auto;
-            gap: 12px;
-        }
-
-
-        .filter-button {
-            background: #292e3a;
-            color: white;
-            border: 1px solid #383e4b;
-            border-radius: 10px;
-            padding: 12px 18px;
-            cursor: pointer;
-            font-weight: bold;
-        }
-
-
-        .filter-button:hover {
-            background: #343a48;
-        }
-
-
-        .clear-button {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: #20242d;
-            color: #d1d5db;
-            border: 1px solid #303542;
-            border-radius: 10px;
-            padding: 0 18px;
-        }
-
-
-        .clear-button:hover {
-            background: #2a2f3a;
         }
 
 
@@ -376,64 +388,123 @@
            SUBJECT PROGRESS
            ========================================== */
 
-        .subject-list {
-            display: flex;
-            flex-direction: column;
-            gap: 18px;
-        }
-
-
         .subject-row {
-            padding-bottom: 15px;
-            border-bottom: 1px solid #282c36;
-        }
 
+            margin-bottom:
+                15px;
 
-        .subject-row:last-child {
-            border-bottom: none;
-            padding-bottom: 0;
         }
 
 
         .subject-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 9px;
-            gap: 15px;
+
+            display:
+                flex;
+
+            justify-content:
+                space-between;
+
+            margin-bottom:
+                6px;
+
         }
 
 
-        .subject-name {
-            font-weight: bold;
+        .subject-progress {
+
+            height:
+                9px;
+
+            background:
+                #292d35;
+
+            border-radius:
+                20px;
+
+            overflow:
+                hidden;
+
         }
 
 
-        .subject-count {
-            color: #9ca3af;
-            font-size: 13px;
+        .subject-fill {
+
+            height:
+                100%;
+
+            background:
+                #d7d7d7;
+
         }
 
 
-        .subject-progress-bar {
-            height: 9px;
-            background: #292d38;
-            border-radius: 20px;
-            overflow: hidden;
+        /* ==========================================
+           FILTERS
+           ========================================== */
+
+        .filter-grid {
+
+            display:
+                grid;
+
+            grid-template-columns:
+                2fr 1fr 1fr 1fr 1fr auto;
+
+            gap:
+                10px;
+
+            align-items:
+                end;
+
         }
 
 
-        .subject-progress-fill {
-            height: 100%;
-            background: #60a5fa;
-            border-radius: 20px;
+        .filter-button {
+
+            padding:
+                11px 16px;
+
+            border:
+                none;
+
+            border-radius:
+                8px;
+
+            cursor:
+                pointer;
+
+            background:
+                #e7e7e7;
+
+            color:
+                #111;
+
+            font-weight:
+                bold;
+
         }
 
 
-        .empty-message {
-            color: #9ca3af;
-            text-align: center;
-            padding: 20px;
+        .clear-button {
+
+            display:
+                inline-block;
+
+            padding:
+                11px 16px;
+
+            border-radius:
+                8px;
+
+            text-decoration:
+                none;
+
+            background:
+                #292d35;
+
+            color:
+                #fff;
+
         }
 
 
@@ -442,208 +513,1012 @@
            ========================================== */
 
         .task-list {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
+
+            display:
+                flex;
+
+            flex-direction:
+                column;
+
+            gap:
+                12px;
+
         }
 
 
-        .task-card {
-            background: #1c202a;
-            border: 1px solid #2b303c;
-            border-radius: 16px;
-            padding: 20px;
-            transition: 0.25s ease;
+        .task-item {
+
+            padding:
+                18px;
+
+            border:
+                1px solid #30343d;
+
+            border-radius:
+                12px;
+
+            background:
+                #111318;
+
         }
 
 
-        .task-card:hover {
-            border-color: #414755;
-        }
+        .task-item.completed {
 
+            opacity:
+                0.65;
 
-        .task-card.completed {
-            opacity: 0.7;
         }
 
 
         .task-top {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            gap: 20px;
+
+            display:
+                flex;
+
+            justify-content:
+                space-between;
+
+            gap:
+                15px;
+
         }
 
 
-        .task-main {
-            flex: 1;
+        .task-title {
+
+            font-size:
+                19px;
+
+            font-weight:
+                bold;
+
         }
 
 
-        .task-name {
-            font-size: 18px;
-            font-weight: bold;
-            margin-bottom: 9px;
-            word-break: break-word;
-        }
+        .task-title.completed-title {
 
+            text-decoration:
+                line-through;
 
-        .task-card.completed .task-name {
-            text-decoration: line-through;
         }
 
 
         .task-description {
-            color: #9ca3af;
-            font-size: 14px;
-            line-height: 1.5;
-            margin-bottom: 13px;
+
+            margin-top:
+                8px;
+
+            color:
+                #aeb3bd;
+
+            line-height:
+                1.5;
+
         }
 
 
         .task-meta {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
+
+            display:
+                flex;
+
+            flex-wrap:
+                wrap;
+
+            gap:
+                7px;
+
+            margin-top:
+                12px;
+
         }
 
 
         .badge {
-            display: inline-block;
-            padding: 6px 10px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: bold;
+
+            display:
+                inline-block;
+
+            padding:
+                5px 9px;
+
+            border-radius:
+                20px;
+
+            font-size:
+                12px;
+
+            background:
+                #292d35;
+
+            color:
+                #ddd;
+
         }
 
 
-        /* Priority */
-
         .priority-high {
-            background: #3b171b;
-            color: #f87171;
+
+            background:
+                #4a2929;
+
+            color:
+                #ffb3b3;
+
         }
 
 
         .priority-medium {
-            background: #3b3215;
-            color: #facc15;
+
+            background:
+                #4a4027;
+
+            color:
+                #f0d99a;
+
         }
 
 
         .priority-low {
-            background: #15351f;
-            color: #4ade80;
+
+            background:
+                #293d2d;
+
+            color:
+                #b5dfbd;
+
         }
 
-
-        /* Subject */
-
-        .subject-badge {
-            background: #172b43;
-            color: #60a5fa;
-        }
-
-
-        /* Due dates */
 
         .due-overdue {
-            background: #3b171b;
-            color: #f87171;
+
+            background:
+                #4a2929;
+
+            color:
+                #ffb3b3;
+
         }
 
 
         .due-today {
-            background: #3b3215;
-            color: #facc15;
+
+            background:
+                #4a4027;
+
+            color:
+                #f0d99a;
+
         }
 
 
         .due-upcoming {
-            background: #172b43;
-            color: #60a5fa;
+
+            background:
+                #29384a;
+
+            color:
+                #b5d8ff;
+
         }
 
 
         .due-completed {
-            background: #15351f;
-            color: #4ade80;
+
+            background:
+                #293d2d;
+
+            color:
+                #b5dfbd;
+
         }
 
 
-        /* Status */
+        .important-badge {
 
-        .status-completed {
-            background: #15351f;
-            color: #4ade80;
+            background:
+                #44391f;
+
+            color:
+                #f2d47a;
+
         }
 
-
-        .status-pending {
-            background: #3b3215;
-            color: #facc15;
-        }
-
-
-        /* ==========================================
-           TASK BUTTONS
-           ========================================== */
 
         .task-actions {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-top: 16px;
+
+            display:
+                flex;
+
+            flex-wrap:
+                wrap;
+
+            gap:
+                8px;
+
+            margin-top:
+                15px;
+
         }
 
 
         .action-button {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 9px;
-            padding: 9px 13px;
-            font-size: 13px;
-            font-weight: bold;
-            cursor: pointer;
-            border: 1px solid transparent;
-            transition: 0.2s ease;
+
+            display:
+                inline-block;
+
+            padding:
+                8px 12px;
+
+            border-radius:
+                7px;
+
+            text-decoration:
+                none;
+
+            border:
+                none;
+
+            cursor:
+                pointer;
+
+            font-size:
+                13px;
+
         }
 
 
         .complete-button {
-            background: #15351f;
-            color: #4ade80;
-            border-color: #245c35;
-        }
 
+            background:
+                #293d2d;
 
-        .complete-button:hover {
-            background: #1b4528;
+            color:
+                #b5dfbd;
+
         }
 
 
         .edit-button {
-            background: #172b43;
-            color: #60a5fa;
-            border-color: #284c75;
-        }
 
+            background:
+                #29384a;
 
-        .edit-button:hover {
-            background: #1d3858;
+            color:
+                #b5d8ff;
+
         }
 
 
         .delete-button {
-            background: #3b171b;
-            color: #f87171;
-            border-color: #68262c;
+
+            background:
+                #4a2929;
+
+            color:
+                #ffb3b3;
+
         }
 
 
-        .delete-button:hover {
-            background: #4b1d22;
+        .star-button {
+
+            background:
+                #292d35;
+
+            color:
+                #ddd;
+
+        }
+
+
+        .star-button.starred {
+
+            background:
+                #44391f;
+
+            color:
+                #f2d47a;
+
+        }
+
+
+        .empty-message {
+
+            text-align:
+                center;
+
+            padding:
+                35px;
+
+            color:
+                #8f949e;
+
+        }
+
+
+        /* ==========================================
+           STUDY STREAK
+           ========================================== */
+
+        .streak-grid {
+
+            display:
+                grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap:
+                14px;
+
+        }
+
+
+        .streak-box {
+
+            text-align:
+                center;
+
+            background:
+                #111318;
+
+            border:
+                1px solid #292d35;
+
+            border-radius:
+                12px;
+
+            padding:
+                18px;
+
+        }
+
+
+        .streak-number {
+
+            font-size:
+                30px;
+
+            font-weight:
+                bold;
+
+        }
+
+
+        /* ==========================================
+           WEEKLY DASHBOARD
+           ========================================== */
+
+        .week-grid {
+
+            display:
+                grid;
+
+            grid-template-columns:
+                repeat(7, 1fr);
+
+            gap:
+                8px;
+
+        }
+
+
+        .week-day {
+
+            background:
+                #111318;
+
+            border:
+                1px solid #292d35;
+
+            border-radius:
+                10px;
+
+            padding:
+                12px 5px;
+
+            text-align:
+                center;
+
+        }
+
+
+        .week-day.today {
+
+            border-color:
+                #777f8e;
+
+        }
+
+
+        .week-day.studied {
+
+            background:
+                #293d2d;
+
+        }
+
+
+        .week-name {
+
+            font-weight:
+                bold;
+
+        }
+
+
+        .week-date {
+
+            margin:
+                6px 0;
+
+            color:
+                #999fa9;
+
+            font-size:
+                12px;
+
+        }
+
+
+        .week-completed {
+
+            font-size:
+                12px;
+
+        }
+
+
+        /* ==========================================
+           DAILY GOAL
+           ========================================== */
+
+        .goal-header {
+
+            display:
+                flex;
+
+            justify-content:
+                space-between;
+
+            align-items:
+                center;
+
+            gap:
+                15px;
+
+        }
+
+
+        .goal-form {
+
+            display:
+                flex;
+
+            gap:
+                8px;
+
+        }
+
+
+        .goal-form input {
+
+            width:
+                90px;
+
+        }
+
+
+        .goal-button {
+
+            padding:
+                10px 14px;
+
+            border:
+                none;
+
+            border-radius:
+                8px;
+
+            background:
+                #e7e7e7;
+
+            color:
+                #111;
+
+            font-weight:
+                bold;
+
+            cursor:
+                pointer;
+
+        }
+
+
+        /* ==========================================
+           POMODORO
+           ========================================== */
+
+        .pomodoro {
+
+            text-align:
+                center;
+
+        }
+
+
+        .timer-mode {
+
+            color:
+                #9da2ad;
+
+            margin-bottom:
+                5px;
+
+        }
+
+
+        .timer-display {
+
+            font-size:
+                60px;
+
+            font-weight:
+                bold;
+
+            letter-spacing:
+                2px;
+
+            margin:
+                10px 0;
+
+        }
+
+
+        .timer-buttons {
+
+            display:
+                flex;
+
+            justify-content:
+                center;
+
+            flex-wrap:
+                wrap;
+
+            gap:
+                8px;
+
+        }
+
+
+        .timer-button {
+
+            padding:
+                9px 14px;
+
+            border:
+                none;
+
+            border-radius:
+                8px;
+
+            background:
+                #292d35;
+
+            color:
+                #fff;
+
+            cursor:
+                pointer;
+
+        }
+
+
+        .timer-button.primary {
+
+            background:
+                #e7e7e7;
+
+            color:
+                #111;
+
+        }
+
+
+        .pomodoro-count {
+
+            margin-top:
+                12px;
+
+            color:
+                #aeb3bd;
+
+        }
+
+
+        /* ==========================================
+           CALENDAR
+           ========================================== */
+
+        .calendar-header {
+
+            display:
+                flex;
+
+            justify-content:
+                space-between;
+
+            align-items:
+                center;
+
+            margin-bottom:
+                15px;
+
+        }
+
+
+        .calendar-header h2 {
+
+            margin:
+                0;
+
+        }
+
+
+        .calendar-controls {
+
+            display:
+                flex;
+
+            gap:
+                7px;
+
+            flex-wrap:
+                wrap;
+
+        }
+
+
+        .calendar-control {
+
+            padding:
+                8px 12px;
+
+            border-radius:
+                7px;
+
+            text-decoration:
+                none;
+
+            background:
+                #292d35;
+
+            color:
+                #fff;
+
+        }
+
+
+        .calendar-grid {
+
+            display:
+                grid;
+
+            grid-template-columns:
+                repeat(7, 1fr);
+
+            gap:
+                5px;
+
+        }
+
+
+        .calendar-weekday {
+
+            text-align:
+                center;
+
+            padding:
+                8px;
+
+            font-size:
+                12px;
+
+            font-weight:
+                bold;
+
+            color:
+                #9da2ad;
+
+        }
+
+
+        .calendar-day {
+
+            min-height:
+                100px;
+
+            padding:
+                8px;
+
+            background:
+                #111318;
+
+            border:
+                1px solid #292d35;
+
+            border-radius:
+                8px;
+
+        }
+
+
+        .calendar-day.other-month {
+
+            opacity:
+                0.35;
+
+        }
+
+
+        .calendar-day.today {
+
+            border:
+                1px solid #bfc4cc;
+
+        }
+
+
+        .calendar-number {
+
+            font-weight:
+                bold;
+
+            margin-bottom:
+                5px;
+
+        }
+
+
+        .calendar-task {
+
+            font-size:
+                11px;
+
+            padding:
+                4px 5px;
+
+            margin-bottom:
+                4px;
+
+            border-radius:
+                5px;
+
+            background:
+                #292d35;
+
+            overflow:
+                hidden;
+
+            white-space:
+                nowrap;
+
+            text-overflow:
+                ellipsis;
+
+        }
+
+
+        .calendar-task.completed-calendar {
+
+            text-decoration:
+                line-through;
+
+            opacity:
+                0.6;
+
+        }
+
+
+        /* ==========================================
+           ANALYTICS
+           ========================================== */
+
+        .analytics-grid {
+
+            display:
+                grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap:
+                12px;
+
+        }
+
+
+        .analytics-box {
+
+            background:
+                #111318;
+
+            border:
+                1px solid #292d35;
+
+            border-radius:
+                10px;
+
+            padding:
+                15px;
+
+        }
+
+
+        .analytics-value {
+
+            font-size:
+                25px;
+
+            font-weight:
+                bold;
+
+            margin-top:
+                5px;
+
+        }
+
+
+        .analytics-label {
+
+            color:
+                #969ca7;
+
+            font-size:
+                13px;
+
+        }
+
+
+        .priority-bars {
+
+            display:
+                flex;
+
+            flex-direction:
+                column;
+
+            gap:
+                12px;
+
+            margin-top:
+                15px;
+
+        }
+
+
+        .priority-line {
+
+            display:
+                grid;
+
+            grid-template-columns:
+                80px 1fr 40px;
+
+            gap:
+                8px;
+
+            align-items:
+                center;
+
+        }
+
+
+        .priority-track {
+
+            height:
+                8px;
+
+            border-radius:
+                20px;
+
+            background:
+                #292d35;
+
+            overflow:
+                hidden;
+
+        }
+
+
+        .priority-fill {
+
+            height:
+                100%;
+
+            background:
+                #d7d7d7;
+
+        }
+
+
+        .weekday-chart {
+
+            display:
+                grid;
+
+            grid-template-columns:
+                repeat(7, 1fr);
+
+            gap:
+                8px;
+
+            align-items:
+                end;
+
+            height:
+                180px;
+
+            margin-top:
+                20px;
+
+        }
+
+
+        .weekday-column {
+
+            display:
+                flex;
+
+            flex-direction:
+                column;
+
+            justify-content:
+                flex-end;
+
+            height:
+                100%;
+
+            text-align:
+                center;
+
+        }
+
+
+        .weekday-bar {
+
+            width:
+                70%;
+
+            max-width:
+                45px;
+
+            min-height:
+                5px;
+
+            margin:
+                0 auto 7px;
+
+            border-radius:
+                6px 6px 0 0;
+
+            background:
+                #d7d7d7;
+
+        }
+
+
+        .weekday-label {
+
+            font-size:
+                12px;
+
+            color:
+                #9da2ad;
+
         }
 
 
@@ -652,83 +1527,169 @@
            ========================================== */
 
         .modal-overlay {
-            position: fixed;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.75);
-            display: none;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-            z-index: 1000;
+
+            position:
+                fixed;
+
+            inset:
+                0;
+
+            display:
+                none;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            background:
+                rgba(0, 0, 0, 0.72);
+
+            z-index:
+                9999;
+
+            padding:
+                20px;
+
         }
 
 
         .modal-overlay.active {
-            display: flex;
+
+            display:
+                flex;
+
         }
 
 
         .modal-box {
-            width: 100%;
-            max-width: 430px;
-            background: #181b24;
-            border: 1px solid #343946;
-            border-radius: 18px;
-            padding: 25px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+
+            width:
+                100%;
+
+            max-width:
+                430px;
+
+            background:
+                #191c22;
+
+            border:
+                1px solid #363a43;
+
+            border-radius:
+                14px;
+
+            padding:
+                25px;
+
+            text-align:
+                center;
+
+            box-shadow:
+                0 20px 60px rgba(0,0,0,0.5);
+
         }
 
 
         .modal-icon {
-            font-size: 40px;
-            margin-bottom: 12px;
+
+            font-size:
+                40px;
+
         }
 
 
         .modal-box h3 {
-            font-size: 21px;
-            margin-bottom: 10px;
+
+            margin:
+                12px 0 8px;
+
         }
 
 
         .modal-box p {
-            color: #9ca3af;
-            line-height: 1.5;
-            margin-bottom: 22px;
+
+            color:
+                #aeb3bd;
+
+            line-height:
+                1.5;
+
         }
 
 
         .modal-task-name {
-            color: #f5f5f5;
-            font-weight: bold;
+
+            color:
+                #fff;
+
+            font-weight:
+                bold;
+
         }
 
 
         .modal-actions {
-            display: flex;
-            justify-content: flex-end;
-            gap: 10px;
+
+            display:
+                flex;
+
+            justify-content:
+                center;
+
+            gap:
+                10px;
+
+            margin-top:
+                20px;
+
+        }
+
+
+        .modal-cancel,
+        .modal-delete {
+
+            padding:
+                10px 18px;
+
+            border:
+                none;
+
+            border-radius:
+                8px;
+
+            cursor:
+                pointer;
+
+            text-decoration:
+                none;
+
+            font-weight:
+                bold;
+
         }
 
 
         .modal-cancel {
-            background: #292e3a;
-            color: white;
-            border: 1px solid #383e4b;
-            border-radius: 9px;
-            padding: 10px 17px;
-            cursor: pointer;
+
+            background:
+                #292d35;
+
+            color:
+                #fff;
+
         }
 
 
         .modal-delete {
-            background: #ef4444;
-            color: white;
-            border: none;
-            border-radius: 9px;
-            padding: 10px 17px;
-            cursor: pointer;
-            font-weight: bold;
+
+            background:
+                #4a2929;
+
+            color:
+                #ffb3b3;
+
         }
 
 
@@ -737,10 +1698,19 @@
            ========================================== */
 
         footer {
-            text-align: center;
-            color: #6b7280;
-            font-size: 13px;
-            padding: 20px 0 40px;
+
+            text-align:
+                center;
+
+            padding:
+                25px;
+
+            color:
+                #707681;
+
+            font-size:
+                13px;
+
         }
 
 
@@ -748,89 +1718,142 @@
            RESPONSIVE
            ========================================== */
 
-        @media (max-width: 900px) {
+        @media (
+            max-width: 900px
+        ) {
+
+            .stats-grid,
+            .analytics-grid {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+
+            }
+
 
             .form-grid {
-                grid-template-columns: 1fr 1fr;
+
+                grid-template-columns:
+                    1fr;
+
             }
 
 
-            .filter-form {
-                grid-template-columns: 1fr 1fr;
+            .form-group.full {
+
+                grid-column:
+                    auto;
+
             }
 
 
-            .filter-form input {
-                grid-column: 1 / -1;
+            .filter-grid {
+
+                grid-template-columns:
+                    1fr 1fr;
+
             }
 
 
-            .filter-button,
-            .clear-button {
-                min-height: 44px;
+            .calendar-day {
+
+                min-height:
+                    80px;
+
             }
 
         }
 
 
-        @media (max-width: 700px) {
+        @media (
+            max-width: 600px
+        ) {
 
-            .stats-grid {
-                grid-template-columns: 1fr;
+            main {
+
+                width:
+                    96%;
+
             }
 
 
+            .stats-grid,
+            .analytics-grid,
             .streak-grid {
-                grid-template-columns: 1fr;
+
+                grid-template-columns:
+                    1fr;
+
             }
 
 
-            .header-content {
-                align-items: flex-start;
+            .week-grid {
+
+                grid-template-columns:
+                    repeat(4, 1fr);
+
+            }
+
+
+            .calendar-grid {
+
+                gap:
+                    2px;
+
+            }
+
+
+            .calendar-day {
+
+                min-height:
+                    65px;
+
+                padding:
+                    5px;
+
+            }
+
+
+            .calendar-task {
+
+                display:
+                    none;
+
+            }
+
+
+            .filter-grid {
+
+                grid-template-columns:
+                    1fr;
+
             }
 
 
             .task-top {
-                flex-direction: column;
-            }
 
-        }
+                flex-direction:
+                    column;
 
-
-        @media (max-width: 550px) {
-
-            .container {
-                width: 94%;
             }
 
 
-            .form-grid {
-                grid-template-columns: 1fr;
+            .goal-header {
+
+                flex-direction:
+                    column;
+
+                align-items:
+                    flex-start;
+
             }
 
 
-            .filter-form {
-                grid-template-columns: 1fr;
-            }
+            .timer-display {
 
+                font-size:
+                    45px;
 
-            .filter-form input {
-                grid-column: auto;
-            }
-
-
-            .section-card {
-                padding: 18px;
-            }
-
-
-            .logo-area h1 {
-                font-size: 23px;
-            }
-
-
-            .logo-icon {
-                font-size: 34px;
             }
 
         }
@@ -849,56 +1872,156 @@
 
     <header>
 
-        <div class="container">
+        <h1>
+            📚 Student Study Planner
+        </h1>
 
-            <div class="header-content">
-
-                <div class="logo-area">
-
-                    <div class="logo-icon">
-                        🎓
-                    </div>
-
-                    <div>
-
-                        <h1>Student Study Planner</h1>
-
-                        <p>
-                            Organize your studies. Track your progress. Stay consistent.
-                        </p>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
+        <p>
+            Plan your studies. Track your progress. Stay consistent.
+        </p>
 
     </header>
 
 
-    <!-- ==========================================
-         MAIN
-         ========================================== -->
-
     <main>
 
-        <div class="container">
+
+        <!-- ==========================================
+             ADD TASK
+             ========================================== -->
+
+        <section class="card">
+
+            <h2>
+                ➕ Add New Study Task
+            </h2>
 
 
-            <!-- ==========================================
-                 STATISTICS
-                 ========================================== -->
+            <form
+                method="POST"
+                action="{{ url_for('add_task') }}"
+            >
+
+                <div class="form-grid">
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Task Name
+                        </label>
+
+                        <input
+                            type="text"
+                            name="task"
+                            placeholder="e.g. Complete Java DSA"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Subject
+                        </label>
+
+                        <input
+                            type="text"
+                            name="subject"
+                            placeholder="e.g. Java"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Priority
+                        </label>
+
+                        <select name="priority">
+
+                            <option value="HIGH">
+                                HIGH
+                            </option>
+
+                            <option
+                                value="MEDIUM"
+                                selected
+                            >
+                                MEDIUM
+                            </option>
+
+                            <option value="LOW">
+                                LOW
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Due Date
+                        </label>
+
+                        <input
+                            type="date"
+                            name="due_date"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group full">
+
+                        <label>
+                            Description
+                        </label>
+
+                        <textarea
+                            name="description"
+                            placeholder="Add notes or details about this task..."
+                        ></textarea>
+
+                    </div>
+
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="add-button"
+                >
+                    ➕ Add Task
+                </button>
+
+            </form>
+
+        </section>
+
+
+        <!-- ==========================================
+             OVERALL STATISTICS
+             ========================================== -->
+
+        <section class="card">
+
+            <h2>
+                📊 Overall Progress
+            </h2>
+
 
             <div class="stats-grid">
 
 
                 <div class="stat-card">
-
-                    <div class="stat-icon">
-                        📚
-                    </div>
 
                     <div class="stat-number">
                         {{ total_tasks }}
@@ -913,10 +2036,6 @@
 
                 <div class="stat-card">
 
-                    <div class="stat-icon">
-                        ✅
-                    </div>
-
                     <div class="stat-number">
                         {{ completed_tasks }}
                     </div>
@@ -930,10 +2049,6 @@
 
                 <div class="stat-card">
 
-                    <div class="stat-icon">
-                        ⏳
-                    </div>
-
                     <div class="stat-number">
                         {{ pending_tasks }}
                     </div>
@@ -945,649 +2060,1184 @@
                 </div>
 
 
-            </div>
+                <div class="stat-card">
 
-
-            <!-- ==========================================
-                 OVERALL PROGRESS
-                 ========================================== -->
-
-            <div class="section-card">
-
-                <h2 class="section-title">
-                    📊 Overall Progress
-                </h2>
-
-
-                <div class="progress-info">
-
-                    <span>
-                        Study Progress
-                    </span>
-
-                    <span class="progress-percentage">
+                    <div class="stat-number">
                         {{ progress }}%
-                    </span>
+                    </div>
+
+                    <div class="stat-label">
+                        Completion Rate
+                    </div>
 
                 </div>
 
+
+            </div>
+
+
+            <div class="progress-container">
 
                 <div class="progress-bar">
 
                     <div
                         class="progress-fill"
-                        style="width: 0%;"
-                        data-progress="{{ progress }}"
+                        style="width: {{ progress }}%;"
                     ></div>
 
                 </div>
 
-            </div>
 
+                <div class="progress-text">
 
-            <!-- ==========================================
-                 STUDY STREAK
-                 ========================================== -->
-
-            <div class="section-card">
-
-                <h2 class="section-title">
-                    🔥 Study Streak
-                </h2>
-
-
-                <div class="streak-grid">
-
-
-                    <!-- Current Streak -->
-
-                    <div class="streak-card">
-
-                        <div class="streak-icon">
-                            🔥
-                        </div>
-
-                        <div class="streak-number">
-                            {{ current_streak }}
-                        </div>
-
-                        <div class="streak-label">
-                            Current Streak
-                        </div>
-
-                    </div>
-
-
-                    <!-- Longest Streak -->
-
-                    <div class="streak-card">
-
-                        <div class="streak-icon">
-                            🏆
-                        </div>
-
-                        <div class="streak-number">
-                            {{ longest_streak }}
-                        </div>
-
-                        <div class="streak-label">
-                            Longest Streak
-                        </div>
-
-                    </div>
-
+                    {{ completed_tasks }}
+                    of
+                    {{ total_tasks }}
+                    tasks completed
 
                 </div>
 
             </div>
 
+        </section>
 
-            <!-- ==========================================
-                 ADD TASK
-                 ========================================== -->
 
-            <div class="section-card">
+        <!-- ==========================================
+             SUBJECT PROGRESS
+             ========================================== -->
 
-                <h2 class="section-title">
-                    ➕ Add New Task
-                </h2>
+        {% if subject_progress %}
+
+        <section class="card">
+
+            <h2>
+                📚 Subject-wise Progress
+            </h2>
+
+
+            {% for item in subject_progress %}
+
+            <div class="subject-row">
+
+
+                <div class="subject-header">
+
+                    <span>
+                        {{ item.subject }}
+                    </span>
+
+                    <span>
+                        {{ item.completed }}
+                        /
+                        {{ item.total }}
+                        ({{ item.percentage }}%)
+                    </span>
+
+                </div>
+
+
+                <div class="subject-progress">
+
+                    <div
+                        class="subject-fill"
+                        style="width: {{ item.percentage }}%;"
+                    ></div>
+
+                </div>
+
+
+            </div>
+
+            {% endfor %}
+
+        </section>
+
+        {% endif %}
+
+
+        <!-- ==========================================
+             STUDY STREAK
+             ========================================== -->
+
+        <section class="card">
+
+            <h2>
+                🔥 Study Streak
+            </h2>
+
+
+            <div class="streak-grid">
+
+
+                <div class="streak-box">
+
+                    <div class="streak-number">
+                        {{ current_streak }}
+                    </div>
+
+                    <div>
+                        Current Streak
+                    </div>
+
+                </div>
+
+
+                <div class="streak-box">
+
+                    <div class="streak-number">
+                        {{ longest_streak }}
+                    </div>
+
+                    <div>
+                        Longest Streak
+                    </div>
+
+                </div>
+
+
+                <div class="streak-box">
+
+                    <div class="streak-number">
+                        {{ weekly_study_days }}/7
+                    </div>
+
+                    <div>
+                        Days Studied This Week
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+        <!-- ==========================================
+             WEEKLY DASHBOARD
+             ========================================== -->
+
+        <section class="card">
+
+            <h2>
+                📅 Weekly Study Dashboard
+            </h2>
+
+
+            <div class="week-grid">
+
+                {% for day in weekly_days %}
+
+                <div
+                    class="week-day
+                    {% if day.is_today %}today{% endif %}
+                    {% if day.studied %}studied{% endif %}"
+                >
+
+                    <div class="week-name">
+                        {{ day.name }}
+                    </div>
+
+                    <div class="week-date">
+                        {{ day.date }}
+                    </div>
+
+                    <div class="week-completed">
+                        {{ day.completed }}
+                        completed
+                    </div>
+
+                </div>
+
+                {% endfor %}
+
+            </div>
+
+
+            <p class="progress-text">
+
+                {{ weekly_completed_tasks }}
+                tasks completed this week.
+
+            </p>
+
+        </section>
+
+
+        <!-- ==========================================
+             DAILY GOAL
+             ========================================== -->
+
+        <section class="card">
+
+            <div class="goal-header">
+
+                <div>
+
+                    <h2>
+                        🎯 Daily Study Goal
+                    </h2>
+
+                    <p class="progress-text">
+
+                        Today:
+                        {{ today_completed }}
+                        /
+                        {{ daily_goal }}
+                        tasks completed
+
+                    </p>
+
+                </div>
 
 
                 <form
-                    action="{{ url_for('add_task') }}"
+                    class="goal-form"
                     method="POST"
+                    action="{{ url_for('set_goal') }}"
                 >
 
-
-                    <div class="form-grid">
-
-
-                        <!-- Task -->
-
-                        <div class="form-group">
-
-                            <label for="task">
-                                Task
-                            </label>
-
-                            <input
-                                type="text"
-                                id="task"
-                                name="task"
-                                placeholder="e.g. Practice Java DSA"
-                                required
-                            >
-
-                        </div>
-
-
-                        <!-- Subject -->
-
-                        <div class="form-group">
-
-                            <label for="subject">
-                                Subject
-                            </label>
-
-                            <input
-                                type="text"
-                                id="subject"
-                                name="subject"
-                                placeholder="e.g. Java"
-                            >
-
-                        </div>
-
-
-                        <!-- Priority -->
-
-                        <div class="form-group">
-
-                            <label for="priority">
-                                Priority
-                            </label>
-
-                            <select
-                                id="priority"
-                                name="priority"
-                            >
-
-                                <option value="HIGH">
-                                    HIGH
-                                </option>
-
-                                <option
-                                    value="MEDIUM"
-                                    selected
-                                >
-                                    MEDIUM
-                                </option>
-
-                                <option value="LOW">
-                                    LOW
-                                </option>
-
-                            </select>
-
-                        </div>
-
-
-                        <!-- Due Date -->
-
-                        <div class="form-group">
-
-                            <label for="due_date">
-                                Due Date
-                            </label>
-
-                            <input
-                                type="date"
-                                id="due_date"
-                                name="due_date"
-                            >
-
-                        </div>
-
-
-                        <!-- Description -->
-
-                        <div class="form-group full">
-
-                            <label for="description">
-                                Description
-                            </label>
-
-                            <textarea
-                                id="description"
-                                name="description"
-                                placeholder="Add some details about this task..."
-                            ></textarea>
-
-                        </div>
-
-
-                    </div>
-
+                    <input
+                        type="number"
+                        name="daily_goal"
+                        min="1"
+                        max="50"
+                        value="{{ daily_goal }}"
+                    >
 
                     <button
                         type="submit"
-                        class="add-button"
+                        class="goal-button"
                     >
-                        ➕ Add Task
+                        Set Goal
                     </button>
-
 
                 </form>
 
             </div>
 
 
-            <!-- ==========================================
-                 SEARCH & FILTER
-                 ========================================== -->
+            <div class="progress-container">
 
-            <div class="section-card">
+                <div class="progress-bar">
 
-                <h2 class="section-title">
-                    🔎 Search & Filter
+                    <div
+                        class="progress-fill"
+                        style="width: {{ daily_goal_progress }}%;"
+                    ></div>
+
+                </div>
+
+                <div class="progress-text">
+
+                    {{ daily_goal_progress }}% of today's goal
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==========================================
+             POMODORO
+             ========================================== -->
+
+        <section class="card pomodoro">
+
+            <h2>
+                🍅 Pomodoro Study Timer
+            </h2>
+
+
+            <div
+                id="timerMode"
+                class="timer-mode"
+            >
+                Focus Session
+            </div>
+
+
+            <div
+                id="timerDisplay"
+                class="timer-display"
+            >
+                25:00
+            </div>
+
+
+            <div class="timer-buttons">
+
+                <button
+                    class="timer-button primary"
+                    onclick="startTimer()"
+                >
+                    ▶ Start
+                </button>
+
+                <button
+                    class="timer-button"
+                    onclick="pauseTimer()"
+                >
+                    ⏸ Pause
+                </button>
+
+                <button
+                    class="timer-button"
+                    onclick="resetTimer()"
+                >
+                    ↻ Reset
+                </button>
+
+                <button
+                    class="timer-button"
+                    onclick="setTimer(25, 'Focus Session')"
+                >
+                    25 min
+                </button>
+
+                <button
+                    class="timer-button"
+                    onclick="setTimer(5, 'Short Break')"
+                >
+                    5 min Break
+                </button>
+
+                <button
+                    class="timer-button"
+                    onclick="setTimer(15, 'Long Break')"
+                >
+                    15 min Break
+                </button>
+
+            </div>
+
+
+            <div class="pomodoro-count">
+
+                Pomodoro sessions today:
+                <strong id="pomodoroCount">
+                    {{ today_pomodoros }}
+                </strong>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==========================================
+             CALENDAR
+             ========================================== -->
+
+        <section class="card">
+
+            <div class="calendar-header">
+
+                <h2>
+                    🗓 Study Calendar —
+                    {{ calendar_month_name }}
+                    {{ calendar_year }}
                 </h2>
 
 
-                <form
-                    action="{{ url_for('index') }}"
-                    method="GET"
-                    class="filter-form"
-                >
+                <div class="calendar-controls">
+
+                    <a
+                        class="calendar-control"
+                        href="{{ url_for(
+                            'index',
+                            year=previous_month.year,
+                            month=previous_month.month
+                        ) }}"
+                    >
+                        ← Previous
+                    </a>
 
 
-                    <input
-                        type="text"
-                        name="search"
-                        value="{{ search }}"
-                        placeholder="Search tasks, subjects or descriptions..."
+                    <a
+                        class="calendar-control"
+                        href="{{ url_for('index') }}"
+                    >
+                        Today
+                    </a>
+
+
+                    <a
+                        class="calendar-control"
+                        href="{{ url_for(
+                            'index',
+                            year=next_month.year,
+                            month=next_month.month
+                        ) }}"
+                    >
+                        Next →
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div class="calendar-grid">
+
+
+                {% for weekday in [
+                    "Monday",
+                    "Tuesday",
+                    "Wednesday",
+                    "Thursday",
+                    "Friday",
+                    "Saturday",
+                    "Sunday"
+                ] %}
+
+                <div class="calendar-weekday">
+                    {{ weekday }}
+                </div>
+
+                {% endfor %}
+
+
+                {% for week in month_calendar %}
+
+                    {% for day in week %}
+
+                    <div
+                        class="calendar-day
+                        {% if not day.current_month %}
+                            other-month
+                        {% endif %}
+                        {% if day.is_today %}
+                            today
+                        {% endif %}"
                     >
 
+                        <div class="calendar-number">
+                            {{ day.date }}
+                        </div>
 
-                    <select name="priority">
 
-                        <option value="">
-                            All Priorities
-                        </option>
+                        {% for task in day.tasks %}
 
-                        <option
-                            value="HIGH"
-                            {% if priority_filter == "HIGH" %}selected{% endif %}
+                        <div
+                            class="calendar-task
+                            {% if task.completed %}
+                                completed-calendar
+                            {% endif %}"
+                            title="{{ task.task }}"
                         >
-                            High
-                        </option>
+                            {{ task.task }}
+                        </div>
 
-                        <option
-                            value="MEDIUM"
-                            {% if priority_filter == "MEDIUM" %}selected{% endif %}
+                        {% endfor %}
+
+                    </div>
+
+                    {% endfor %}
+
+                {% endfor %}
+
+
+            </div>
+
+        </section>
+
+
+        <!-- ==========================================
+             ANALYTICS
+             ========================================== -->
+
+        <section class="card">
+
+            <h2>
+                📈 Advanced Analytics
+            </h2>
+
+
+            <div class="analytics-grid">
+
+
+                <div class="analytics-box">
+
+                    <div class="analytics-label">
+                        Total Tasks
+                    </div>
+
+                    <div class="analytics-value">
+                        {{ analytics.total }}
+                    </div>
+
+                </div>
+
+
+                <div class="analytics-box">
+
+                    <div class="analytics-label">
+                        Completed
+                    </div>
+
+                    <div class="analytics-value">
+                        {{ analytics.completed }}
+                    </div>
+
+                </div>
+
+
+                <div class="analytics-box">
+
+                    <div class="analytics-label">
+                        Pending
+                    </div>
+
+                    <div class="analytics-value">
+                        {{ analytics.pending }}
+                    </div>
+
+                </div>
+
+
+                <div class="analytics-box">
+
+                    <div class="analytics-label">
+                        Overdue
+                    </div>
+
+                    <div class="analytics-value">
+                        {{ analytics.overdue }}
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+            <h3>
+                Priority Distribution
+            </h3>
+
+
+            <div class="priority-bars">
+
+
+                {% for priority in [
+                    "HIGH",
+                    "MEDIUM",
+                    "LOW"
+                ] %}
+
+                {% set priority_count =
+                    analytics.priority_counts[priority]
+                %}
+
+
+                {% set priority_percentage =
+
+                    (
+                        priority_count
+                        / analytics.total
+                        * 100
+                    )
+
+                    if analytics.total > 0
+
+                    else 0
+
+                %}
+
+
+                <div class="priority-line">
+
+                    <span>
+                        {{ priority }}
+                    </span>
+
+
+                    <div class="priority-track">
+
+                        <div
+                            class="priority-fill"
+                            style="width: {{ priority_percentage }}%;"
+                        ></div>
+
+                    </div>
+
+
+                    <span>
+                        {{ priority_count }}
+                    </span>
+
+                </div>
+
+                {% endfor %}
+
+
+            </div>
+
+
+            <h3>
+                Most Productive Day
+            </h3>
+
+
+            <p class="progress-text">
+
+                Your most productive weekday is:
+
+                <strong>
+                    {{ analytics.most_productive_day }}
+                </strong>
+
+            </p>
+
+
+            <h3>
+                Completed Tasks by Weekday
+            </h3>
+
+
+            <div class="weekday-chart">
+
+                {% set max_weekday_count =
+
+                    analytics.weekday_counts.values()
+                    |max
+
+                %}
+
+
+                {% for weekday in [
+                    "Mon",
+                    "Tue",
+                    "Wed",
+                    "Thu",
+                    "Fri",
+                    "Sat",
+                    "Sun"
+                ] %}
+
+
+                {% set count =
+                    analytics.weekday_counts[weekday]
+                %}
+
+
+                {% set height =
+
+                    (
+                        count
+                        / max_weekday_count
+                        * 100
+                    )
+
+                    if max_weekday_count > 0
+
+                    else 0
+
+                %}
+
+
+                <div class="weekday-column">
+
+                    <div
+                        class="weekday-bar"
+                        style="height: {{ height }}%;"
+                        title="{{ count }} completed"
+                    ></div>
+
+                    <div class="weekday-label">
+                        {{ weekday }}
+                    </div>
+
+                </div>
+
+
+                {% endfor %}
+
+            </div>
+
+        </section>
+
+
+        <!-- ==========================================
+             FILTERS
+             ========================================== -->
+
+        <section class="card">
+
+            <h2>
+                🔎 Search & Filter
+            </h2>
+
+
+            <form
+                method="GET"
+                action="{{ url_for('index') }}"
+            >
+
+                <div class="filter-grid">
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Search
+                        </label>
+
+                        <input
+                            type="text"
+                            name="search"
+                            value="{{ search }}"
+                            placeholder="Search tasks..."
                         >
-                            Medium
-                        </option>
 
-                        <option
-                            value="LOW"
-                            {% if priority_filter == "LOW" %}selected{% endif %}
-                        >
-                            Low
-                        </option>
-
-                    </select>
+                    </div>
 
 
-                    <select name="subject">
+                    <div class="form-group">
 
-                        <option value="">
-                            All Subjects
-                        </option>
+                        <label>
+                            Priority
+                        </label>
 
-                        {% for subject in subjects %}
+                        <select name="priority">
+
+                            <option value="">
+                                All
+                            </option>
+
+                            <option
+                                value="HIGH"
+                                {% if priority_filter == "HIGH" %}
+                                    selected
+                                {% endif %}
+                            >
+                                HIGH
+                            </option>
+
+                            <option
+                                value="MEDIUM"
+                                {% if priority_filter == "MEDIUM" %}
+                                    selected
+                                {% endif %}
+                            >
+                                MEDIUM
+                            </option>
+
+                            <option
+                                value="LOW"
+                                {% if priority_filter == "LOW" %}
+                                    selected
+                                {% endif %}
+                            >
+                                LOW
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Subject
+                        </label>
+
+                        <select name="subject">
+
+                            <option value="">
+                                All
+                            </option>
+
+
+                            {% for subject in subjects %}
 
                             <option
                                 value="{{ subject }}"
-                                {% if subject_filter == subject %}selected{% endif %}
+                                {% if subject_filter == subject %}
+                                    selected
+                                {% endif %}
                             >
                                 {{ subject }}
                             </option>
 
-                        {% endfor %}
+                            {% endfor %}
 
-                    </select>
+                        </select>
+
+                    </div>
 
 
-                    <select name="status">
+                    <div class="form-group">
 
-                        <option value="">
-                            All Status
-                        </option>
+                        <label>
+                            Status
+                        </label>
 
-                        <option
-                            value="pending"
-                            {% if status_filter == "pending" %}selected{% endif %}
-                        >
-                            Pending
-                        </option>
+                        <select name="status">
 
-                        <option
-                            value="completed"
-                            {% if status_filter == "completed" %}selected{% endif %}
-                        >
-                            Completed
-                        </option>
+                            <option value="">
+                                All
+                            </option>
 
-                    </select>
+                            <option
+                                value="completed"
+                                {% if status_filter == "completed" %}
+                                    selected
+                                {% endif %}
+                            >
+                                Completed
+                            </option>
+
+                            <option
+                                value="pending"
+                                {% if status_filter == "pending" %}
+                                    selected
+                                {% endif %}
+                            >
+                                Pending
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Important
+                        </label>
+
+                        <select name="important">
+
+                            <option value="">
+                                All
+                            </option>
+
+                            <option
+                                value="true"
+                                {% if important_filter == "true" %}
+                                    selected
+                                {% endif %}
+                            >
+                                Important Only
+                            </option>
+
+                        </select>
+
+                    </div>
 
 
                     <button
                         type="submit"
                         class="filter-button"
                     >
-                        Filter
+                        Apply
                     </button>
 
 
-                    <a
-                        href="{{ url_for('index') }}"
-                        class="clear-button"
-                    >
-                        Clear
-                    </a>
+                </div>
+
+            </form>
 
 
-                </form>
+            <div style="margin-top: 12px;">
 
-            </div>
-
-
-            <!-- ==========================================
-                 SUBJECT-WISE PROGRESS
-                 ========================================== -->
-
-            <div class="section-card">
-
-                <h2 class="section-title">
-                    📘 Subject-wise Progress
-                </h2>
-
-
-                {% if subject_progress %}
-
-                    <div class="subject-list">
-
-
-                        {% for item in subject_progress %}
-
-                            <div class="subject-row">
-
-
-                                <div class="subject-header">
-
-                                    <span class="subject-name">
-                                        {{ item.subject }}
-                                    </span>
-
-                                    <span class="subject-count">
-                                        {{ item.completed }} / {{ item.total }}
-                                        ({{ item.percentage }}%)
-                                    </span>
-
-                                </div>
-
-
-                                <div class="subject-progress-bar">
-
-                                    <div
-                                        class="subject-progress-fill"
-                                        style="width: 0%;"
-                                        data-percentage="{{ item.percentage }}"
-                                    ></div>
-
-                                </div>
-
-
-                            </div>
-
-                        {% endfor %}
-
-
-                    </div>
-
-                {% else %}
-
-                    <div class="empty-message">
-                        No subjects yet. Add a task to start tracking your progress.
-                    </div>
-
-                {% endif %}
-
+                <a
+                    href="{{ url_for('index') }}"
+                    class="clear-button"
+                >
+                    Clear Filters
+                </a>
 
             </div>
 
-
-            <!-- ==========================================
-                 TASK LIST
-                 ========================================== -->
-
-            <div class="section-card">
-
-                <h2 class="section-title">
-                    📝 Your Tasks
-                </h2>
+        </section>
 
 
-                {% if task_items %}
+        <!-- ==========================================
+             TASK LIST
+             ========================================== -->
+
+        <section class="card">
+
+            <h2>
+                📝 Your Study Tasks
+            </h2>
 
 
-                    <div class="task-list">
+            {% if task_items %}
+
+            <div class="task-list">
 
 
-                        {% for task_id, task in task_items %}
+                {% for task_id, task in task_items %}
 
+                <div
+                    class="task-item
+                    {% if task.completed %}
+                        completed
+                    {% endif %}"
+                >
+
+
+                    <div class="task-top">
+
+
+                        <div>
 
                             <div
-                                class="task-card {% if task.completed %}completed{% endif %}"
+                                class="task-title
+                                {% if task.completed %}
+                                    completed-title
+                                {% endif %}"
                             >
 
-
-                                <div class="task-top">
-
-
-                                    <div class="task-main">
-
-
-                                        <div class="task-name">
-                                            {{ task.task }}
-                                        </div>
-
-
-                                        {% if task.description %}
-
-                                            <div class="task-description">
-                                                {{ task.description }}
-                                            </div>
-
-                                        {% endif %}
-
-
-                                        <div class="task-meta">
-
-
-                                            <!-- Priority -->
-
-                                            {% if task.priority == "HIGH" %}
-
-                                                <span class="badge priority-high">
-                                                    HIGH
-                                                </span>
-
-                                            {% elif task.priority == "MEDIUM" %}
-
-                                                <span class="badge priority-medium">
-                                                    MEDIUM
-                                                </span>
-
-                                            {% else %}
-
-                                                <span class="badge priority-low">
-                                                    LOW
-                                                </span>
-
-                                            {% endif %}
-
-
-                                            <!-- Subject -->
-
-                                            <span class="badge subject-badge">
-                                                📘 {{ task.subject }}
-                                            </span>
-
-
-                                            <!-- Due Date -->
-
-                                            {% if task.due_status == "overdue" %}
-
-                                                <span class="badge due-overdue">
-                                                    🔴 Overdue · {{ task.due_date }}
-                                                </span>
-
-                                            {% elif task.due_status == "today" %}
-
-                                                <span class="badge due-today">
-                                                    🟡 Due Today
-                                                </span>
-
-                                            {% elif task.due_status == "upcoming" %}
-
-                                                <span class="badge due-upcoming">
-                                                    🔵 Due · {{ task.due_date }}
-                                                </span>
-
-                                            {% elif task.due_status == "completed" %}
-
-                                                <span class="badge due-completed">
-                                                    🟢 Completed
-                                                </span>
-
-                                            {% endif %}
-
-
-                                            <!-- Status -->
-
-                                            {% if task.completed %}
-
-                                                <span class="badge status-completed">
-                                                    ✓ Completed
-                                                </span>
-
-                                            {% else %}
-
-                                                <span class="badge status-pending">
-                                                    ⏳ Pending
-                                                </span>
-
-                                            {% endif %}
-
-
-                                        </div>
-
-
-                                    </div>
-
-
-                                </div>
-
-
-                                <!-- Task Actions -->
-
-                                <div class="task-actions">
-
-
-                                    {% if task.completed %}
-
-                                        <a
-                                            href="{{ url_for('complete_task', task_id=task_id) }}"
-                                            class="action-button complete-button"
-                                        >
-                                            ↩ Undo
-                                        </a>
-
-                                    {% else %}
-
-                                        <a
-                                            href="{{ url_for('complete_task', task_id=task_id) }}"
-                                            class="action-button complete-button"
-                                        >
-                                            ✓ Complete
-                                        </a>
-
-                                    {% endif %}
-
-
-                                    <a
-                                        href="{{ url_for('edit_task', task_id=task_id) }}"
-                                        class="action-button edit-button"
-                                    >
-                                        ✏️ Edit
-                                    </a>
-
-
-                                    <button
-                                        type="button"
-                                        class="action-button delete-button"
-                                        data-delete-url="{{ url_for('delete_task', task_id=task_id) }}"
-                                        data-task-name="{{ task.task|e }}"
-                                        onclick="openDeleteModal(this.dataset.deleteUrl, this.dataset.taskName)"
-                                    >
-                                        🗑 Delete
-                                    </button>
-
-
-                                </div>
-
+                                {{ task.task }}
 
                             </div>
 
 
-                        {% endfor %}
+                            {% if task.description %}
+
+                            <div class="task-description">
+
+                                {{ task.description }}
+
+                            </div>
+
+                            {% endif %}
+
+
+                            <div class="task-meta">
+
+
+                                <span class="badge">
+
+                                    📚
+                                    {{ task.subject }}
+
+                                </span>
+
+
+                                {% if task.priority == "HIGH" %}
+
+                                <span
+                                    class="badge priority-high"
+                                >
+                                    🔴 HIGH
+                                </span>
+
+                                {% elif task.priority == "MEDIUM" %}
+
+                                <span
+                                    class="badge priority-medium"
+                                >
+                                    🟡 MEDIUM
+                                </span>
+
+                                {% else %}
+
+                                <span
+                                    class="badge priority-low"
+                                >
+                                    🟢 LOW
+                                </span>
+
+                                {% endif %}
+
+
+                                {% if task.due_status == "overdue" %}
+
+                                <span
+                                    class="badge due-overdue"
+                                >
+                                    ⚠ Overdue
+                                </span>
+
+                                {% elif task.due_status == "today" %}
+
+                                <span
+                                    class="badge due-today"
+                                >
+                                    📌 Due Today
+                                </span>
+
+                                {% elif task.due_status == "upcoming" %}
+
+                                <span
+                                    class="badge due-upcoming"
+                                >
+                                    📅 Upcoming
+                                </span>
+
+                                {% elif task.due_status == "completed" %}
+
+                                <span
+                                    class="badge due-completed"
+                                >
+                                    ✓ Completed
+                                </span>
+
+                                {% endif %}
+
+
+                                {% if task.due_date %}
+
+                                <span class="badge">
+
+                                    Due:
+                                    {{ task.due_date }}
+
+                                </span>
+
+                                {% endif %}
+
+
+                                {% if task.starred %}
+
+                                <span
+                                    class="badge important-badge"
+                                >
+                                    ★ Important
+                                </span>
+
+                                {% endif %}
+
+
+                            </div>
+
+                        </div>
 
 
                     </div>
 
 
-                {% else %}
+                    <div class="task-actions">
 
 
-                    <div class="empty-message">
+                        <a
+                            href="{{ url_for(
+                                'toggle_star',
+                                task_id=task_id
+                            ) }}"
+                            class="action-button
+                            star-button
+                            {% if task.starred %}
+                                starred
+                            {% endif %}"
+                            title="{% if task.starred %}
+                                Remove from important
+                            {% else %}
+                                Mark as important
+                            {% endif %}"
+                        >
 
-                        {% if search or priority_filter or subject_filter or status_filter %}
+                            {% if task.starred %}
 
-                            No tasks match your current search/filter.
+                                ★ Important
+
+                            {% else %}
+
+                                ☆ Important
+
+                            {% endif %}
+
+                        </a>
+
+
+                        {% if task.completed %}
+
+                        <a
+                            href="{{ url_for(
+                                'complete_task',
+                                task_id=task_id
+                            ) }}"
+                            class="action-button complete-button"
+                        >
+                            ↩ Undo
+                        </a>
 
                         {% else %}
 
-                            No tasks yet. Add your first study task above.
+                        <a
+                            href="{{ url_for(
+                                'complete_task',
+                                task_id=task_id
+                            ) }}"
+                            class="action-button complete-button"
+                        >
+                            ✓ Complete
+                        </a>
 
                         {% endif %}
+
+
+                        <a
+                            href="{{ url_for(
+                                'edit_task',
+                                task_id=task_id
+                            ) }}"
+                            class="action-button edit-button"
+                        >
+                            ✏️ Edit
+                        </a>
+
+
+                        <button
+                            type="button"
+                            class="action-button delete-button"
+                            onclick="openDeleteModal('{{ url_for('delete_task', task_id=task_id) }}', {{ task.task | tojson }})"
+                        >
+                            🗑 Delete
+                        </button>
+
 
                     </div>
 
 
-                {% endif %}
+                </div>
+
+                {% endfor %}
 
 
             </div>
 
 
-        </div>
+            {% else %}
+
+            <div class="empty-message">
+
+                {% if search
+                    or priority_filter
+                    or subject_filter
+                    or status_filter
+                    or important_filter %}
+
+                    No tasks match your current search/filter.
+
+                {% else %}
+
+                    No tasks yet.
+                    Add your first study task above.
+
+                {% endif %}
+
+            </div>
+
+            {% endif %}
+
+
+        </section>
+
 
     </main>
 
 
     <!-- ==========================================
-         DELETE CONFIRMATION MODAL
+         DELETE MODAL
          ========================================== -->
 
     <div
@@ -1651,17 +3301,14 @@
 
         </div>
 
-
     </div>
 
 
-    <!-- ==========================================
-         FOOTER
-         ========================================== -->
-
     <footer>
 
-        Student Study Planner • Stay consistent and keep learning 🚀
+        Student Study Planner
+        •
+        Stay consistent and keep learning 🚀
 
     </footer>
 
@@ -1672,16 +3319,27 @@
 
     <script>
 
+
+        /* ==========================================
+           DELETE MODAL
+           ========================================== */
+
         const deleteModal =
-            document.getElementById("deleteModal");
+            document.getElementById(
+                "deleteModal"
+            );
 
 
         const modalTaskName =
-            document.getElementById("modalTaskName");
+            document.getElementById(
+                "modalTaskName"
+            );
 
 
         const confirmDeleteButton =
-            document.getElementById("confirmDeleteButton");
+            document.getElementById(
+                "confirmDeleteButton"
+            );
 
 
         function openDeleteModal(
@@ -1692,10 +3350,8 @@
             modalTaskName.textContent =
                 taskName;
 
-
             confirmDeleteButton.href =
                 deleteUrl;
-
 
             deleteModal.classList.add(
                 "active"
@@ -1713,14 +3369,13 @@
         }
 
 
-        /* Close modal when clicking outside */
-
         deleteModal.addEventListener(
             "click",
             function(event) {
 
                 if (
-                    event.target === deleteModal
+                    event.target ===
+                    deleteModal
                 ) {
 
                     closeDeleteModal();
@@ -1730,15 +3385,14 @@
             }
         );
 
-
-        /* Close modal with Escape */
 
         document.addEventListener(
             "keydown",
             function(event) {
 
                 if (
-                    event.key === "Escape"
+                    event.key ===
+                    "Escape"
                 ) {
 
                     closeDeleteModal();
@@ -1747,6 +3401,248 @@
 
             }
         );
+
+
+        /* ==========================================
+           POMODORO TIMER
+           ========================================== */
+
+        let timerSeconds =
+            25 * 60;
+
+
+        let timerInterval =
+            null;
+
+
+        let timerRunning =
+            false;
+
+
+        let currentMode =
+            "Focus Session";
+
+
+        const timerDisplay =
+            document.getElementById(
+                "timerDisplay"
+            );
+
+
+        const timerMode =
+            document.getElementById(
+                "timerMode"
+            );
+
+
+        const pomodoroCount =
+            document.getElementById(
+                "pomodoroCount"
+            );
+
+
+        function updateTimerDisplay() {
+
+            const minutes =
+                Math.floor(
+                    timerSeconds / 60
+                );
+
+
+            const seconds =
+                timerSeconds % 60;
+
+
+            timerDisplay.textContent =
+
+                String(minutes)
+                    .padStart(2, "0")
+
+                + ":"
+
+                + String(seconds)
+                    .padStart(2, "0");
+
+        }
+
+
+        function startTimer() {
+
+            if (timerRunning) {
+
+                return;
+
+            }
+
+
+            timerRunning = true;
+
+
+            timerInterval =
+                setInterval(
+                    tickTimer,
+                    1000
+                );
+
+        }
+
+
+        function pauseTimer() {
+
+            timerRunning =
+                false;
+
+
+            if (timerInterval) {
+
+                clearInterval(
+                    timerInterval
+                );
+
+                timerInterval =
+                    null;
+
+            }
+
+        }
+
+
+        function resetTimer() {
+
+            pauseTimer();
+
+            timerSeconds =
+                25 * 60;
+
+            currentMode =
+                "Focus Session";
+
+            timerMode.textContent =
+                currentMode;
+
+            updateTimerDisplay();
+
+        }
+
+
+        function setTimer(
+            minutes,
+            mode
+        ) {
+
+            pauseTimer();
+
+            timerSeconds =
+                minutes * 60;
+
+            currentMode =
+                mode;
+
+            timerMode.textContent =
+                currentMode;
+
+            updateTimerDisplay();
+
+        }
+
+
+        function tickTimer() {
+
+            if (
+                timerSeconds > 0
+            ) {
+
+                timerSeconds--;
+
+                updateTimerDisplay();
+
+                return;
+
+            }
+
+
+            pauseTimer();
+
+
+            if (
+                currentMode ===
+                "Focus Session"
+            ) {
+
+                completePomodoro();
+
+
+                alert(
+                    "🎉 Focus session complete! Time for a break."
+                );
+
+
+                setTimer(
+                    5,
+                    "Short Break"
+                );
+
+            }
+
+            else {
+
+                alert(
+                    "⏰ Break complete! Ready to focus?"
+                );
+
+
+                setTimer(
+                    25,
+                    "Focus Session"
+                );
+
+            }
+
+        }
+
+
+        async function completePomodoro() {
+
+            try {
+
+                    const response =
+                        await fetch(
+                            "{{ url_for('pomodoro_complete') }}",
+                        {
+                            method:
+                                "POST"
+                        }
+                    );
+
+
+                const data =
+                    await response.json();
+
+
+                if (
+                    data.success
+                ) {
+
+                    pomodoroCount.textContent =
+                        data.sessions;
+
+                }
+
+            }
+
+            catch (error) {
+
+                console.error(
+                    "Could not save Pomodoro session:",
+                    error
+                );
+
+            }
+
+        }
+
+
+        updateTimerDisplay();
 
     </script>
 

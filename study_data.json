@@ -1,5 +1,7 @@
 {
     "study_dates": [
         "2026-09-12"
-    ]
+    ],
+    "daily_goal": 3,
+    "pomodoro_sessions": {}
 }
