@@ -745,6 +745,80 @@ def index():
 
         ]
 
+    # ==========================================
+    # Reminders
+    # ==========================================
+
+    today = date.today()
+    tomorrow = today + timedelta(days=1)
+    three_days_later = today + timedelta(days=3)
+
+    reminders = []
+
+    for task_id, task in enumerate(all_tasks):
+
+        # Completed tasks do not need reminders
+        if task.get("completed", False):
+            continue
+
+        due_date_string = task.get("due_date", "")
+
+        if not due_date_string:
+            continue
+
+        try:
+            due_date = date.fromisoformat(due_date_string)
+        except ValueError:
+            continue
+
+        # Overdue
+        if due_date < today:
+            reminders.append({
+                "task_id": task_id,
+                "task": task.get("task", ""),
+                "subject": task.get("subject", "General"),
+                "priority": task.get("priority", "MEDIUM"),
+                "due_date": due_date_string,
+                "type": "overdue",
+                "message": "This task is overdue."
+            })
+
+        # Due today
+        elif due_date == today:
+            reminders.append({
+                "task_id": task_id,
+                "task": task.get("task", ""),
+                "subject": task.get("subject", "General"),
+                "priority": task.get("priority", "MEDIUM"),
+                "due_date": due_date_string,
+                "type": "today",
+                "message": "This task is due today."
+            })
+
+        # Due tomorrow
+        elif due_date == tomorrow:
+            reminders.append({
+                "task_id": task_id,
+                "task": task.get("task", ""),
+                "subject": task.get("subject", "General"),
+                "priority": task.get("priority", "MEDIUM"),
+                "due_date": due_date_string,
+                "type": "tomorrow",
+                "message": "This task is due tomorrow."
+            })
+
+        # Due within 3 days
+        elif due_date <= three_days_later:
+            reminders.append({
+                "task_id": task_id,
+                "task": task.get("task", ""),
+                "subject": task.get("subject", "General"),
+                "priority": task.get("priority", "MEDIUM"),
+                "due_date": due_date_string,
+                "type": "upcoming",
+                "message": "This task is coming up soon."
+            })
+
     # Overall statistics
     total_tasks = len(all_tasks)
 
@@ -955,6 +1029,9 @@ def index():
         "index.html",
 
         task_items=task_items,
+
+        # NEW: send reminders to index.html
+        reminders=reminders,
 
         total_tasks=total_tasks,
 

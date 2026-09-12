@@ -5,7 +5,9 @@
         "completed": true,
         "subject": "General",
         "due_date": "2026-09-10",
-        "description": ""
+        "description": "",
+        "starred": false,
+        "completed_on": ""
     },
     {
         "task": "study SM",
@@ -13,7 +15,9 @@
         "completed": true,
         "subject": "mathematics",
         "due_date": "2026-10-11",
-        "description": ""
+        "description": "",
+        "starred": false,
+        "completed_on": ""
     },
     {
         "task": "do assignments of AI",
@@ -21,7 +25,9 @@
         "priority": "MEDIUM",
         "due_date": "2026-09-12",
         "completed": false,
-        "description": ""
+        "description": "",
+        "starred": false,
+        "completed_on": ""
     },
     {
         "task": "learn python",
@@ -29,6 +35,18 @@
         "description": "complete python basics",
         "priority": "MEDIUM",
         "due_date": "2026-09-10",
-        "completed": false
+        "completed": false,
+        "starred": false,
+        "completed_on": ""
+    },
+    {
+        "task": "do assignments of PSAB",
+        "subject": "PSAB",
+        "description": "",
+        "priority": "HIGH",
+        "due_date": "2026-09-13",
+        "completed": false,
+        "starred": false,
+        "completed_on": ""
     }
 ]
