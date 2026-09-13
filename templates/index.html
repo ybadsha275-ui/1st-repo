@@ -1351,6 +1351,74 @@
                 scroll-behavior: auto !important;
             }
         }
+        /* ==========================================
+   TASK #8 — NAVIGATION BAR
+   ========================================== */
+
+.main-nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    padding: 10px 0;
+    background: rgba(15, 23, 42, 0.62);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+}
+
+.nav-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.nav-link {
+    padding: 9px 13px;
+    border-radius: 10px;
+    color: #cbd5e1;
+    font-size: 13px;
+    font-weight: 700;
+    border: 1px solid transparent;
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease,
+        color 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.nav-link:hover {
+    color: #ffffff;
+    background: rgba(96, 165, 250, 0.12);
+    border-color: rgba(96, 165, 250, 0.22);
+    transform: translateY(-2px);
+}
+
+.nav-link:active {
+    transform: scale(0.97);
+}
+
+@media (max-width: 600px) {
+
+    .main-nav {
+        padding: 8px 0;
+    }
+
+    .nav-links {
+        justify-content: flex-start;
+        overflow-x: auto;
+        flex-wrap: nowrap;
+        padding-bottom: 2px;
+    }
+
+    .nav-link {
+        flex: 0 0 auto;
+        font-size: 12px;
+        padding: 8px 11px;
+    }
+
+}
     </style>
 </head>
 
@@ -1372,6 +1440,48 @@
         </div>
     </div>
 </header>
+</header>
+
+<!-- =========================
+     NAVIGATION BAR
+     ========================= -->
+
+<nav class="main-nav">
+
+    <div class="container">
+
+        <div class="nav-links">
+
+            <a href="#dashboard" class="nav-link">
+                🏠 Dashboard
+            </a>
+
+            <a href="#tasks" class="nav-link">
+                📝 Tasks
+            </a>
+
+            <a href="#streak" class="nav-link">
+                🔥 Streak
+            </a>
+
+            <a href="#analytics" class="nav-link">
+                📊 Analytics
+            </a>
+
+            <a href="#focus" class="nav-link">
+                🍅 Focus
+            </a>
+
+            <a href="#calendar" class="nav-link">
+                🗓️ Calendar
+            </a>
+
+        </div>
+
+    </div>
+
+</nav>
+
 
 <main>
 <div class="container">
@@ -1380,7 +1490,7 @@
          STATISTICS
          ========================= -->
 
-    <div class="stats-grid">
+    <div class="stats-grid" id="dashboard">
 
         <div class="stat-card">
             <div class="stat-icon">📚</div>
@@ -1544,7 +1654,7 @@
          STUDY STREAK
          ========================= -->
 
-    <div class="section-card">
+    <div class="section-card" id="streak">
 
         <h2 class="section-title">
             🔥 Study Streak
@@ -1721,7 +1831,7 @@
          DAILY GOAL
          ========================= -->
 
-    <div class="section-card">
+    <div class="section-card"> 
 
         <h2 class="section-title">
             🎯 Daily Study Goal
@@ -1824,7 +1934,7 @@
          POMODORO TIMER
          ========================= -->
 
-    <div class="section-card">
+    <div class="section-card" id="focus">
 
         <h2 class="section-title">
             🍅 Pomodoro Study Timer
@@ -1929,7 +2039,7 @@
          MONTHLY CALENDAR
          ========================= -->
 
-    <div class="section-card">
+    <div class="section-card" id="calendar">
 
         <div class="calendar-header">
 
@@ -2052,7 +2162,7 @@
          ADD TASK
          ========================= -->
 
-    <div class="section-card">
+    <div class="section-card" id="tasks">
 
         <h2 class="section-title">
             ➕ Add New Study Task
@@ -2580,7 +2690,7 @@
          ADVANCED ANALYTICS
          ========================= -->
 
-    <div class="section-card">
+    <div class="section-card" id="analytics">
 
         <div class="section-header">
 
